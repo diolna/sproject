@@ -1,0 +1,19 @@
+#pragma once
+
+#include <iostream>
+
+using namespace std;
+
+class Date {
+public:
+	Date(const int& year, const int& month, const int& day);
+	int GetYear() const;
+	int GetMonth()const;
+	int GetDay()const;
+
+private:
+	int year_;
+	int month_;
+	int day_;
+
+};

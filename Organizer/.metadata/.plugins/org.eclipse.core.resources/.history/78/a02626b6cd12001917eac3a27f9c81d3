@@ -1,0 +1,27 @@
+// organizer
+
+#include <iostream>
+#include "header/date.h"
+#include <vector>
+#include "header/test_date.h"
+
+
+using namespace std;
+
+void TestAll();
+
+int main() {
+	TestAll();
+
+//
+
+	return 0;
+}
+
+void TestAll(){
+	TestRunner tr;
+		 tr.RunTest(TestDate, "TestDate");
+
+		}
+
+}

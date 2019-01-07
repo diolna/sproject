@@ -1,0 +1,25 @@
+#include <tuple>
+#include "header/date.h"
+
+
+using namespace std;
+
+
+Date::Date(int year, int month, int day):
+		year_(year), month_(month), day_(day){}
+
+int Date::GetYear() const { return year_;}
+int Date::GetMonth() const { return month_;}
+int Date::GetDay() const { return day_;}
+
+bool operator<( const Date& lhs, const Date& rhs){
+
+	auto lhsDate = tie(lhs.GetYear(), lhs.GetMonth(), lhs.GetDay());
+	auto rhsDate = tie(rhs.GetYear(), rhs.GetMonth(), rhs.GetDay());
+
+	return lhsDate < rhsDate;
+
+
+}
+
+

@@ -1,0 +1,17 @@
+#include "date.h"
+#include "test_date.h"
+#include "header/test_runner.h"
+
+
+#include <sstream>
+
+using namespace std;
+
+void TestDate() {
+    {
+       bool date = Date(2017, 12, 31) < Date(2019, 01,01);
+
+        Assert(date,  "2017, 12, 31 < 2019, 01,01");
+
+    }
+}

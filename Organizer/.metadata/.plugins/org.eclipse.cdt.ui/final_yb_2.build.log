@@ -1,0 +1,16 @@
+01:30:16 **** Rebuild of configuration Debug for project final_yb_2 ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\condition_parser_test.o" "..\\src\\condition_parser_test.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\condition_parser.o" "..\\src\\condition_parser.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\database_test.o" "..\\src\\database_test.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\node.o" "..\\src\\node.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\token.o" "..\\src\\token.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\date.o" "..\\src\\date.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\database.o" "..\\src\\database.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\test_date.o" "..\\src\\test_date.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\test_node.o" "..\\src\\test_node.cpp" 
+g++ -o final_yb_2.exe "src\\condition_parser.o" "src\\condition_parser_test.o" "src\\database.o" "src\\database_test.o" "src\\date.o" "src\\main.o" "src\\node.o" "src\\test_date.o" "src\\test_node.o" "src\\token.o" 
+
+01:30:38 Build Finished. 0 errors, 0 warnings. (took 21s.436ms)
+

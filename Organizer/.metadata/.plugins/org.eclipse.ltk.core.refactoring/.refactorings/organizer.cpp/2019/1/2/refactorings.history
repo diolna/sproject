@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;organizer.cpp/src/organizer.cpp.cpp&apos; to &apos;organizer.cpp&apos;" description="Rename resource &apos;organizer.cpp.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/organizer.cpp.cpp" name="organizer.cpp" stamp="1546901252485" updateReferences="true"/>
+</session>
