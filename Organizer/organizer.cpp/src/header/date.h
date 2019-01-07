@@ -6,10 +6,10 @@ using namespace std;
 
 class Date {
 public:
-	Date(const int& year, const int& month, const int& day);
-	int GetYear() const;
-	int GetMonth()const;
-	int GetDay()const;
+	Date(int year, int month, int day);
+	int& GetYear()  ;
+	 int& GetMonth() ;
+	 int& GetDay()  ;
 
 private:
 	int year_;
@@ -17,3 +17,5 @@ private:
 	int day_;
 
 };
+
+bool operator<( Date& lhs,  Date& rhs);

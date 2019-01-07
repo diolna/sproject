@@ -1,0 +1,19 @@
+#include "header/date.h"
+#include "header/test_date.h"
+#include "header/test_runner.h"
+
+
+#include <sstream>
+
+using namespace std;
+
+void TestDate() {
+    {
+    	Date date1 = Date(2017,12,31);
+    	Date date2 = Date(2019,01,01);
+       bool date = date1<date2;
+
+        Assert(date,  "2017, 12, 31 < 2019, 01,01");
+
+    }
+}
