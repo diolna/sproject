@@ -5,7 +5,45 @@
 #include <numeric>
 using namespace std;
 
-#define SORT_BY(field)  // Реализуйте этот макрос, а также необходимые операторы для классов Date и Time
+
+
+bool operator<(Date lhs, Date rhs){
+	if (lhs.year != rhs.year) {
+			return lhs.year < rhs.year;
+		}
+		else if (lhs.month != rhs.month) {
+			return lhs.month < rhs.month;
+		}
+		else if (lhs.day != rhs.day) {
+			return lhs.day < rhs.day;
+		}
+		//cout << "operator<" << endl;
+		return false;
+
+}
+
+bool operator==(Date lhs, Date rhs){
+	return lhs.year==rhs.year&& lhs.month== rhs.month && lhs.day==rhs.day;
+}
+ostream& operator<<(ostream& os, Date d){
+	return os<< d.year<< "/"<<d.month<<"/"<<d.day<<endl;
+}
+bool operator<(Time lhs, Time rhs){
+
+	if (lhs.hours != rhs.hours) {
+				return lhs.hours < rhs.hours;
+			}
+			else if (lhs.minutes != rhs.minutes) {
+				return lhs.minutes < rhs.minutes;
+			}
+			return false;
+}
+
+#define SORT_BY(field)                                           		  \
+	 [](const AirlineTicket& lhs, const AirlineTicket& rhs) {				\
+    return lhs.field < rhs.field;	\
+	}
+
 
 void TestSortBy() {
   vector<AirlineTicket> tixs = {
