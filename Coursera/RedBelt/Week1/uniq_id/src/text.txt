@@ -21970,9 +21970,9 @@ using namespace std;
 
 
 int main() {
-  int __LINE__x = 0;
-  string __LINE__x = "hello";
-  vector<string> __LINE__x = {"hello", "world"};
-  vector<int> __LINE__x = {1, 2, 3, 4};
+  int x0 = 0;
+  string x1 = "hello";
+  vector<string> x2 = {"hello", "world"};
+  vector<int> x3 = {1, 2, 3, 4};
 
 }

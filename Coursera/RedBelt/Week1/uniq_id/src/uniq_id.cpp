@@ -4,7 +4,8 @@ using namespace std;
 
 #define TOKENPASTE(y) x##y
 #define TOKENPASTE2( y) TOKENPASTE( y)
-#define UNIQ_ID TOKENPASTE2(__LINE__)
+#define UNIQ_ID TOKENPASTE2(__COUNTER__)  // COUNTER не является стандартом С но поддерживается
+										// если не поддерживается используем __LINE__
 
 
 
