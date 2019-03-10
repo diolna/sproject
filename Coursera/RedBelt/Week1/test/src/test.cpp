@@ -10,6 +10,9 @@ struct Row{
 	T& operator[](size_t index){
 		return *next(I, index);
 	}
+	 T& At(size_t i) {
+	    return (*this)[i];
+	  }
 
 };
 
@@ -21,7 +24,7 @@ int main() {
 	for(int x=0; x<v.size(); ++x){
 	cout << "aaa[" << "x" <<"]= " << aaa[x] << endl;
 	}
-
+	cout << aaa.At(3) << endl;
 
 }
 
