@@ -25,6 +25,7 @@ int main() {
 	cout << "aaa[" << "x" <<"]= " << aaa[x] << endl;
 	}
 	cout << aaa.At(3) << endl;
+	pair p(5, true);
 
 }
 
