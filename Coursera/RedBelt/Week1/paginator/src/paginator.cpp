@@ -8,16 +8,20 @@
 using namespace std;
 
 template<typename Iterator>
-class IteratorRange{
+class Page{
 public:
-	IteratorRange(Iterator f, Iterator l): first(f), last(l){}
+	Page(Iterator f, Iterator l): first(f), last(l){}
 	Iterator begin() const {return first;}
 	Iterator end() const {return last;}
-	const size_t size() const {return distance(first, last);}
+	Iterator begin() {return first;}
+	Iterator end()  {return last;}
+	 size_t size() const {return last-first;}// {return distance(first, last);}
 private:
 	Iterator first, last;
 	};
 
+template<typename Iterator>
+Page<Iterator> makePage(Iterator begin, Iterator end){return {begin, end};}
 
 template<typename Iterator>
 class Paginator{
@@ -25,38 +29,34 @@ public:
 	Paginator(Iterator begin, Iterator end,  size_t page_size_)
 		: first(begin), last(end), page_size(page_size_)
 		{
-		//cout << "Enter to methot SetVector - this->size() = " << this->langs()<< endl;
-				langs1 = this->langs();
-				//cout << "langs1 = " << langs1 << endl;
-				//cout << "page_size = " << page_size << endl;
-				if(page_size<=0){ vec= {{}};}
-				else if(langs1<=page_size){
-						//cout << "<=" << endl;
-						vec = {{first, last}};
+
+			if(first==last){return;}
+			else if(page_size<=0){ pages= {{}};
+				}else if(this->langs()<=page_size){
+						pages = {{first, last}};
 					}else{
-					//cout << " >>>>>" << endl;
-					//int n_page = langs1/page_size;
 						Iterator first1=first;
-					for(size_t i=0; i<this->size(); ++i){
-						if(first1+page_size< last){
-							vec.push_back({first1, first1+page_size});
-							first1 = first1+page_size;
-						}else{
-						vec.push_back({first1, last});
+						for(size_t i=0; i<this->size1(); i++){
+							if(first1+page_size< last){
+								pages.push_back({first1, first1+page_size});
+								first1 = first1+page_size;
+							}else{
+								pages.push_back({first1, last});
+						}
 					}
-					}
-					}
-				//cout << "size vec = " << vec.size() << endl;
+				}
+
 		}
-	auto begin() const {return vec.begin();};
-    auto end() const {return vec.end();};
-	//Iterator begin() {return vec.begin();}
-	//Iterator end() {return vec.end();}
-	size_t langs() const {return distance(first,last);}
-	size_t size() const {
-		//cout << "number icon in page " << langs1/page_size << endl;
-		if(langs1%page_size!=0){return langs1/page_size+1;}
-		else{return langs1/page_size ;}
+	auto begin() const {return pages.begin();};
+    auto end() const {return pages.end();};
+    auto begin() {return pages.begin();};
+    auto end() {return pages.end();};
+
+	size_t langs() const {return last-first;}// {return distance(first,last);}
+	size_t size() const { return pages.size(); }
+	size_t size1() {
+		if(this->langs()%page_size!=0){return this->langs()/page_size+1;}
+		else{return this->langs()/page_size ;}
 	}
 
 
@@ -65,18 +65,17 @@ public:
 private:
 	Iterator first, last;
 	size_t page_size;
-	vector<IteratorRange<Iterator>> vec;
-	size_t langs1;
+	vector<Page<Iterator>> pages;
+
 
 };
 
 template <typename C>
   auto Paginate(C& c, size_t page_size){
-		Paginator pag(c.begin(), c.end(), page_size);
-		return pag;
-
-
+	Paginator pag(c.begin(), c.end(), page_size);
+	return pag;
 }
+
 template <typename Application>
 vector<vector<Application>> DistributeAmongScreens(const vector<Application>& apps, size_t& page_size) {
   vector<vector<Application>> result;
@@ -92,18 +91,16 @@ void TestPageSize1(){
 	{
 	vector<int> v={2,2,2,2,2,2,2,2,2,2,2,2,2};
 	vector<vector<int>> pp;
-	  for (const auto& page : Paginate(v, 10)) {
+	  for (const auto& page : Paginate(v, 3)) {
 	    pp.push_back({page.begin(), page.end()});
 	  }
-	  ostringstream os;
-	  for(auto& i: pp[1]){
 
-		  os << i;
-	  }
-	//  cout << "langs " << pp[1].size() << endl;
+	ASSERT_EQUAL(pp[0].size(), 3);
 	ASSERT_EQUAL(pp[1].size(), 3);
-	ASSERT_EQUAL(pp[0].size(), 10);
-	ASSERT_EQUAL(os.str(), "222");
+	ASSERT_EQUAL(pp[2].size(), 3);
+	ASSERT_EQUAL(pp[3].size(), 3);
+	ASSERT_EQUAL(pp[4].size(), 1);
+
 	}
 	{
 	vector<int> v={2};
@@ -118,6 +115,7 @@ void TestPageSize1(){
 
 
 void TestPageCounts() {
+	{
   vector<int> v(15);
 
   ASSERT_EQUAL(Paginate(v, 1).size(), v.size());
@@ -127,6 +125,11 @@ void TestPageCounts() {
   ASSERT_EQUAL(Paginate(v, 15).size(), 1u);
   ASSERT_EQUAL(Paginate(v, 150).size(), 1u);
   ASSERT_EQUAL(Paginate(v, 14).size(), 2u);
+	}
+	{
+		vector <int> v;
+		 ASSERT_EQUAL(Paginate(v, 1).size(), 0);
+	}
 }
 
 
@@ -244,7 +247,7 @@ int main() {
 	  RUN_TEST(tr, TestConstContainer);
 	  RUN_TEST(tr, TestPagePagination);
 	  RUN_TEST(tr, TestPageSize1);
-//
+
 
 	return 0;
 }
