@@ -1,0 +1,29 @@
+#pragma once
+
+#include <map>
+#include <string>
+#include "profile.h"
+
+using namespace std;
+
+struct Student {
+
+  string first_name=0;
+  string last_name=0;
+  map<string, double> marks;
+  double rating=0;
+
+  bool operator < (const Student& other) const {
+    return GetName() < other.GetName();
+  }
+
+  bool Less(const Student& other) const {
+
+    return rating > other.rating;
+  }
+
+
+  string GetName() const {
+    return first_name + " " + last_name;
+  }
+};
