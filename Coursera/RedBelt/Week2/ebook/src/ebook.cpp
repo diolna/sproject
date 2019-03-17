@@ -20,7 +20,7 @@ public:
       	users_[user_id] = page_count;
 	  	page_[page_count].insert(user_id);
 	  }else{
-		  page_.erase(users_.at(user_id));
+		  page_[page_count].erase(users_.at(user_id));
 		  users_[user_id] = page_count;
 		  page_[page_count].insert(user_id);
 	   }
@@ -28,7 +28,7 @@ public:
   }
 
   double Cheer(int user_id) const {
-	  cout << "CHEER(" << user_id << ")" << endl;
+	 // cout << "CHEER(" << user_id << ")" << endl;
 	 if (users_.count(user_id) == 0) {
 
          return 0;
@@ -47,10 +47,10 @@ public:
     	//cout << endl;
     	//if(prev(it)==page_.end()){return 0;}
     	for(auto it2= page_.begin(); it2!=(it); it2++){
-    		 	++count;
+    		 	count =+ it2->second.size();
     	}
     	cout << "count = " << count << "page= " << users_.at(user_id) << endl;
-    	if(count==0){return 0;}
+    //	if(count==0){return 0;}
 
 
     return (count)*1.0/(users_.size()-1);
