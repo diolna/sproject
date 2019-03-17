@@ -1,0 +1,173 @@
+[33mcommit d10ac15ab71b71aaceb2648d73d2cdffcd4a2fa1[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Mon Mar 18 00:38:34 2019 +0200
+
+    ebook.cpp case #3/9: Wrong answer
+
+[33mcommit a05a2bf61a53415764c0acc00754e57c2ae55b4f[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Mon Mar 18 00:20:37 2019 +0200
+
+    ebook.cpp not work proba 2 map<int, int> map<int, set<int>>
+
+[33mcommit ad7e31a93b2fe9d49edc097283c8a751e99fad42[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Sun Mar 17 22:05:53 2019 +0200
+
+    ebook.cpp nOk 7/9: time limit exceeded used multiset
+
+[33mcommit c969a6a6af48a47514ad4b5591c1fb5486822281[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Sun Mar 17 19:39:27 2019 +0200
+
+    ebool.cpp map+vector dont recive to coursera slow I think
+
+[33mcommit 6a0d28a7a2e28c695b2e78796f86399f3729cdf9[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Fri Mar 15 14:17:47 2019 +0200
+
+    compare_student.cpp and learner.cpp  all Ok
+
+[33mcommit 723c32920fbfcbeb66f9ea017d53eb2933feb80d[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Wed Mar 13 13:34:49 2019 +0200
+
+    week1 end pagitator.cpp Ok, dok RedBeltWeeke +
+
+[33mcommit c3973184d28e4d7b7dffcd945ffa746957bb90ae[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Wed Mar 13 04:20:05 2019 +0200
+
+    Paginator.cpp worng page size nOk
+
+[33mcommit d90b43536567a3316b651846159898d4b1dec80e[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Tue Mar 12 23:49:40 2019 +0200
+
+    my paginator.cpp 1 version not work, but it idea
+
+[33mcommit 6c9234ddf121bfa4fba3b73fc65f39a0d0d61eca[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Tue Mar 12 22:24:19 2019 +0200
+
+    commit test old version
+
+[33mcommit 03949a2e28a5a8fff19baedd1e306ee49052115e[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Tue Mar 12 18:09:33 2019 +0200
+
+    paginator.cpp nOk not work eclipse
+
+[33mcommit 5a54ed2c59adbd89a3405d8ed8142a2c8a8244ce[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Mon Mar 11 16:46:58 2019 +0200
+
+    nOk week1 end
+
+[33mcommit aa5e5988c0303ceb3bfdd4fda1700c39f7e59c9f[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Sun Mar 10 22:48:12 2019 +0200
+
+    deque_via_two_vector.cpp Ok
+
+[33mcommit 2dee165ed996c605b1e533dc627c744b394233fd[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Sun Mar 10 18:58:18 2019 +0200
+
+    table.cpp Ok
+
+[33mcommit 5eb8d5a11f5f4abf7fea515030238b3550b52c6d[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Thu Mar 7 18:03:53 2019 +0200
+
+    table.cpp Nok not working Resize()
+
+[33mcommit 59ec22ef9e21ac5c7d4dfaa43f8d13267e639aa6[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Wed Mar 6 18:04:23 2019 +0200
+
+    video_iter_user_class_in_for and comment uniq_id.cpp
+
+[33mcommit ebfa99196c66916551329fb34eb4cb4edf0326cf[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Wed Mar 6 14:00:09 2019 +0200
+
+    uniq_id.cpp Ok
+
+[33mcommit 2e12c408088ed0c25786ca51bc24759f0f09f807[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Tue Mar 5 14:11:51 2019 +0200
+
+    bad_macro.cpp Ok
+
+[33mcommit a3f1808f442390698d5bedc1174c2472f84ab01e[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Tue Mar 5 01:49:28 2019 +0200
+
+    bad_macro.cpp Nok- error else  without a previous 'if'
+
+[33mcommit 3f5f446ac5cc5c9f03a13dc85a4aae0278eb1d53[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Mon Mar 4 18:12:00 2019 +0200
+
+    update_field -Ok
+
+[33mcommit 2f5e61e6eab1d6847c8e1f3f5416fb8e3e9e4c7c[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Sat Mar 2 13:48:34 2019 +0200
+
+    sort_by ok
+
+[33mcommit f1a3d39aaf3614354f30a3c0e98704a607dffa87[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Fri Mar 1 17:45:25 2019 +0200
+
+     week1 2 lesson practic not work
+
+[33mcommit ba07f61e0ce2832504b453ec92b632c93d356130[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Thu Feb 28 17:39:15 2019 +0200
+
+    red belt max_element_if
+
+[33mcommit b625b35617b70d50b668c2b27f4ba7f16ab81240[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Thu Feb 7 13:07:44 2019 +0200
+
+     del description.txt
+
+[33mcommit 66d18edfa58055281241cc4d3096787df7f05af3[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Thu Feb 7 13:02:58 2019 +0200
+
+    study Git
+
+[33mcommit 4b327416aeca74a71ffdcef1eef70c993504aa75[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Tue Jan 8 01:42:54 2019 +0200
+
+    add gitignore
+
+[33mcommit 88f5509654c3ce074ca22a294b2d9dc7c8ee709f[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Tue Jan 8 01:38:44 2019 +0200
+
+    error
+
+[33mcommit 384d293e10eb78ae1f210d023d736d231ff98cf8[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Tue Jan 8 01:33:29 2019 +0200
+
+    with giterror
+
+[33mcommit 09c3ef2db30e1a89099bda4667c9256f5e3b707b[m[33m ([m[1;32mdevelop[m[33m)[m
+Author: Dmitriy Kovalenko <kovalenkodmitrij@gmail.com>
+Date:   Mon Jan 7 14:00:41 2019 +0200
+
+    carry in sproject
+
+[33mcommit 44e74dfabb55a52d2b20fc021ad7776627f9db82[m
+Author: diolna <46444894+diolna@users.noreply.github.com>
+Date:   Mon Jan 7 13:24:56 2019 +0200
+
+    Initial commit

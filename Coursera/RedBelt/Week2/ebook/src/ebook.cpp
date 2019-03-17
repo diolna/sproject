@@ -20,7 +20,7 @@ public:
       	users_[user_id] = page_count;
 	  	page_[page_count].insert(user_id);
 	  }else{
-		  page_[page_count].erase(users_.at(user_id));
+		  page_[users_.at(user_id)].erase(users_.at(user_id));
 		  users_[user_id] = page_count;
 		  page_[page_count].insert(user_id);
 	   }
@@ -49,7 +49,7 @@ public:
     	for(auto it2= page_.begin(); it2!=(it); it2++){
     		 	count =+ it2->second.size();
     	}
-    	cout << "count = " << count << "page= " << users_.at(user_id) << endl;
+    //	cout << "count = " << count << "page= " << users_.at(user_id) << endl;
     //	if(count==0){return 0;}
 
 
