@@ -16,34 +16,51 @@ class ReadingManager {
 public:
 
   void Read(int user_id, int page_count) {
-    if (users_.count(user_id) == 0) {
-             users_.insert(pair<const int, int>(user_id, page_count));
-             users_pages.insert(page_count);
-      }else{
-	  	auto it = users_pages.find(users_.at(user_id));
-	  	users_pages.erase(it);
-	  	users_[user_id] = page_count;
-	  	users_pages.insert(page_count);
-      }
+	  if(users_.count(user_id)==0){
+      	users_[user_id] = page_count;
+	  	page_[page_count].insert(user_id);
+	  }else{
+		  page_.erase(users_.at(user_id));
+		  users_[user_id] = page_count;
+		  page_[page_count].insert(user_id);
+	   }
 
   }
 
   double Cheer(int user_id) const {
+	  cout << "CHEER(" << user_id << ")" << endl;
 	 if (users_.count(user_id) == 0) {
+
          return 0;
     }
     if (users_.size() == 1) {
          return 1;
     }
-    auto it_lim = users_pages.lower_bound(users_.at(user_id));
-    return distance(users_pages.begin(), it_lim)*1.0/(users_pages.size()-1);
+
+    	size_t count=0;
+//    	cout << "page = " << users_.at(user_id) << endl;
+    	auto it = page_.lower_bound(users_.at(user_id));
+//    	cout << "elements = ";
+//    	for(auto i= page_.begin(); i!=it; ++i){
+//    		cout << i->first << " ";
+//    	}
+    	//cout << endl;
+    	//if(prev(it)==page_.end()){return 0;}
+    	for(auto it2= page_.begin(); it2!=(it); it2++){
+    		 	++count;
+    	}
+    	cout << "count = " << count << "page= " << users_.at(user_id) << endl;
+    	if(count==0){return 0;}
+
+
+    return (count)*1.0/(users_.size()-1);
     }
 
 private:
 
   map<int, int> users_;   // user_id, number_pages;
+  map<int, set<int>> page_;
 
-  multiset<int> users_pages;
 
 };
 
