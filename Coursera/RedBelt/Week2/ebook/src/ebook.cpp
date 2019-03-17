@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <iterator>
 
+
 #include "profile.h"
 
 using namespace std;
@@ -15,46 +16,34 @@ class ReadingManager {
 public:
 
   void Read(int user_id, int page_count) {
-	  LOG_DURATION("read");
     if (users_.count(user_id) == 0) {
-    	users_[user_id] = page_count;
-    	users_pages.push_back(page_count);
-    }else{
-	 auto it = find(users_pages.begin(), users_pages.end(), users_.at(user_id));
-	 users_pages.erase(it);
-	 users_[user_id]= page_count;
-	 users_pages.push_back(page_count);
-   }
-    sort(users_pages.begin(), users_pages.end());
+             users_.insert(pair<const int, int>(user_id, page_count));
+             users_pages.insert(page_count);
+      }else{
+	  	auto it = users_pages.find(users_.at(user_id));
+	  	users_pages.erase(it);
+	  	users_[user_id] = page_count;
+	  	users_pages.insert(page_count);
+      }
+
   }
 
   double Cheer(int user_id) const {
-	  LOG_DURATION("cheer");
-    if (users_.count(user_id) == 0) {
+	 if (users_.count(user_id) == 0) {
          return 0;
     }
     if (users_.size() == 1) {
          return 1;
     }
-    int a = users_.at(user_id);
-    auto it_lim = lower_bound(users_pages.begin(), users_pages.end(), a);
-    double number_read_pages_min = distance(users_pages.begin(), it_lim);
-    if(number_read_pages_min <=0){
-    	number_read_pages_min =0;
+    auto it_lim = users_pages.lower_bound(users_.at(user_id));
+    return distance(users_pages.begin(), it_lim)*1.0/(users_pages.size()-1);
     }
-    double total_read_pages = users_pages.size();
-    number_read_pages_min= total_read_pages - number_read_pages_min;
-    if(number_read_pages_min==0) {
-    	return 0;
-    }
-
-    return (total_read_pages - number_read_pages_min)/(total_read_pages-1);
-  }
 
 private:
 
-  map<int, int> users_;
-  vector<int> users_pages;
+  map<int, int> users_;   // user_id, number_pages;
+
+  multiset<int> users_pages;
 
 };
 
@@ -82,7 +71,8 @@ int main() {
       cin >> page_count;
       manager.Read(user_id, page_count);
     } else if (query_type == "CHEER") {
-      cout << setprecision(6) << manager.Cheer(user_id) << "\n";
+    	 cout << setprecision(6) << manager.Cheer(user_id) << "\n";
+
     }
   }
 
