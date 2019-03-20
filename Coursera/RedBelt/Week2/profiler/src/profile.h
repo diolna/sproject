@@ -18,10 +18,6 @@ public:
   ~LogDuration() {
     auto finish = steady_clock::now();
     auto dur = finish - start;
-<<<<<<< HEAD
-=======
-
->>>>>>> d10ac15ab71b71aaceb2648d73d2cdffcd4a2fa1
     cerr << message
        << duration_cast<milliseconds>(dur).count()
        << " ms" << endl;

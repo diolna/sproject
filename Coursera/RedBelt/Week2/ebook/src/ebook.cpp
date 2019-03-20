@@ -19,8 +19,17 @@ public:
 	  if(users_.count(user_id)==0){
       	users_[user_id] = page_count;
 	  	page_[page_count].insert(user_id);
+
 	  }else{
+<<<<<<< HEAD
 		  page_[users_.at(user_id)].erase(users_.at(user_id));
+=======
+
+		  int old_pages = users_.at(user_id);
+
+		  page_[old_pages].erase(user_id);
+		  if(page_.at(old_pages).size()==0){page_.erase(old_pages);}
+>>>>>>> 6deec23be63834ff2069fca406d4592c606e1a8d
 		  users_[user_id] = page_count;
 		  page_[page_count].insert(user_id);
 	   }
@@ -28,32 +37,30 @@ public:
   }
 
   double Cheer(int user_id) const {
-	 // cout << "CHEER(" << user_id << ")" << endl;
-	 if (users_.count(user_id) == 0) {
-
-         return 0;
-    }
-    if (users_.size() == 1) {
-         return 1;
-    }
-
+	 	 if (users_.count(user_id) == 0) {
+	 		 return 0;
+	 	 }
+	 	 if (users_.size() == 1) {
+	 		 return 1;
+	 	 }
     	size_t count=0;
-//    	cout << "page = " << users_.at(user_id) << endl;
+
     	auto it = page_.lower_bound(users_.at(user_id));
-//    	cout << "elements = ";
-//    	for(auto i= page_.begin(); i!=it; ++i){
-//    		cout << i->first << " ";
-//    	}
-    	//cout << endl;
-    	//if(prev(it)==page_.end()){return 0;}
     	for(auto it2= page_.begin(); it2!=(it); it2++){
+<<<<<<< HEAD
     		 	count =+ it2->second.size();
     	}
     //	cout << "count = " << count << "page= " << users_.at(user_id) << endl;
     //	if(count==0){return 0;}
+=======
+>>>>>>> 6deec23be63834ff2069fca406d4592c606e1a8d
 
+    		 	count = count +it2->second.size();
+//    		 	cout << "count = " << count << " ";
 
-    return (count)*1.0/(users_.size()-1);
+    	}
+//    	cout << endl;
+       	return (count)*1.0/(users_.size()-1);
     }
 
 private:
