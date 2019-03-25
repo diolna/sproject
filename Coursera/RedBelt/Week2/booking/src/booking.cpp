@@ -2,12 +2,10 @@
 #include <string>
 #include <map>
 #include <set>
-<<<<<<< HEAD
-#include <deque>
-=======
 #include <numeric>
 #include <vector>
->>>>>>> 60b9b48049f93b112ff52cb0298fd5dcca7544a3
+#include "test_runner.h"
+#include <cstdint>
 
 using namespace std;
 
@@ -15,83 +13,147 @@ using namespace std;
 class Booking {
 
 public:
-<<<<<<< HEAD
-	void BOOK(const int& t, const string& name_hotel
-			, const int& client_id, const int& room_c);
-=======
-	void BOOK(const int& time, const string& name_hotel, const int& client_id, const int& room_count);
->>>>>>> 60b9b48049f93b112ff52cb0298fd5dcca7544a3
-	int CLIENTS(const string& name_hotel);
-	int ROOMS(const string& name_hotel);
+
+			void BOOK(const int64_t& time, const string& name_hotel
+					, const int32_t& client, const int& room_count);
+			int32_t CLIENTS(const string& name_hotel);
+			int ROOMS(const string& name_hotel);
+
 
 private:
-<<<<<<< HEAD
-	map<string, map<int, map<int, int>>> book;
-	map<string, deque<int>> clients_day_;
+	map<string, map<int64_t, set<int32_t>>> time_; 	// в отеле забронировали  в время клиенты
+	map<string, map<int64_t, vector<int>>> rooms_; // в отеле забронировали в время комнат
 
 };
 
-void Booking::BOOK(const int& time, const string& name_hotel
-			, const int& client_id, const int& room_c) {
-=======
-	map<string, map<int, set<int>>> time_; 	// в отеле забронировали номера клиенты
-	map<string, map<int, int>> rooms_;
-	map<string, vector<int>> clients_in_hotel_day;
-	int current_time_;
-};
-
-void Hotels::BOOK(const int& time, const string& name_hotel, const int& client, const int& room_count) {
-			time_[name_hotel][time].insert(client);
-			rooms_[name_hotel][client] = room_count;
-			map<string, map <int, set<int>>>::iterator it = time_.begin();
-			//map<string, map<int, int>>:: iterator it2 = lower_bound(it->second.end()->first);
 
 
->>>>>>> 60b9b48049f93b112ff52cb0298fd5dcca7544a3
+void Booking::BOOK(const int64_t& time, const string& name_hotel
+					, const int32_t& client, const int& room_count) {
 
-		if(book.count(name_hotel)==0){
-			book.at(name_hotel).at(client_id).at(room_c) = time;
-		}
+					time_[name_hotel][time].insert(client);
+					rooms_[name_hotel][time].push_back(room_count);
+
+					for(auto& i: time_){
+						if(time - i.second.begin()->first >= 86400 )  {
+							int64_t time_del = time  - 86400;
+							auto it_clients = i.second.upper_bound(time_del);
+							i.second.erase(i.second.begin(), it_clients);
+						}
+					}
+					for(auto& i: rooms_){
+						if(time - i.second.begin()->first >= 86400 )  {
+								int64_t time_del = time  - 86400;
+								auto it_clients = i.second.upper_bound(time_del);
+								i.second.erase(i.second.begin(), it_clients);
+						}
+					}
+
+
+
+
 }
 
-<<<<<<< HEAD
-int Booking::CLIENTS(const string& name){
-		if( book.at(name).size()==0 ){
+
+int32_t Booking::CLIENTS(const string& name_hotel){
+	int32_t clients = 0;
+	if(time_.count(name_hotel) == 0 ) {
+
+		return 0;
+	}
+	if(time_.find(name_hotel)->second.size()==0 ) {
+		return 0;
+	}
+	for(auto& i: time_.find(name_hotel)->second) {
+
+		clients += i.second.size();
+
+	}
+	return clients;
+}
+
+int Booking::ROOMS(const string& name_hotel){
+
+	int rooms = 0;
+		if(rooms_.count(name_hotel) == 0 ) {
+
 			return 0;
-		} else {
-				return clients_day_.size();
-=======
-int Hotels::CLIENTS(const string& name){
->>>>>>> 60b9b48049f93b112ff52cb0298fd5dcca7544a3
+		}
+		if(rooms_.find(name_hotel) ->second.size()==0){
+			return 0;
+		}
+			auto it = rooms_.find(name_hotel);
 
-				return 0;
+			map<int64_t, vector<int>> v;
+			v = it->second;
+			for(auto& i: v){
 
-
-}
-<<<<<<< HEAD
-int Booking::ROOMS(const string& name){
-	if( book.at(name).size()==0 ){
-				return 0;
-			} else {
-					return clients_day_.size();
-
+				rooms += accumulate(i.second.begin(), i.second.end(),0);
 			}
-=======
-int Hotels::ROOMS(const string& name){
-	return 0;
->>>>>>> 60b9b48049f93b112ff52cb0298fd5dcca7544a3
+
+		return rooms;
+}
+
+void test() {
+    Booking manager;
+
+    // Test empty bookings
+    ASSERT_EQUAL(manager.CLIENTS("mariott"), 0);
+    ASSERT_EQUAL(manager.ROOMS("mariott"), 0);
+
+    manager.BOOK(0, "mariott", 1, 10);
+    manager.BOOK(0, "mariott", 2, 1);
+    manager.BOOK(0, "mariott", 3, 1);
+    manager.BOOK(0, "mariott", 4, 1);
+    manager.BOOK(0, "hilton", 1, 1);
+    manager.BOOK(1, "hilton", 2, 1);
+
+    // Test correctness
+    ASSERT_EQUAL(manager.CLIENTS("mariott"), 4);
+    ASSERT_EQUAL(manager.ROOMS("mariott"), 13);
+    ASSERT_EQUAL(manager.CLIENTS("hilton"), 2);
+    ASSERT_EQUAL(manager.ROOMS("hilton"), 2);
+
+    // Test event past 1 day resets statics
+    manager.BOOK(86400, "mariott", 1, 1);
+    ASSERT_EQUAL(manager.CLIENTS("mariott"), 1);
+    ASSERT_EQUAL(manager.ROOMS("mariott"), 1);
+    ASSERT_EQUAL(manager.CLIENTS("hilton"), 1);
+    ASSERT_EQUAL(manager.ROOMS("hilton"), 1);
+
+    // Test no clients and room for the last day
+    manager.BOOK(86401, "mariott", 5, 1);
+    ASSERT_EQUAL(manager.CLIENTS("mariott"), 2);
+    ASSERT_EQUAL(manager.ROOMS("mariott"), 2);
+    ASSERT_EQUAL(manager.CLIENTS("hilton"), 0);
+    ASSERT_EQUAL(manager.ROOMS("hilton"), 0);
+
+    // test add client cek in sek
+    {
+    manager.BOOK(86402, "mar", 6,3);
+    manager.BOOK(86402, "mar", 6,3);
+    ASSERT_EQUAL(manager.CLIENTS("mar"), 1 );
+    ASSERT_EQUAL(manager.ROOMS("mar"), 6 );
+    manager.BOOK(86402000, "mmm", 6,7);
+    ASSERT_EQUAL(manager.ROOMS("mar"), 0 );
+    ASSERT_EQUAL(manager.CLIENTS("mar"), 0 );
+    ASSERT_EQUAL(manager.CLIENTS("mmm"), 1);
+    }
 }
 
 int main() {
 
-	map<int, map<int, int>> aaa = { {1,{{1,2}}}, {2,{{2,3}}}, {3,{{3,4}}}};
-	map<int,map<int,int>>::iterator it = aaa.find(1);
-	int nnn = it->first;
-	int nnn1 = it->second.begin()->first;
-	int nnn2 = it->second.begin() -> second;
-	cout << nnn << " " << nnn1 << " " << nnn2;
+TestRunner tr;
+RUN_TEST(tr, test);
 
-
+////	map<int, map<int, int>> aaa = { {1,{{1,2}}}, {2,{{2,3}}}, {3,{{3,4}}}};
+////	map<int,map<int,int>>::iterator it = aaa.find(1);
+////	int nnn = it->first;
+////	int nnn1 = it->second.begin()->first;
+////	int nnn2 = it->second.begin() -> second;
+////	cout << nnn << " " << nnn1 << " " << nnn2;
+//
+//
 
 	// Для ускорения чтения данных отключается синхронизация
 	  // cin и cout с stdio,
@@ -101,35 +163,34 @@ int main() {
 
 	  Booking h;
 
-	  int query_count;
+	  int32_t query_count;
 	  cin >> query_count;
 
-	  for (int query_id = 0; query_id < query_count; ++query_id) {
+	  for (int32_t query_id = 0; query_id < query_count; ++query_id) {
 	    string query_type;
 	    cin >> query_type;
-	    int user_id;
-	    cin >> user_id;
+
 
 	    if (query_type == "BOOK") {
-<<<<<<< HEAD
-	      int time_booking, client_id, room_c;
-	      string hotel_name;
-	      cin >> time_booking >> hotel_name >> client_id >> room_c;
-	      h.BOOK(time_booking, hotel_name, client_id, room_c);
-=======
-	      int time_booking, client_id, rooms_count;
+
+	      int32_t  client_id;
+	      int rooms_count;
+	      int64_t time_booking;
 	      string hotel_name;
 	      cin >> time_booking >> hotel_name >> client_id >> rooms_count;
 	      h.BOOK(time_booking, hotel_name, client_id, rooms_count);
->>>>>>> 60b9b48049f93b112ff52cb0298fd5dcca7544a3
+
 	    } else if (query_type == "CLIENTS") {
+
 	    		string hotel_name;
+	    		cin >> hotel_name;
 	    		cout << h.CLIENTS(hotel_name) << endl;
 	    } else if ( query_type == "ROOMS"){
 	    		string hotel_name;
+	    		cin >> hotel_name;
 	    		cout << h.ROOMS(hotel_name) << endl;
-	    }
-	  }
 
+	  }
+	  }
 	  return 0;
 }

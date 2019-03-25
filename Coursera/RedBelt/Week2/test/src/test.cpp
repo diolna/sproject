@@ -7,11 +7,13 @@
 #include <algorithm>
 #include <iterator>
 #include <numeric>
+#include <map>
+#include <vector>
 
 using namespace std;
 
 int main() {
-	set<int> s ={2,3,4,4,5,5,5,6,6,2,2,8};
+	map<int, vector<int>> s ={{2,{3,4}},{4,{5,5}},{5,{6,6}},{8,{2,8}}};
 
 	cout << s.size() << " - s.size() " << endl;
 	s.erase(4);
@@ -19,6 +21,8 @@ int main() {
 	auto it = s.find(5);
 	s.erase(it);
 	cout << s.size() << " - s.size() " << endl;
+	it = s.find(8);
+	cout << it->second[1] << endl;
 
 
 
