@@ -32,32 +32,32 @@ private:
 
 size_t Hotel:: getRooms(long long time){
 	Update(time);
-	return rooms;
-}
+	return rooms;  // возвращаем комнаты
 
 size_t Hotel::getClients(long long time){
-	Update(time);
-	return clients.size();
+	Update(time);			// 
+	return clients.size();  // получаем всех клиентов
 }
 
 void Hotel::Book(Event& e) {
-	++clients[e.id];
-	events.push(e);
-	rooms +=e.count;
-	Update(e.time);
+	++clients[e.id];  // добавляем клиента
+	events.push(e);	//	сохраняем собітие
+	rooms +=e.count; // добавляем комнату
+	Update(e.time); // обновляем события от текущего времени (удаляем все ненужные вне суток)
 }
 
 void Hotel::Update(long long time){
 	current_time = time;
-	while(!events.empty() && events.front().time <= current_time-86400){
-		if(clients[events.front().id] ==1){
-			clients.erase(events.front().id);
+	while(!events.empty() && events.front().time <= current_time-86400){  // проверяется условие
+		// время в начале очереди меньше чем  текущее минус сутки. Если да то надо удалить элементы
+		if(clients[events.front().id] ==1){  // удаляем клиентов. сначала проверяем на повторения
+			clients.erase(events.front().id);  // если последний то удаляем весь ключ
 		} else {
-			--clients[events.front().id];
+			--clients[events.front().id];  // иначе уменьшаем количеств клиентов на один
 		}
-		rooms -=events.front().count;
-		events.pop();
-	}
+		rooms -=events.front().count;  // уменьшаем количество комнат на чило в начале очереди
+		events.pop();				// удаляем первое собітие в начале очереди
+	}								// и так до тех пор пока не войдем в сутки 
 }
 
 int main(){
