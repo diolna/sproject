@@ -5,11 +5,15 @@
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	int x =33;
+	int y = 44;
+	int *z = &x;
+	cout << *z << endl;
 
-	int* t = new int;
-	set<int*> aaa;
-	aaa.insert(t);
+	int *zz = &y;
+	*z= * zz;
+	cout << *z << endl;
+
 
 
 	return 0;
