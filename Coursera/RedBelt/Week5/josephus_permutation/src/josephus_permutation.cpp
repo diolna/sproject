@@ -53,7 +53,7 @@ template <typename RandomIt>
 //    ++n;
 //  }
 	void MakeJosephusPermutation(RandomIt first, RandomIt last, uint32_t step_size) {
-	LOG_DURATION("all func");
+
 	    vector<typename RandomIt::value_type> pool;
 	    move(first, last, std::back_inserter(pool));
 	    vector<bool> killed;
