@@ -1,4 +1,5 @@
 #include "test_runner.h"
+#include "profile.h"
 
 #include <cstdint>
 #include <iterator>
@@ -9,17 +10,32 @@ using namespace std;
 
 template <typename RandomIt>
 void MakeJosephusPermutation(RandomIt first, RandomIt last, uint32_t step_size) {
-  vector<typename RandomIt::value_type> pool(move(first), move(last));
-  size_t cur_pos = 0;
-  while (!pool.empty()) {
-    *(first++) = move(pool[cur_pos]);
+	LOG_DURATION("FUNC");
+  vector<typename RandomIt::value_type> pool;
+  move(first, last, back_inserter(pool));
+  RandomIt cur_pos = first;
+  size_t size_pool = last-first;
+  RandomIt begin = first;
+  for(size_t i=0; i< size_pool; ++i){
 
-    pool.erase(move(pool.begin() + cur_pos));
-    if (pool.empty()) {
-      break;
-    }
-    cur_pos = (cur_pos + step_size - 1) % pool.size();
+	   *(first++) = move(*(cur_pos));
+	   *(++cur_pos ) = move({0});
+	   -- size_pool;
+	   if(size_pool==0) break;
+	   cur_pos = (cur_pos + step_size-1)% size_pool;
+
+
+
   }
+//  while (!pool.empty()) {
+//    *(first++) = move(pool[cur_pos]);
+//
+//    pool.erase(move(pool.begin() + cur_pos));
+//    if (pool.empty()) {
+//      break;
+//    }
+//    cur_pos = (cur_pos + step_size - 1) % pool.size();
+//  }
 }
 
 vector<int> MakeTestVector() {
@@ -70,25 +86,26 @@ void TestAvoidsCopying() {
   vector<NoncopyableInt> numbers;
 
 
-//  numbers.push_back({1});
-//  numbers.push_back({2});
-//  numbers.push_back({3});
-//  numbers.push_back({4});
-//  numbers.push_back({5});
+  numbers.push_back({1});
+  numbers.push_back({2});
+  numbers.push_back({3});
+  numbers.push_back({4});
+  numbers.push_back({5});
 
   MakeJosephusPermutation(begin(numbers), end(numbers), 2);
 
   vector<NoncopyableInt> expected;
-//  expected.push_back({1});
-//  expected.push_back({3});
-//  expected.push_back({5});
-//  expected.push_back({4});
-//  expected.push_back({2});
+  expected.push_back({1});
+  expected.push_back({3});
+  expected.push_back({5});
+  expected.push_back({4});
+  expected.push_back({2});
 
   ASSERT_EQUAL(numbers, expected);
 }
 
 int main() {
+
   TestRunner tr;
   RUN_TEST(tr, TestIntVector);
   RUN_TEST(tr, TestAvoidsCopying);
