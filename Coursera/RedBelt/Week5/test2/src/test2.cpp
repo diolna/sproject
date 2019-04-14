@@ -32,22 +32,29 @@ public:
 	CmpStrings(vector<String> data)  {
 		data_ = data;
 		vector<size_t> word;
-		size_t pos =0;
-		sort(data_.begin(), data_.end());
-			for(auto it_data = data_.begin(); it_data!=data_.end(); ++it_data) {
+				for(auto it_data = data_.begin(); it_data!=data_.end(); ++it_data) {
+				sort((*it_data).begin(), (*it_data).end());
 
-				cout << "test " << *it_data << " " << endl;
-				auto it = lower_bound(it_data, data_.end(), *(it_data +  pos));
-				while(it!= data_.end()){
-					word.push_back(it - data_.begin());
-					data_.erase(it);
-					++it;
 
-					it = lower_bound(it, data_.end(), *(it_data +  pos));
+			}
+			for(auto it_current = data_.begin(); it_current!= data_.end(); ++it_current) {
+				word.clear();
+				auto it = data_.begin();
+				while(it!= data_.end()) {
+					it = lower_bound(it, data_.end(), (*it_current));
+					if(it!= data_.end()) {
+						word.push_back(it -data_.begin());
+						cout << it - data_.begin() << " ";
+						++it;
+						data_.erase(it);
+
+					}
 
 				}
+				cout << endl;
 				vec_.push_back(word);
-				++pos;
+
+
 			}
 
 	}
@@ -67,16 +74,17 @@ private:
 
 template <typename String>
 vector<Group<String>> GroupHeavyStrings(vector<String> strings) {
-
+			vector<Group<String>> v;
+			Group<String> g;
 			CmpStrings<String> st(strings);
 			for(auto i: st.GetVectorRepeatValue()) {
 				for(auto y : i) {
 
-					cout  << y << " ";
+					g.push_back(strings[y]);
 				}
-				cout << "||";
+				v.push_back(g);
 			}
-			cout << endl;
+			return v;
 		}
 
 
