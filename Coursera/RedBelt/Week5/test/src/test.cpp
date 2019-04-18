@@ -4,6 +4,7 @@
 #include <bitset>
 #include <string>
 #include <numeric>
+#include <algorithm>
 
 using namespace std;
 
@@ -42,21 +43,31 @@ vector<Group<String>> GroupHeavyStrings(vector<String> strings){
 
 
 								if(current_pos == strings.size()) {
-									current_pos =0;
-								}
-								if(current_pos == pos) {
+//									current_pos =0;
 									break;
 								}
+//								if(current_pos == pos) {
+//									break;
+//								}
 
 								for(auto it_char : *(strings.begin() + current_pos)) {
 
-									if((*it).find_first_of(it_char)== std::string::npos	) {
+//									if((*it).find_first_of(it_char)== std::string::npos	) {
+//									auto symb = *it;
+//									auto it1 = std::find(symb.begin(), symb.end(), it_char);
+									if(std::find((*it).begin(), (*it).end(), it_char) == (*it).end()){
 										flag_if_not = true;
 									}
 								}
 								for(auto it_char : *(it)) {
-									if((*(strings.begin() + current_pos)).
-										find_first_of(it_char)== std::string::npos	) {
+//									if((*(strings.begin() + current_pos)).
+////										find_first_of(it_char)== std::string::npos	) {
+//								  auto symb = *(strings.begin() + current_pos);
+//
+//									auto it = std::find(symb.begin(), symb.end(), it_char);
+									if(std::find((*(strings.begin() + current_pos)).begin()
+												, (*(strings.begin() + current_pos)).end()
+												, it_char)== (*(strings.begin() + current_pos)).end()){
 											flag_if_not = true;
 											}
 								}

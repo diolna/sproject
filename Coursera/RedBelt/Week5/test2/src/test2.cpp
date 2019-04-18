@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <set>
 
 using namespace std;
 
@@ -29,34 +30,62 @@ using Char = typename String::value_type;
 template <typename String>
 class CmpStrings {
 public:
-	CmpStrings(vector<String> data)  {
+	CmpStrings(vector<String>& data)  {
 		data_ = data;
 		vector<size_t> word;
+		set<int> complite_pos;
+		size_t temp =0;
+
 				for(auto it_data = data_.begin(); it_data!=data_.end(); ++it_data) {
 				sort((*it_data).begin(), (*it_data).end());
 
 
 			}
-			for(auto it_current = data_.begin(); it_current!= data_.end(); ++it_current) {
+			auto it_current = data_.begin();
+			while(it_current!= data_.end()){
 				word.clear();
-				auto it = data_.begin();
-				while(it!= data_.end()) {
-					it = lower_bound(it, data_.end(), (*it_current));
-					if(it!= data_.end()) {
-						word.push_back(it -data_.begin());
-						cout << it - data_.begin() << " ";
-						++it;
-						data_.erase(it);
-
+				if(it_current == data_.begin()){
+				word.push_back(it_current - data.begin());
+				complite_pos.insert(it_current - data.begin());
+				}
+				size_t pos =0 ;
+				while(pos!= data_.size()-1){
+				while(complite_pos.count(pos) > 0) {
+					++pos;
+					}
+				if(data_.begin() + pos != data_.end()){
+					if((*it_current).size() < (*(data_.begin() + pos)).size()){
+						for(auto& i: *(it_current)){
+							if(find(data_.begin() +pos
+									, data_.end(), i) == data_.end()) {
+								temp = 1;
+							}
+						}
+						if(temp == 0 ) {
+						word.push_back( pos);
+						complite_pos.insert(pos);
+						}
+						temp =0;
 					}
 
 				}
-				cout << endl;
+				++pos;
+				}
+
+
+
+				while(complite_pos.count(it_current - data_.begin()) > 0) {
+
+											++it_current;
+								}
+				++it_current;
+				if(it_current != data_.end()){
+				cout << *it_current << " ";
+				}
 				vec_.push_back(word);
+		}
 
-
-			}
-
+			cout << vec_.size() << endl;
 	}
 
 	vector<vector<size_t>> GetVectorRepeatValue(){
@@ -77,13 +106,18 @@ vector<Group<String>> GroupHeavyStrings(vector<String> strings) {
 			vector<Group<String>> v;
 			Group<String> g;
 			CmpStrings<String> st(strings);
-			for(auto i: st.GetVectorRepeatValue()) {
-				for(auto y : i) {
+			auto vvv = st.GetVectorRepeatValue();
+			cout << "size " << vvv.size() << endl;
+			for(auto& i: vvv) {
+				for(auto& y : i) {
 
 					g.push_back(strings[y]);
+					cout << strings[y] << " ";
 				}
+				cout << endl;
 				v.push_back(g);
 			}
+
 			return v;
 		}
 

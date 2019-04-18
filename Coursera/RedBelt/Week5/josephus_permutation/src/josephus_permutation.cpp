@@ -43,7 +43,7 @@ void MakeJosephusPermutation(RandomIt first, RandomIt last, uint32_t step_size) 
 =======
 //void MakeJosephusPermutation(RandomIt first, RandomIt last, uint32_t step_size) {
 //	LOG_DURATION("all func");
-//  deque<typename RandomIt::value_type> pool;  //создали вектор и заносим туда numbers
+//  deque<typename RandomIt::value_type> pool;  //nicaaee aaeoi? e caiinei ooaa numbers
 //
 //  for(auto it = first; it!=last; ++it){
 //	  pool.push_back(move(*it));
@@ -65,7 +65,7 @@ void MakeJosephusPermutation(RandomIt first, RandomIt last, uint32_t step_size) 
 //
 //	cout << "iteration = " << n << "cursor = " << cur_pos << endl;
 //
-//    *(first++) = move(pool[cur_pos]);    //изменяем сам numbers
+//    *(first++) = move(pool[cur_pos]);    //eciaiyai nai numbers
 //
 //	   }
 //
@@ -132,11 +132,11 @@ void TestIntVector() {
   }
 }
 
-// Это специальный тип, который поможет вам убедиться, что ваша реализация
-// функции MakeJosephusPermutation не выполняет копирование объектов.
-// Сейчас вы, возможно, не понимаете как он устроен, однако мы расскажем,
-// почему он устроен именно так, далее в блоке про move-семантику —
-// в видео «Некопируемые типы»
+// Yoi niaoeaeuiue oei, eioi?ue iiii?ao aai oaaaeouny, ?oi aaoa ?aaeecaoey
+// ooieoee MakeJosephusPermutation ia auiieiyao eiie?iaaiea iauaeoia.
+// Nae?an au, aicii?ii, ia iiieiaaoa eae ii ono?iai, iaiaei iu ?annea?ai,
+// ii?aio ii ono?iai eiaiii oae, aaeaa a aeiea i?i move-naiaioeeo —
+// a aeaai «Iaeiie?oaiua oeiu»
 
 struct NoncopyableInt {
   int value;
