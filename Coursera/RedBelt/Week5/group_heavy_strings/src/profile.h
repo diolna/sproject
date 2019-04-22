@@ -20,8 +20,8 @@ public:
     auto dur = finish - start;
 
     cerr << message
-       << duration_cast<nanoseconds>(dur).count()
-       << " ns" << endl;
+       << duration_cast<milliseconds>(dur).count()
+       << " ms" << endl;
   }
 private:
   string message;

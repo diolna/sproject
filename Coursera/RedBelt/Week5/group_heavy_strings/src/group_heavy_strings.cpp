@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <deque>
 
 
 using namespace std;
@@ -23,76 +24,128 @@ template <typename String>
 using Char = typename String::value_type;
 
 template <typename String>
-vector<Group<String>> GroupHeavyStrings(vector<String> strings){
-	LOG_DURATION("func");
+bool FindChar(String& a, String& b){ //Q*Q где Q длина строки
+//	sort(b.begin(), b.end());
+	for(auto& it_char : a) {//максимальная длина строки max 100
+			auto it1 = std::find(b.begin(), b.end(), it_char);   //100
+//			auto it1 = std::lower_bound(b.begin(), b.end(), it_char);
 
-						vector<Group<String>> v;
-						Group<String> g;
-						size_t pos = 0;
-						size_t current_pos = 0;
-						bool flag_if_not = false;
-						if(strings.empty()) {
-							return v;
-						}
-						for(auto it = strings.begin(); it!= strings.end(); ++it){
+//			if(*it1!= it_char){
+			if( it1 == b.end()){ //1
+				return true; //1
+			}
 
-							 g.clear();
-							 if(!((*it).empty())){
-							 g.push_back(*it);
-							 }
-							current_pos = pos + 1;
-							while( current_pos != pos) {
+	}
+		return false; //1
+}
+
+//template <typename String>
+//String ComputeStringKey(const String& string) {
+//  String chars = string;
+//  sort(begin(chars), end(chars));
+//  chars.erase(unique(begin(chars), end(chars)), end(chars));
+//  return chars;
+//}
+
+template <typename String>
+using Key = String;
 
 
-								if(current_pos == strings.size()) {
-//									current_pos =0;
-									break;
-								}
-//								if(current_pos == pos) {
+template <typename String>
+Key<String> ComputeStringKey(const String& string) {
+  String chars = string;
+  sort(begin(chars), end(chars));
+  chars.erase(unique(begin(chars), end(chars)), end(chars));
+  return chars;
+}
+
+
+template <typename String>
+vector<Group<String>> GroupHeavyStrings(vector<String> strings) {
+	LOG_DURATION("func ");
+  map<Key<String>, Group<String>> groups_map;
+  for (String& string : strings) {
+    groups_map[ComputeStringKey(string)].push_back(move(string));
+  }
+  vector<Group<String>> groups;
+  for (auto& [key, group] : groups_map) {
+    groups.push_back(move(group));
+  }
+  return groups;
+}
+
+
+
+
+
+
+
+//template <typename String>
+//vector<Group<String>> GroupHeavyStrings(vector<String> strings){
+//						LOG_DURATION("func_duration");
+//						vector<Group<String>> v; //1
+//						if(strings.empty()) { //1
+//								return v;  //1
+//							}
+//
+////						set<size_t> jump;  //1
+//						Group<String> g;  //1
+//						size_t pos = 0;  //1
+//						size_t current_pos = 0;  //1
+//						bool flag_if_not = false;  //1
+//
+//
+//						for(auto it = strings.begin(); it!= strings.end(); ++it){  // N 10'000 число строк
+//
+//							 g.clear();  // N максимум но не будет так как весь контейнер очищатьне будтм
+//							 if(!((*it).empty())){  //1
+//								 g.push_back(*it);  //1
+//							 }
+//
+//							current_pos = pos + 1;  //1
+////							while(jump.count(current_pos)>0){
+////								if(current_pos== strings.size()) break;
+////								++current_pos;
+////							}
+//
+//							while( current_pos <= strings.size()) { //n 10'000
+//
+//								if(current_pos == strings.size()) {
 //									break;
 //								}
-//								{
-//									LOG_DURATION("find");
-
-								for(auto& it_char : *(strings.begin() + current_pos)) {
-
-
-									auto it1 = std::find((*it).begin(), (*it).end(), it_char);
-									if( it1 == (*it).end()){
-										flag_if_not = true;
-									}
-								}
-								for(auto& it_char : *(it)) {
-
-//								  auto symb = *(strings.begin() + current_pos);
-
-//									auto it = std::find(symb.begin(), symb.end(), it_char);
-									if(move(std::find((*(strings.begin() + current_pos)).begin()
-												, (*(strings.begin() + current_pos)).end()
-												, it_char))== (*(strings.begin() + current_pos)).end()){
-											flag_if_not = true;
-											}
-								}
+////								while(jump.count(current_pos)>1){
+////									++current_pos;
+////									if(current_pos ==strings.size()) break;
+////								}
+////								if(ComputeStringKey(*it)== ComputeStringKey(*(strings.begin() + current_pos))){
+////									flag_if_not = false;
+////								}else {
+////									flag_if_not = true;
+////								}
+//
+//
+//
+//								flag_if_not = FindChar((*(it)),( *(strings.begin() + current_pos))); //Q*Q 10'000
+//								if(flag_if_not != true){
+//									flag_if_not = FindChar( *(strings.begin() + current_pos), *(it)); //Q*Q 10'000
 //								}
-
-								if(flag_if_not == false) {
-									if(!((*(strings.begin() + current_pos)).empty())){
-
-									g.push_back(move(*(strings.begin() + current_pos)));
-									}
-									}
-
-
-								flag_if_not = false;
-								++current_pos;
-							}
-							++pos;
-							if(!(g.empty())){
-							v.push_back(move(g) );
-							}
-						}
-						return v;
-}
+//
+//								if(flag_if_not == false) {
+//									if(!((*(strings.begin() + current_pos)).empty())){
+//										g.push_back(move(*(strings.begin() + current_pos)));
+////										jump.insert(current_pos);
+//									}
+//								}
+//								flag_if_not = false;
+//								++current_pos;
+//							}
+//							++pos;
+//							if(!(g.empty())){
+//							v.push_back(move(g));
+//							}
+//						}
+//						return v;
+//}
 
 
 
@@ -132,11 +185,34 @@ void TestEmptyVector() {
 
 }
 
+void Test100000Stringl() {
+
+	vector<string> strings;
+	string a;
+	char n = 'a';
+	for(int i=0; i<100; ++i){
+         ++n;
+
+
+		a.push_back(n);
+	}
+
+	for(int i=0; i<100000; ++i) {
+		strings.push_back(a);
+	}
+
+
+  auto groups = GroupHeavyStrings(strings);
+  ASSERT_EQUAL(groups.size(), 1);
+
+}
+
 int main() {
   TestRunner tr;
   RUN_TEST(tr, TestGroupingABC);
   RUN_TEST(tr, TestGroupingReal);
   RUN_TEST (tr, TestVectorSymbol);
   RUN_TEST (tr, TestEmptyVector);
+  RUN_TEST (tr, Test100000Stringl);
   return 0;
 }
