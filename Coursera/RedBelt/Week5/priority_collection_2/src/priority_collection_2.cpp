@@ -7,7 +7,7 @@
 #include <utility>
 #include <vector>
 #include <map>
-
+#include <string>
 
 
 using namespace std;
@@ -25,7 +25,8 @@ public:
 
 
 	  ++max_id_;
-	  data_[max_id_][object] = 0;
+	 data_[max_id_][move(object)] = 0;
+
 	 priority_[0].insert(max_id_);
 	  return max_id_;
   }
@@ -40,7 +41,7 @@ public:
 
 	  	  for(auto it = range_begin; it!= range_end; ++it){
 	  		  ++max_id_;
-	  		  data_[max_id_][*it] = 0;
+	  		  data_[max_id_][made_move(*it)] = 0;
 	  		priority_[0].insert(max_id_);
 	  		  if(it == range_begin) ids_begin = prev(data_.end());
 	  	  }
@@ -62,14 +63,16 @@ public:
   // Увеличить приоритет объекта на 1
   void Promote(Id id){
 
-	T key = data_[id].begin()->first;
 
-	int pr = data_[id][key];
 
-	priority_[pr].erase(id);
-	++pr;
-	data_[id][key] = pr;
-	priority_[pr].insert(id);
+//	int pr = data_[id][make_move_iterator(data_[id].begin())->first];
+//
+//	priority_[pr].erase(id);
+//	++pr;
+//	data_[id][make_move_iterator(data_[id].begin())->first] = pr;
+//	priority_[pr].insert(id);
+	  auto it = data_[id].begin();
+	  ++it->second;
   }
 
   // Получить объект с максимальным приоритетом и его приоритет
@@ -79,14 +82,17 @@ public:
 
   // Аналогично GetMax, но удаляет элемент из контейнера
   pair<T, int> PopMax(){
+
 	  pair<T, int> p;
+	  --max_id_;
+
+	  //p.first = move(make_move_iterator(data_[max_id_+1].begin())->first);
+	  //p.second = data_[max_id_+1].begin()->second;
 
 
-	  p.first = data_[max_id_].begin()->first;
-	  p.second = data_[max_id_].begin()->second;
-	  data_.erase(max_id_);
-	  	  --max_id_;
-	  return p;
+
+
+	  return move(data_[max_id_ + 1]);
 
   }
 
@@ -100,15 +106,15 @@ private:
 
 
 
-using StringNonCopyable = string;
-//class StringNonCopyable : public string {
-//public:
-// // using string::string;  // Позволяет использовать конструкторы строки
-//  StringNonCopyable(const StringNonCopyable&) = delete;
-//  StringNonCopyable(StringNonCopyable&&) = default;
-//  StringNonCopyable& operator=(const StringNonCopyable&) = delete;
-//  StringNonCopyable& operator=(StringNonCopyable&&) = default;
-//};
+//using StringNonCopyable = string;
+class StringNonCopyable : public string {
+public:
+  using string::string;  // Позволяет использовать конструкторы строки
+  StringNonCopyable(const StringNonCopyable&) = delete;
+ StringNonCopyable(StringNonCopyable&&) = default;
+  StringNonCopyable& operator=(const StringNonCopyable&) = delete;
+  StringNonCopyable& operator=(StringNonCopyable&&) = default;
+};
 
 void TestNoCopy() {
   PriorityCollection<StringNonCopyable> strings;
@@ -145,6 +151,7 @@ void TestNoCopy() {
 }
 
 int main() {
+
   TestRunner tr;
   RUN_TEST(tr, TestNoCopy);
   return 0;
