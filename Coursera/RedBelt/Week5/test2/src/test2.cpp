@@ -4,30 +4,28 @@
 #include <string>
 #include <vector>
 #include <set>
+#include <numeric>
+#include <future>
 
 using namespace std;
 
-struct U1 {
-  int id;
-  char* chars_ptr;
-};
 
-struct U2 {
-  int16_t angle;
-  char direction;
-};
 
-struct T {
-  U1 u1;
-  U2 u2;
-};
+int SumToVector( const vector<int>& one
+		, const vector<int>& two) {
 
-using T = uint64_t;
+	future<int> f = async([&one] {
+			return accumulate(one.begin(), one.end(), 0);
+});
+	int result = accumulate( two.begin(), two.end(), 0);
+
+	return result + f.get();
+}
 
 int main() {
 
 
-	uint64_t a;
+cout << SumToVector({1,1,1,1}, {3,3,3});
 
   return 0;
 }

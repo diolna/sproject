@@ -8,6 +8,8 @@
 
 using namespace std;
 
+
+
 class StringNonCopyable : public string {
 public:
   using string::string;  // Позволяет использовать конструкторы строки
@@ -21,9 +23,15 @@ template <typename T>
 class A {
 public:
 
+
+	using  Pair = pair<T, int>;
+
 void Add(T object){
 
-a[0][move(object)] = 0;
+	a[0].first = move(object);
+	a[0].second = 0;
+
+
 
 
  }
@@ -31,29 +39,29 @@ a[0][move(object)] = 0;
 // Увеличить приоритет объекта на 1
   void Promote(int id){
 
-	//T key = data_[id].begin()->first;
+	++a[id].second;
 
-//	int pr = a[id][make_move_iterator(a[id].begin())->first];
-
-	//priority_[pr].erase(id);
-//	++pr;
-//	a[id][make_move_iterator(a[id].begin())->first] = pr;
-	//priority_[pr].insert(id);
-
-	  auto it = (a[id].begin());
-	  it->second = 3;
-	  auto i = (make_move_iterator(it))->first;
-	  cout << it->first << endl;
-	  cout << it->second << endl;
   }
 
 private :
- map<int, map<T, int>> a;
+ map<int, Pair> a;
+
 
 };
 
 
 int main() {
+
+	int ttt = 2;
+	vector<StringNonCopyable> v;
+	v.push_back(move("red"));
+	v.push_back(move("red1"));
+	v.push_back(move("red2"));
+
+	*v.begin() = "yellow";
+
+	cout << v[0] << endl;
+
 
 	A<StringNonCopyable> a;
 	StringNonCopyable s;
