@@ -53,19 +53,22 @@ ostream& operator << (ostream& os, const map<K, V>& m) {
 }
 
 template<class T, class U>
-void AssertEqual(const T& t, const U& u, const string& hint = {}) {
+void AssertEqual(const T& t, const U& u){//, const string& hint = {}) {
+	//cout << t << endl;
   if (!(t == u)) {
+	 // cout << "t=" << t << endl;
+	 //cout << "u= " << u << endl;
     ostringstream os;
     os << "Assertion failed: " << t << " != " << u;
-    if (!hint.empty()) {
-       os << " hint: " << hint;
-    }
+   // if (!hint.empty()) {
+       os << " hint: "  << t << " != " << u << ", " << __FILE__ << ":" << __LINE__;; //hint;
+   // }
     throw runtime_error(os.str());
   }
 }
 
 inline void Assert(bool b, const string& hint) {
-  AssertEqual(b, true, hint);
+  AssertEqual(b, true);//, hint);
 }
 
 class TestRunner {
@@ -96,17 +99,17 @@ private:
 };
 
 #define ASSERT_EQUAL(x, y) {            \
-  ostringstream os_stream;                     \
-  os_stream << #x << " != " << #y << ", "      \
-    << __FILE__ << ":" << __LINE__;     \
-  AssertEqual(x, y, os_stream.str());          \
+  /*ostringstream os;*/                    \
+ /* cout << #x << " != " << #y << ", "*/      \
+ /*   << __FILE__ << ":" << __LINE__;  */   \
+  AssertEqual(x, y);/*, os.str());*/          \
 }
 
 #define ASSERT(x) {                     \
-  ostringstream os_stream;                     \
-  os_stream << #x << " is false, "             \
+  ostringstream os;                     \
+  os << #x << " is false, "             \
     << __FILE__ << ":" << __LINE__;     \
-  Assert(x, os_stream.str());                  \
+  Assert(x, os.str());                  \
 }
 
 #define RUN_TEST(tr, func) \
