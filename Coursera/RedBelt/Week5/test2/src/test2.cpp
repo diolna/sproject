@@ -9,23 +9,41 @@
 
 using namespace std;
 
+struct S{
+	int a;
+	int&& b;
+};
 
+S Func(){
+	S s;
+	s.b = 3;
+	s.a = 2;
+	return s;
 
-int SumToVector( const vector<int>& one
-		, const vector<int>& two) {
-
-	future<int> f = async([&one] {
-			return accumulate(one.begin(), one.end(), 0);
-});
-	int result = accumulate( two.begin(), two.end(), 0);
-
-	return result + f.get();
 }
+
+
 
 int main() {
 
+	S aaa;
+	aaa.a = 25;
 
-cout << SumToVector({1,1,1,1}, {3,3,3});
+int c = 2;
+int& d = c;
+int&& a = move(d);
+
+int b = 5;
+cout << "a = " << a << " b = " << b << " c = " << c << " d = " << d << endl;
+ cout << Func().a << endl;
+
+cout << "a = " << a << " b = " << b << " c = " << c << " d = " << d << endl;
+b =0;
+cout << "a = " << a << " b = " << b << " c = " << c << " d = " << d << endl;;
+c = 0;
+cout << "a = " << a << " b = " << b << " c = " << c << " d = " << d << endl;
+
+
 
   return 0;
 }
