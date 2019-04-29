@@ -1,0 +1,17 @@
+23:16:20 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parse.o" "..\\src\\parse.cpp" 
+g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+..\src\final_red_belt_part_1.cpp:3:10: fatal error: test_runner.h: No such file or directory
+ #include "test_runner.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+23:17:17 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+23:27:15 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
