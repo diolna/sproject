@@ -1,7 +1,7 @@
-23:27:15 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+12:04:00 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
 Info: Internal Builder is used for build
-g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
 g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
 
-23:27:33 Build Finished. 0 errors, 0 warnings. (took 17s.542ms)
+12:04:04 Build Finished. 0 errors, 0 warnings. (took 3s.629ms)
 
