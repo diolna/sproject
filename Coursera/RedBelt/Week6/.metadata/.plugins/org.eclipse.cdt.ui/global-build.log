@@ -1,17 +1,171 @@
-23:16:20 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Nothing to build for final_red_belt_part_1
+11:57:53 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
 Info: Internal Builder is used for build
-g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parse.o" "..\\src\\parse.cpp" 
-g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
-..\src\final_red_belt_part_1.cpp:3:10: fatal error: test_runner.h: No such file or directory
- #include "test_runner.h"
-          ^~~~~~~~~~~~~~~
-compilation terminated.
-23:17:17 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
-Info: Internal Builder is used for build
-g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
-g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
 g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
-23:27:15 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+12:00:41 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
 Info: Internal Builder is used for build
-g++ -std=c++17 -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
 g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+12:00:53 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+12:01:54 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:57:24: error: expected ';' before '}' token
+        cout << i << " "
+                        ^
+                        ;
+       }
+       ~                 
+12:02:03 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+12:04:00 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+22:04:24 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parse.o" "..\\src\\parse.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+22:05:11 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+22:18:10 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:78:22: error: 'docid_count' was not declared in this scope
+       auto it = find(docid_count.begin(), docid_count.end(), hitcount);
+                      ^~~~~~~~~~~
+..\src\search_server.cpp:78:22: note: suggested alternative: 'hitcount'
+       auto it = find(docid_count.begin(), docid_count.end(), hitcount);
+                      ^~~~~~~~~~~
+                      hitcount
+..\src\search_server.cpp:86:5: error: 'docid_count' was not declared in this scope
+     docid_count.clear();
+     ^~~~~~~~~~~
+22:18:35 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:78:22: error: 'docid_count' was not declared in this scope
+       auto it = find(docid_count.begin(), docid_count.end(), hitcount);
+                      ^~~~~~~~~~~
+..\src\search_server.cpp:78:22: note: suggested alternative: 'hitcount'
+       auto it = find(docid_count.begin(), docid_count.end(), hitcount);
+                      ^~~~~~~~~~~
+                      hitcount
+22:18:45 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+22:21:27 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:79:21: error: 'hticount' was not declared in this scope
+      if(docid==0 && hticount ==0 ){
+                     ^~~~~~~~
+..\src\search_server.cpp:79:21: note: suggested alternative: 'hitcount'
+      if(docid==0 && hticount ==0 ){
+                     ^~~~~~~~
+                     hitcount
+22:21:53 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+22:37:16 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:74:44: error: no matching function for call to 'remove_if(std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, <brace-enclosed initializer list>)'
+     remove_if(res.begin(), res.end(), {0,0});
+                                            ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:929:5: note: candidate: 'template<class _FIter, class _Predicate> _FIter std::remove_if(_FIter, _FIter, _Predicate)'
+     remove_if(_ForwardIterator __first, _ForwardIterator __last,
+     ^~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:929:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:74:44: note:   couldn't deduce template parameter '_Predicate'
+     remove_if(res.begin(), res.end(), {0,0});
+                                            ^
+22:39:00 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:74:54: error: no matching function for call to 'remove_if(std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, <brace-enclosed initializer list>)'
+     res.erase(remove_if(res.begin(), res.end(), {0,0}), res.end());
+                                                      ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:929:5: note: candidate: 'template<class _FIter, class _Predicate> _FIter std::remove_if(_FIter, _FIter, _Predicate)'
+     remove_if(_ForwardIterator __first, _ForwardIterator __last,
+     ^~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:929:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:74:54: note:   couldn't deduce template parameter '_Predicate'
+     res.erase(remove_if(res.begin(), res.end(), {0,0}), res.end());
+                                                      ^
+22:39:26 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:74:51: error: no matching function for call to 'remove(std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, <brace-enclosed initializer list>)'
+     res.erase(remove(res.begin(), res.end(), {0,0}), res.end());
+                                                   ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/x86_64-w64-mingw32/include/locale.h:12,
+                 from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/clocale:42,
+                 from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h:41,
+                 from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/localefwd.h:40,
+                 from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ios:41,
+                 from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream:38,
+                 from ..\src\search_server.h:3,
+                 from ..\src\search_server.cpp:1:
+D:/Program Files/Eclips/mingw64/mingw64/x86_64-w64-mingw32/include/stdio.h:676:15: note: candidate: 'int remove(const char*)'
+   int __cdecl remove(const char *_Filename);
+               ^~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/x86_64-w64-mingw32/include/stdio.h:676:15: note:   candidate expects 1 argument, 3 provided
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:896:5: note: candidate: 'template<class _FIter, class _Tp> _FIter std::remove(_FIter, _FIter, const _Tp&)'
+     remove(_ForwardIterator __first, _ForwardIterator __last,
+     ^~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:896:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:74:51: note:   couldn't deduce template parameter '_Tp'
+     res.erase(remove(res.begin(), res.end(), {0,0}), res.end());
+                                                   ^
+22:42:42 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+22:43:04 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+22:46:04 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+22:47:12 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+22:47:30 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
