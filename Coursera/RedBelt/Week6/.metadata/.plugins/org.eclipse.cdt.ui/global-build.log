@@ -169,3 +169,289 @@ g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..
 g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
 Info: Nothing to build for final_red_belt_part_1
 Info: Nothing to build for final_red_belt_part_1
+23:04:03 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:77:5: error: no matching function for call to 'partial_sort(std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, SearchServer::AddQueriesStream(std::istream&, std::ostream&)::<lambda(std::pair<long long unsigned int, long long unsigned int>, std::pair<long long unsigned int, long long unsigned int>)>)'
+     );
+     ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4674:5: note: candidate: 'template<class _RAIter> void std::partial_sort(_RAIter, _RAIter, _RAIter)'
+     partial_sort(_RandomAccessIterator __first,
+     ^~~~~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4674:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:77:5: note:   deduced conflicting types for parameter '_RAIter' ('__gnu_cxx::__normal_iterator<std::pair<long long unsigned int, long long unsigned int>*, std::vector<std::pair<long long unsigned int, long long unsigned int> > >' and 'SearchServer::AddQueriesStream(std::istream&, std::ostream&)::<lambda(std::pair<long long unsigned int, long long unsigned int>, std::pair<long long unsigned int, long long unsigned int>)>')
+     );
+     ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4712:5: note: candidate: 'template<class _RAIter, class _Compare> void std::partial_sort(_RAIter, _RAIter, _RAIter, _Compare)'
+     partial_sort(_RandomAccessIterator __first,
+     ^~~~~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4712:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:77:5: note:   deduced conflicting types for parameter '_RAIter' ('__gnu_cxx::__normal_iterator<std::pair<long long unsigned int, long long unsigned int>*, std::vector<std::pair<long long unsigned int, long long unsigned int> > >' and 'SearchServer::AddQueriesStream(std::istream&, std::ostream&)::<lambda(std::pair<long long unsigned int, long long unsigned int>, std::pair<long long unsigned int, long long unsigned int>)>')
+     );
+     ^
+23:05:36 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:77:5: error: no matching function for call to 'partial_sort(std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, SearchServer::AddQueriesStream(std::istream&, std::ostream&)::<lambda(std::pair<long long unsigned int, long long unsigned int>, std::pair<long long unsigned int, long long unsigned int>)>)'
+     );
+     ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4674:5: note: candidate: 'template<class _RAIter> void std::partial_sort(_RAIter, _RAIter, _RAIter)'
+     partial_sort(_RandomAccessIterator __first,
+     ^~~~~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4674:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:77:5: note:   deduced conflicting types for parameter '_RAIter' ('__gnu_cxx::__normal_iterator<std::pair<long long unsigned int, long long unsigned int>*, std::vector<std::pair<long long unsigned int, long long unsigned int> > >' and 'SearchServer::AddQueriesStream(std::istream&, std::ostream&)::<lambda(std::pair<long long unsigned int, long long unsigned int>, std::pair<long long unsigned int, long long unsigned int>)>')
+     );
+     ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4712:5: note: candidate: 'template<class _RAIter, class _Compare> void std::partial_sort(_RAIter, _RAIter, _RAIter, _Compare)'
+     partial_sort(_RandomAccessIterator __first,
+     ^~~~~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4712:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:77:5: note:   deduced conflicting types for parameter '_RAIter' ('__gnu_cxx::__normal_iterator<std::pair<long long unsigned int, long long unsigned int>*, std::vector<std::pair<long long unsigned int, long long unsigned int> > >' and 'SearchServer::AddQueriesStream(std::istream&, std::ostream&)::<lambda(std::pair<long long unsigned int, long long unsigned int>, std::pair<long long unsigned int, long long unsigned int>)>')
+     );
+     ^
+23:07:24 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+23:07:52 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+23:11:16 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:78:5: error: no matching function for call to 'sort(std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, std::vector<std::pair<long long unsigned int, long long unsigned int> >::iterator, SearchServer::AddQueriesStream(std::istream&, std::ostream&)::<lambda(std::pair<long long unsigned int, long long unsigned int>, std::pair<long long unsigned int, long long unsigned int>)>)'
+     );
+     ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4824:5: note: candidate: 'template<class _RAIter> void std::sort(_RAIter, _RAIter)'
+     sort(_RandomAccessIterator __first, _RandomAccessIterator __last)
+     ^~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4824:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:78:5: note:   candidate expects 2 arguments, 4 provided
+     );
+     ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/algorithm:62,
+                 from ..\src\iterator_range.h:3,
+                 from ..\src\search_server.cpp:2:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4854:5: note: candidate: 'template<class _RAIter, class _Compare> void std::sort(_RAIter, _RAIter, _Compare)'
+     sort(_RandomAccessIterator __first, _RandomAccessIterator __last,
+     ^~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_algo.h:4854:5: note:   template argument deduction/substitution failed:
+..\src\search_server.cpp:78:5: note:   candidate expects 3 arguments, 4 provided
+     );
+     ^
+23:11:26 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+23:13:00 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+In file included from ..\src\search_server.cpp:3:
+..\src\profile.h:35:32: error: expected ')' before '{' token
+   LogDuration UNIQ_ID(__LINE__){message};
+                                ^
+..\src\search_server.cpp:34:3: note: in expansion of macro 'LOG_DURATION'
+   LOG_DURATION("queri");
+   ^~~~~~~~~~~~
+..\src\search_server.cpp:33:36: note: to match this '('
+ void SearchServer::AddQueriesStream(
+                                    ^
+..\src\search_server.cpp:33:6: error: no declaration matches 'void SearchServer::AddQueriesStream(LogDuration)'
+ void SearchServer::AddQueriesStream(
+      ^~~~~~~~~~~~
+In file included from ..\src\search_server.cpp:1:
+..\src\search_server.h:31:8: note: candidate is: 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)'
+   void AddQueriesStream(istream& query_input, ostream& search_results_output);
+        ^~~~~~~~~~~~~~~~
+..\src\search_server.h:26:7: note: 'class SearchServer' defined here
+ class SearchServer {
+       ^~~~~~~~~~~~
+..\src\search_server.cpp:35:12: error: 'query_input' declared as reference but not initialized
+   istream& query_input, ostream& search_results_output
+            ^~~~~~~~~~~
+..\src\search_server.cpp:35:32: error: expected initializer before '&' token
+   istream& query_input, ostream& search_results_output
+                                ^
+23:13:15 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+23:13:37 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+23:32:53 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+23:41:37 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+23:42:07 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+23:54:43 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+00:00:09 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+In file included from ..\src\search_server.cpp:1:
+..\src\search_server.h: In member function 'void InvertedIndex::GetSize()':
+..\src\search_server.h:21:21: error: return-statement with a value, in function returning 'void' [-fpermissive]
+    return docs.size();
+                     ^
+00:00:29 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+00:01:29 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+00:05:58 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+00:06:12 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+00:10:20 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:39:54: error: expected ')' before 'index'
+  vector<pair<size_t, size_t>> res(index.GetSize() > 5 index.GetSize() : 5);
+                                  ~                   ^~~~~~
+                                                      )
+00:10:49 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+00:13:03 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+00:15:10 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+00:15:33 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+00:29:50 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+00:39:20 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:56:51: error: invalid initialization of reference of type 'const size_t&' {aka 'const long long unsigned int&'} from expression of type 'std::pair<long long unsigned int, long long unsigned int>'
+       for (const size_t& docid : index.Lookup(word)) {
+                                                   ^
+..\src\search_server.cpp: In member function 'void InvertedIndex::Add(const string&)':
+..\src\search_server.cpp:116:16: error: expected ';' before '}' token
+    temp[word]++
+                ^
+                ;
+   }
+   ~             
+..\src\search_server.cpp:119:46: error: no matching function for call to 'std::vector<std::pair<long long unsigned int, long long unsigned int> >::push_back(const size_t&, const long long unsigned int&)'
+     index[i.first].push_back(docid , i.second);
+                                              ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/vector:64,
+                 from ..\src\search_server.h:7,
+                 from ..\src\search_server.cpp:1:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:1074:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<long long unsigned int, long long unsigned int>; _Alloc = std::allocator<std::pair<long long unsigned int, long long unsigned int> >; std::vector<_Tp, _Alloc>::value_type = std::pair<long long unsigned int, long long unsigned int>]'
+       push_back(const value_type& __x)
+       ^~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:1074:7: note:   candidate expects 1 argument, 2 provided
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:1090:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = std::pair<long long unsigned int, long long unsigned int>; _Alloc = std::allocator<std::pair<long long unsigned int, long long unsigned int> >; std::vector<_Tp, _Alloc>::value_type = std::pair<long long unsigned int, long long unsigned int>]'
+       push_back(value_type&& __x)
+       ^~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:1090:7: note:   candidate expects 1 argument, 2 provided
+00:39:39 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt_part_1.o" "..\\src\\final_red_belt_part_1.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:56:51: error: invalid initialization of reference of type 'const size_t&' {aka 'const long long unsigned int&'} from expression of type 'std::pair<long long unsigned int, long long unsigned int>'
+       for (const size_t& docid : index.Lookup(word)) {
+                                                   ^
+..\src\search_server.cpp: In member function 'void InvertedIndex::Add(const string&)':
+..\src\search_server.cpp:119:46: error: no matching function for call to 'std::vector<std::pair<long long unsigned int, long long unsigned int> >::push_back(const size_t&, const long long unsigned int&)'
+     index[i.first].push_back(docid , i.second);
+                                              ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/vector:64,
+                 from ..\src\search_server.h:7,
+                 from ..\src\search_server.cpp:1:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:1074:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = std::pair<long long unsigned int, long long unsigned int>; _Alloc = std::allocator<std::pair<long long unsigned int, long long unsigned int> >; std::vector<_Tp, _Alloc>::value_type = std::pair<long long unsigned int, long long unsigned int>]'
+       push_back(const value_type& __x)
+       ^~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:1074:7: note:   candidate expects 1 argument, 2 provided
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:1090:7: note: candidate: 'void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = std::pair<long long unsigned int, long long unsigned int>; _Alloc = std::allocator<std::pair<long long unsigned int, long long unsigned int> >; std::vector<_Tp, _Alloc>::value_type = std::pair<long long unsigned int, long long unsigned int>]'
+       push_back(value_type&& __x)
+       ^~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h:1090:7: note:   candidate expects 1 argument, 2 provided
+00:40:10 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\search_server.cpp:56:51: error: invalid initialization of reference of type 'const size_t&' {aka 'const long long unsigned int&'} from expression of type 'std::pair<long long unsigned int, long long unsigned int>'
+       for (const size_t& docid : index.Lookup(word)) {
+                                                   ^
+00:43:00 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
+g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1
+Info: Nothing to build for final_red_belt_part_1

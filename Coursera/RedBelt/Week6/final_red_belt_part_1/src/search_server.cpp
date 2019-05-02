@@ -1,12 +1,15 @@
 #include "search_server.h"
 #include "iterator_range.h"
+#include "profile.h"
 
 #include <algorithm>
 #include <iterator>
 #include <sstream>
 #include <iostream>
 #include <vector>		// добавил
-#include <numeric>   // add
+//#include <numeric>   // add
+
+
 
 vector<string> SplitIntoWords(const string& line) {
   istringstream words_input(line);
@@ -28,11 +31,13 @@ void SearchServer::UpdateDocumentBase(istream& document_input) {
 }
 
 void SearchServer::AddQueriesStream(
+
   istream& query_input, ostream& search_results_output
 ) {// можно разделить поток на несколько частей и выполнять их паралельно.
-
+	LOG_DURATION("queri");
 //	vector<size_t> docid_count(50000);  //
-	vector<pair<size_t, size_t>> res(50000);
+	vector<pair<size_t, size_t>> res(index.GetSize() > 5 ? index.GetSize() : 5);
+
 
   for (string current_query; getline(query_input, current_query); ) {
  //   const auto words = SplitIntoWords(current_query);    // создаем новый вектор слов которые нужно искать в базе
@@ -42,14 +47,18 @@ void SearchServer::AddQueriesStream(
 	  // N документов
     //map<size_t, size_t> docid_count;       // нужно заменить на весктор номер элемента это будет id, а значение это кол.
    // for (const auto& word : words) {
-	  res.resize(50000);
+	  res.resize(index.GetSize() >5 ? index.GetSize() : 5);
+	  for(auto& i : res){
+		  i.first = 0;
+		  i.second =0;
+	  }
       for (const auto& word : SplitIntoWords(current_query)) {  //Q
-      for (const size_t docid : index.Lookup(word)) {
+      for (const pair<size_t,size_t>& docid : index.Lookup(word)) {
 
 //        	docid_count[docid]++;
 
-        	res[docid].first = docid;
-        	res[docid].second++;
+        	res[docid.first].first = docid.first;
+        	res[docid.first].second += docid.second;
 
 
     }
@@ -61,8 +70,11 @@ void SearchServer::AddQueriesStream(
 //    vector<pair<size_t, size_t>> search_results(
 //      docid_count.begin(), docid_count.end()			// результат поиска (словарь map) помещаем в вектор
 //    );
-    sort(													// сортировка map по принципу Скорее всего занимает много врем.
+      auto it = remove_if(res.begin(), res.end(), [](const auto& p){return p.second ==0;});
+      res.resize(it - res.begin());
+      partial_sort(													// сортировка map по принципу Скорее всего занимает много врем.
       begin(res),
+	  res.size() <5 ? (res.begin() + res.size()) : res.begin() + 5,
       end(res),
       [](pair<size_t, size_t> lhs, pair<size_t, size_t> rhs) {
         int64_t lhs_docid = lhs.first;
@@ -72,10 +84,12 @@ void SearchServer::AddQueriesStream(
         return make_pair(lhs_hit_count, -lhs_docid) > make_pair(rhs_hit_count, -rhs_docid);
       }
     );
-    pair<size_t, size_t> p= {0,0};
-    res.erase(remove(res.begin(), res.end(), p), res.end());
+   // pair<size_t, size_t> p= {0,0};
 
-
+    //res.erase(remove(res.begin(), res.end(), p), res.end());
+      if(res.size()>5) {
+    	  res.resize(5);
+      }
 
     search_results_output << current_query << ':';
     for (auto& [docid,hitcount] : Head(res,5)) {  // for (auto [docid, hitcount] : (Head(res, 5))) {  //search_results, 5))) {   // добавил move и после auto вставил &
@@ -88,21 +102,25 @@ void SearchServer::AddQueriesStream(
     }
     search_results_output << '\n';                                // заменил endl на '\n'
 
-    res.clear();
+//    res.clear();
 
       }
 }
 
 void InvertedIndex::Add(const string& document) {
-  docs.push_back(document);
+  docs.push_back(move(document));
 
   const size_t docid = docs.size() - 1;
-  for (const auto& word : SplitIntoWords(document)) {
-    index[word].push_back(docid);
+  map<string, size_t> temp;
+  for(const auto& word : SplitIntoWords(docs.back())){
+	  temp[word]++;
+  }
+  for (const auto& i : temp) {
+    index[i.first].push_back({docid , i.second});
   }
 }
 
-list<size_t> InvertedIndex::Lookup(const string& word) const {
+vector<pair<size_t, size_t>> InvertedIndex::Lookup(const string& word) const {
   if (auto it = index.find(word); it != index.end()) {
     return it->second;
   } else {
