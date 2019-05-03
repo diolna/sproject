@@ -1,31 +1,646 @@
-Info: Nothing to build for final_red_belt_part_1
-11:57:53 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+09:46:35 **** Incremental Build of configuration Debug for project final_red_belt ****
 Info: Internal Builder is used for build
-g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
-g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
-12:00:41 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In member function 'void SearchServer::UpdateDocumentBase(std::istream&)':
+..\src\serach_server.cpp:21:28: error: expected primary-expression before ']' token
+   futures.push_back(async[&] {
+                            ^
+..\src\serach_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\serach_server.cpp:39:41: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+  vector<pair<size_t, size_t>> res(index.GetSize() > 5 ? index.GetSize() : 5);
+                                         ^~~~~~~
+..\src\serach_server.cpp:39:63: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+  vector<pair<size_t, size_t>> res(index.GetSize() > 5 ? index.GetSize() : 5);
+                                                               ^~~~~~~
+..\src\serach_server.cpp:43:22: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+     res.resize(index.GetSize() >5 ? index.GetSize() : 5);
+                      ^~~~~~~
+..\src\serach_server.cpp:43:43: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+     res.resize(index.GetSize() >5 ? index.GetSize() : 5);
+                                           ^~~~~~~
+..\src\serach_server.cpp:49:53: error: 'class Synchronized<InvertedIndex>' has no member named 'Lookup'
+       for (const pair<size_t,size_t>& docid : index.Lookup(word)) {
+                                                     ^~~~~~
+09:47:20 **** Incremental Build of configuration Debug for project final_red_belt ****
 Info: Internal Builder is used for build
-g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
-g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
-12:00:53 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In lambda function:
+..\src\serach_server.cpp:29:25: error: no match for 'operator=' (operand types are 'Synchronized<InvertedIndex>' and 'std::remove_reference<InvertedIndex&>::type' {aka 'InvertedIndex'})
+   index = move(new_index);
+                         ^
+In file included from ..\src\serach_server.cpp:1:
+..\src\search_server.h:16:7: note: candidate: 'Synchronized<InvertedIndex>& Synchronized<InvertedIndex>::operator=(const Synchronized<InvertedIndex>&)' <deleted>
+ class Synchronized {
+       ^~~~~~~~~~~~
+..\src\search_server.h:16:7: note:   no known conversion for argument 1 from 'std::remove_reference<InvertedIndex&>::type' {aka 'InvertedIndex'} to 'const Synchronized<InvertedIndex>&'
+..\src\search_server.h:16:7: note: candidate: 'Synchronized<InvertedIndex>& Synchronized<InvertedIndex>::operator=(Synchronized<InvertedIndex>&&)' <deleted>
+..\src\search_server.h:16:7: note:   no known conversion for argument 1 from 'std::remove_reference<InvertedIndex&>::type' {aka 'InvertedIndex'} to 'Synchronized<InvertedIndex>&&'
+..\src\serach_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\serach_server.cpp:39:41: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+  vector<pair<size_t, size_t>> res(index.GetSize() > 5 ? index.GetSize() : 5);
+                                         ^~~~~~~
+..\src\serach_server.cpp:39:63: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+  vector<pair<size_t, size_t>> res(index.GetSize() > 5 ? index.GetSize() : 5);
+                                                               ^~~~~~~
+..\src\serach_server.cpp:43:22: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+     res.resize(index.GetSize() >5 ? index.GetSize() : 5);
+                      ^~~~~~~
+..\src\serach_server.cpp:43:43: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+     res.resize(index.GetSize() >5 ? index.GetSize() : 5);
+                                           ^~~~~~~
+..\src\serach_server.cpp:49:53: error: 'class Synchronized<InvertedIndex>' has no member named 'Lookup'
+       for (const pair<size_t,size_t>& docid : index.Lookup(word)) {
+                                                     ^~~~~~
+09:47:55 **** Incremental Build of configuration Debug for project final_red_belt ****
 Info: Internal Builder is used for build
-g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
-g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
-12:01:54 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\serach_server.cpp:39:41: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+  vector<pair<size_t, size_t>> res(index.GetSize() > 5 ? index.GetSize() : 5);
+                                         ^~~~~~~
+..\src\serach_server.cpp:39:63: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+  vector<pair<size_t, size_t>> res(index.GetSize() > 5 ? index.GetSize() : 5);
+                                                               ^~~~~~~
+..\src\serach_server.cpp:43:22: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+     res.resize(index.GetSize() >5 ? index.GetSize() : 5);
+                      ^~~~~~~
+..\src\serach_server.cpp:43:43: error: 'class Synchronized<InvertedIndex>' has no member named 'GetSize'
+     res.resize(index.GetSize() >5 ? index.GetSize() : 5);
+                                           ^~~~~~~
+..\src\serach_server.cpp:49:53: error: 'class Synchronized<InvertedIndex>' has no member named 'Lookup'
+       for (const pair<size_t,size_t>& docid : index.Lookup(word)) {
+                                                     ^~~~~~
+09:51:26 **** Incremental Build of configuration Debug for project final_red_belt ****
 Info: Internal Builder is used for build
-g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
-..\src\search_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
-..\src\search_server.cpp:57:24: error: expected ';' before '}' token
-        cout << i << " "
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+09:56:54 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+10:01:40 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+10:02:15 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In lambda function:
+..\src\serach_server.cpp:44:3: error: expected ',' or ';' before 'for'
+   for (string current_query; getline(query_input, current_query); ) {
+   ^~~
+..\src\serach_server.cpp:44:51: error: 'current_query' was not declared in this scope
+   for (string current_query; getline(query_input, current_query); ) {
+                                                   ^~~~~~~~~~~~~
+..\src\serach_server.cpp:44:67: error: expected primary-expression before ')' token
+   for (string current_query; getline(query_input, current_query); ) {
+                                                                   ^
+10:02:33 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+10:07:57 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+10:12:52 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+14:01:59 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In member function 'void SearchServer::UpdateDocumentBase(std::istream&)':
+..\src\serach_server.cpp:32:11: error: 'class std::vector<std::future<void> >' has no member named 'get'
+   futures.get();
+           ^~~
+17:04:05 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+17:04:53 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:06:51 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:18:37 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:26:46 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:27:33 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:31:55 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:33:00 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:33:29 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:36:09 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In lambda function:
+..\src\serach_server.cpp:44:9: error: 'this' was not captured for this lambda function
+   while(updateCount == 0) {}
+         ^~~~~~~~~~~
+..\src\serach_server.cpp:44:9: error: invalid use of non-static data member 'SearchServer::updateCount'
+In file included from ..\src\serach_server.cpp:1:
+..\src\search_server.h:67:24: note: declared here
+   size_t updateCount = 0;
                         ^
-                        ;
-       }
-       ~                 
-12:02:03 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+..\src\serach_server.cpp:45:18: error: 'this' was not captured for this lambda function
+   size_t count = index.GetAccess().ref_to_value.GetSize();
+                  ^~~~~
+..\src\serach_server.cpp:45:18: error: invalid use of non-static data member 'SearchServer::index'
+In file included from ..\src\serach_server.cpp:1:
+..\src\search_server.h:65:31: note: declared here
+   Synchronized<InvertedIndex> index;
+                               ^~~~~
+..\src\serach_server.cpp:49:38: error: 'query_input' is not captured
+   for (string current_query; getline(query_input, current_query); ) {
+                                      ^~~~~~~~~~~
+..\src\serach_server.cpp:43:27: note: the lambda has no capture-default
+  futures.push_back(async([] {
+                           ^
+..\src\serach_server.cpp:38:12: note: 'std::istream& query_input' declared here
+   istream& query_input, ostream& search_results_output
+   ~~~~~~~~~^~~~~~~~~~~
+..\src\serach_server.cpp:57:47: error: 'this' was not captured for this lambda function
+       for (const pair<size_t,size_t>& docid : index.GetAccess().ref_to_value.Lookup(word)) {
+                                               ^~~~~
+..\src\serach_server.cpp:57:47: error: invalid use of non-static data member 'SearchServer::index'
+In file included from ..\src\serach_server.cpp:1:
+..\src\search_server.h:65:31: note: declared here
+   Synchronized<InvertedIndex> index;
+                               ^~~~~
+..\src\serach_server.cpp:85:5: error: 'search_results_output' is not captured
+     search_results_output << current_query << ':';
+     ^~~~~~~~~~~~~~~~~~~~~
+..\src\serach_server.cpp:43:27: note: the lambda has no capture-default
+  futures.push_back(async([] {
+                           ^
+..\src\serach_server.cpp:38:34: note: 'std::ostream& search_results_output' declared here
+   istream& query_input, ostream& search_results_output
+                         ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+..\src\serach_server.cpp:89:6: error: 'search_results_output' is not captured
+      search_results_output << " {"
+      ^~~~~~~~~~~~~~~~~~~~~
+..\src\serach_server.cpp:43:27: note: the lambda has no capture-default
+  futures.push_back(async([] {
+                           ^
+..\src\serach_server.cpp:38:34: note: 'std::ostream& search_results_output' declared here
+   istream& query_input, ostream& search_results_output
+                         ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+..\src\serach_server.cpp:94:5: error: 'search_results_output' is not captured
+     search_results_output << '\n';                                // заменил endl на '\n'
+     ^~~~~~~~~~~~~~~~~~~~~
+..\src\serach_server.cpp:43:27: note: the lambda has no capture-default
+  futures.push_back(async([] {
+                           ^
+..\src\serach_server.cpp:38:34: note: 'std::ostream& search_results_output' declared here
+   istream& query_input, ostream& search_results_output
+                         ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+17:36:20 **** Incremental Build of configuration Debug for project final_red_belt ****
 Info: Internal Builder is used for build
-g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
-g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
-12:04:00 **** Incremental Build of configuration Debug for project final_red_belt_part_1 ****
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+17:36:43 **** Incremental Build of configuration Debug for project final_red_belt ****
 Info: Internal Builder is used for build
-g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\search_server.o" "..\\src\\search_server.cpp" 
-g++ -o final_red_belt_part_1.exe "src\\final_red_belt_part_1.o" "src\\parse.o" "src\\search_server.o" 
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:37:47 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+17:39:30 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In lambda function:
+..\src\serach_server.cpp:47:13: warning: statement has no effect [-Wunused-value]
+ updateCount ==0;
+ ~~~~~~~~~~~~^~~
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+17:40:02 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+18:06:46 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In function 'void UpdateIndex(std::istream&, SearchServer&)':
+..\src\serach_server.cpp:17:10: error: 'class SearchServer' has no member named 'GetAccess'
+    index.GetAccess().ref_to_value = move(new_index);
+          ^~~~~~~~~
+..\src\serach_server.cpp:18:4: error: 'updateCount' was not declared in this scope
+    updateCount++;
+    ^~~~~~~~~~~
+18:08:55 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In function 'void UpdateIndex(std::istream&, Synchronized<InvertedIndex>&)':
+..\src\serach_server.cpp:18:4: error: 'updateCount' was not declared in this scope
+    updateCount++;
+    ^~~~~~~~~~~
+18:09:07 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+18:10:45 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In member function 'void SearchServer::UpdateDocumentBase(std::istream&)':
+..\src\serach_server.cpp:32:72: error: expected '}' before ';' token
+   futures.push_back(async({UpdateIndex, ref(document_input), ref(index);
+                           ~                                            ^
+..\src\serach_server.cpp:32:72: error: expected ')' before ';' token
+   futures.push_back(async({UpdateIndex, ref(document_input), ref(index);
+                          ~                                             ^
+                                                                        )
+18:10:56 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In member function 'void SearchServer::UpdateDocumentBase(std::istream&)':
+..\src\serach_server.cpp:32:72: error: expected '}' before ')' token
+   futures.push_back(async({UpdateIndex, ref(document_input), ref(index));
+                           ~                                            ^
+..\src\serach_server.cpp:32:72: error: no matching function for call to 'async(<brace-enclosed initializer list>)'
+In file included from ..\src\search_server.h:11,
+                 from ..\src\serach_server.cpp:1:
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1712:5: note: candidate: 'template<class _Fn, class ... _Args> std::future<typename std::result_of<typename std::decay<_Tp>::type(typename std::decay<_Args>::type ...)>::type> std::async(std::launch, _Fn&&, _Args&& ...)'
+     async(launch __policy, _Fn&& __fn, _Args&&... __args)
+     ^~~~~
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1712:5: note:   template argument deduction/substitution failed:
+..\src\serach_server.cpp:32:72: note:   candidate expects at least 2 arguments, 1 provided
+   futures.push_back(async({UpdateIndex, ref(document_input), ref(index));
+                                                                        ^
+In file included from ..\src\search_server.h:11,
+                 from ..\src\serach_server.cpp:1:
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1745:5: note: candidate: 'template<class _Fn, class ... _Args> std::future<typename std::result_of<typename std::decay<_Tp>::type(typename std::decay<_Args>::type ...)>::type> std::async(_Fn&&, _Args&& ...)'
+     async(_Fn&& __fn, _Args&&... __args)
+     ^~~~~
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1745:5: note:   template argument deduction/substitution failed:
+..\src\serach_server.cpp:32:72: note:   couldn't deduce template parameter '_Fn'
+   futures.push_back(async({UpdateIndex, ref(document_input), ref(index));
+                                                                        ^
+18:11:13 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In member function 'void SearchServer::UpdateDocumentBase(std::istream&)':
+..\src\serach_server.cpp:32:72: error: expected '}' before ')' token
+   futures.push_back(async({UpdateIndex, ref(document_input), ref(index)));
+                           ~                                            ^
+..\src\serach_server.cpp:32:72: error: no matching function for call to 'async(<brace-enclosed initializer list>)'
+In file included from ..\src\search_server.h:11,
+                 from ..\src\serach_server.cpp:1:
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1712:5: note: candidate: 'template<class _Fn, class ... _Args> std::future<typename std::result_of<typename std::decay<_Tp>::type(typename std::decay<_Args>::type ...)>::type> std::async(std::launch, _Fn&&, _Args&& ...)'
+     async(launch __policy, _Fn&& __fn, _Args&&... __args)
+     ^~~~~
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1712:5: note:   template argument deduction/substitution failed:
+..\src\serach_server.cpp:32:72: note:   candidate expects at least 2 arguments, 1 provided
+   futures.push_back(async({UpdateIndex, ref(document_input), ref(index)));
+                                                                        ^
+In file included from ..\src\search_server.h:11,
+                 from ..\src\serach_server.cpp:1:
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1745:5: note: candidate: 'template<class _Fn, class ... _Args> std::future<typename std::result_of<typename std::decay<_Tp>::type(typename std::decay<_Args>::type ...)>::type> std::async(_Fn&&, _Args&& ...)'
+     async(_Fn&& __fn, _Args&&... __args)
+     ^~~~~
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1745:5: note:   template argument deduction/substitution failed:
+..\src\serach_server.cpp:32:72: note:   couldn't deduce template parameter '_Fn'
+   futures.push_back(async({UpdateIndex, ref(document_input), ref(index)));
+                                                                        ^
+18:11:37 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+18:13:52 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In member function 'void SearchServer::UpdateDocumentBase(std::istream&)':
+..\src\serach_server.cpp:32:71: error: no matching function for call to 'async(void (&)(std::istream&, Synchronized<InvertedIndex>), std::reference_wrapper<std::basic_istream<char> >, std::reference_wrapper<Synchronized<InvertedIndex> >)'
+   futures.push_back(async(UpdateIndex, ref(document_input), ref(index)));
+                                                                       ^
+In file included from ..\src\search_server.h:11,
+                 from ..\src\serach_server.cpp:1:
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1712:5: note: candidate: 'template<class _Fn, class ... _Args> std::future<typename std::result_of<typename std::decay<_Tp>::type(typename std::decay<_Args>::type ...)>::type> std::async(std::launch, _Fn&&, _Args&& ...)'
+     async(launch __policy, _Fn&& __fn, _Args&&... __args)
+     ^~~~~
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1712:5: note:   template argument deduction/substitution failed:
+..\src\serach_server.cpp:32:27: note:   cannot convert 'UpdateIndex' (type 'void(std::istream&, Synchronized<InvertedIndex>)' {aka 'void(std::basic_istream<char>&, Synchronized<InvertedIndex>)'}) to type 'std::launch'
+   futures.push_back(async(UpdateIndex, ref(document_input), ref(index)));
+                           ^~~~~~~~~~~
+In file included from ..\src\search_server.h:11,
+                 from ..\src\serach_server.cpp:1:
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1745:5: note: candidate: 'template<class _Fn, class ... _Args> std::future<typename std::result_of<typename std::decay<_Tp>::type(typename std::decay<_Args>::type ...)>::type> std::async(_Fn&&, _Args&& ...)'
+     async(_Fn&& __fn, _Args&&... __args)
+     ^~~~~
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1745:5: note:   template argument deduction/substitution failed:
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future: In substitution of 'template<class _Fn, class ... _Args> std::future<typename std::result_of<typename std::decay<_Tp>::type(typename std::decay<_Args>::type ...)>::type> std::async(_Fn&&, _Args&& ...) [with _Fn = void (&)(std::basic_istream<char>&, Synchronized<InvertedIndex>); _Args = {std::reference_wrapper<std::basic_istream<char, std::char_traits<char> > >, std::reference_wrapper<Synchronized<InvertedIndex> >}]':
+..\src\serach_server.cpp:32:71:   required from here
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:1745:5: error: no type named 'type' in 'class std::result_of<void (*(std::reference_wrapper<std::basic_istream<char> >, std::reference_wrapper<Synchronized<InvertedIndex> >))(std::basic_istream<char>&, Synchronized<InvertedIndex>)>'
+18:14:03 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+18:14:57 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+18:18:47 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In function 'void UpdateQuery(std::istream&, std::ostream&, Synchronized<InvertedIndex>&)':
+..\src\serach_server.cpp:34:32: error: 'SplitIntoWords' was not declared in this scope
+        for (const auto& word : SplitIntoWords(current_query)) {  //Q
+                                ^~~~~~~~~~~~~~
+18:19:33 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+18:22:00 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+..\src\serach_server.cpp: In member function 'void SearchServer::AddQueriesStream(std::istream&, std::ostream&)':
+..\src\serach_server.cpp:104:68: error: expected primary-expression before '&' token
+  futures.push_back(async(UpdateQuery, ref(query_input), ref(ostream& search_results_output), ref(index)));
+                                                                    ^
+18:22:23 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+18:23:00 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+18:29:42 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+18:30:47 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+Info: Nothing to build for final_red_belt
+18:52:38 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp: In function 'void TestSearchServer(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >)':
+..\src\final_red_belt.cpp:214:3: error: 'LOG_DURATION' was not declared in this scope
+   LOG_DURATION("Total");
+   ^~~~~~~~~~~~
+..\src\final_red_belt.cpp:218:28: error: 'random_time' was not declared in this scope
+     this_thread::sleep_for(random_time());
+                            ^~~~~~~~~~~
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:229:4:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+18:53:13 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp: In function 'void TestSearchServer(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >)':
+..\src\final_red_belt.cpp:219:28: error: 'random_time' was not declared in this scope
+     this_thread::sleep_for(random_time());
+                            ^~~~~~~~~~~
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:230:4:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+18:59:56 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp: In function 'void TestSearchServer(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >)':
+..\src\final_red_belt.cpp:221:28: error: 'random_time' was not declared in this scope
+     this_thread::sleep_for(random_time());
+                            ^~~~~~~~~~~
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:232:4:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+19:02:29 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp: In function 'void TestSearchServer(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >)':
+..\src\final_red_belt.cpp:221:34: error: no matching function for call to 'sleep_for(int)'
+     this_thread::sleep_for(rand());
+                                  ^
+In file included from C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/future:39,
+                 from ..\src\search_server.h:11,
+                 from ..\src\final_red_belt.cpp:7:
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/thread:357:7: note: candidate: 'template<class _Rep, class _Period> void std::this_thread::sleep_for(const std::chrono::duration<_Rep1, _Period1>&)'
+       sleep_for(const chrono::duration<_Rep, _Period>& __rtime)
+       ^~~~~~~~~
+C:/Users/d.kovalenko/Documents/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/thread:357:7: note:   template argument deduction/substitution failed:
+..\src\final_red_belt.cpp:221:34: note:   mismatched types 'const std::chrono::duration<_Rep1, _Period1>' and 'int'
+     this_thread::sleep_for(rand());
+                                  ^
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:232:4:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+19:03:53 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp: In function 'void TestSearchServer(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >)':
+..\src\final_red_belt.cpp:221:28: error: 'random_time' was not declared in this scope
+     this_thread::sleep_for(random_time());
+                            ^~~~~~~~~~~
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:232:4:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+19:04:23 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp: In function 'void TestSearchServer(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >)':
+..\src\final_red_belt.cpp:222:28: error: 'random_time' was not declared in this scope
+     this_thread::sleep_for(random_time());
+                            ^~~~~~~~~~~
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:233:4:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+19:07:46 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:235:4:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+19:09:00 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp: In function 'void TestSearchServer(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >)':
+..\src\final_red_belt.cpp:223:28: error: 'random_time' was not declared in this scope
+     this_thread::sleep_for(random_time());
+                            ^~~~~~~~~~~
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:234:4:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+19:10:30 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp: In function 'void TestSearchServer(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >)':
+..\src\final_red_belt.cpp:223:28: error: 'random_time' was not declared in this scope
+     this_thread::sleep_for(random_time());
+                            ^~~~~~~~~~~
+19:10:41 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+..\src\final_red_belt.cpp:230:1: error: expected declaration before '}' token
+ }
+ ^
+19:10:50 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+19:11:39 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\serach_server.o" "..\\src\\serach_server.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+19:13:38 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
+19:13:55 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:235:2:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+19:14:40 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+In file included from ..\src\final_red_belt.cpp:9:
+..\src\test_runner.h: In instantiation of 'void TestRunner::RunTest(TestFunc, const string&) [with TestFunc = void (*)(std::vector<std::pair<std::basic_istream<char>, std::basic_ostream<char>*> >); std::__cxx11::string = std::__cxx11::basic_string<char>]':
+..\src\final_red_belt.cpp:235:2:   required from here
+..\src\test_runner.h:77:11: error: too few arguments to function
+       func();
+       ~~~~^~
+19:16:11 **** Incremental Build of configuration Debug for project final_red_belt ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 

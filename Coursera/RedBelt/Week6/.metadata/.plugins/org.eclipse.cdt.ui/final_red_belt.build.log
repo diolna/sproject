@@ -1,12 +1,7 @@
-23:08:08 **** Incremental Build of configuration Debug for project final_red_belt ****
+19:16:11 **** Incremental Build of configuration Debug for project final_red_belt ****
 Info: Internal Builder is used for build
-g++ -o final_red_belt.exe "src\\final_red_belt.o" 
-src\final_red_belt.o: In function `main':
-E:\DIOLNA\PROJECTS\GIT\sproject\Coursera\RedBelt\Week6\final_red_belt\Debug/../src/final_red_belt.cpp:71: undefined reference to `SearchServer::SearchServer(std::istream&)'
-E:\DIOLNA\PROJECTS\GIT\sproject\Coursera\RedBelt\Week6\final_red_belt\Debug/../src/final_red_belt.cpp:75: undefined reference to `SearchServer::AddQueriesStream(std::istream&, std::ostream&)'
-E:\DIOLNA\PROJECTS\GIT\sproject\Coursera\RedBelt\Week6\final_red_belt\Debug/../src/final_red_belt.cpp:78: undefined reference to `SearchServer::UpdateDocumentBase(std::istream&)'
-E:\DIOLNA\PROJECTS\GIT\sproject\Coursera\RedBelt\Week6\final_red_belt\Debug/../src/final_red_belt.cpp:80: undefined reference to `SearchServer::AddQueriesStream(std::istream&, std::ostream&)'
-collect2.exe: error: ld returned 1 exit status
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\final_red_belt.o" "..\\src\\final_red_belt.cpp" 
+g++ -o final_red_belt.exe "src\\final_red_belt.o" "src\\parse.o" "src\\serach_server.o" 
 
-23:08:08 Build Failed. 4 errors, 0 warnings. (took 462ms)
+19:16:16 Build Finished. 0 errors, 0 warnings. (took 5s.249ms)
 
