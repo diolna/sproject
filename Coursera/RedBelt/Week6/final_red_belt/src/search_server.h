@@ -46,10 +46,27 @@ public:
   size_t GetSize(){
 	  return docs.size();
   }
+  size_t GetCount(){
+	  return countindex;
+  }
+  size_t SetCount(size_t  i){
+	  countindex = i;
+	  return countindex;
+  }
+  bool FlagUpdate(bool f){
+	  flag = f;
+	  return flag;
+  }
+  bool GetFlag(){
+	  return flag;
+  }
+
 
 private:
   map<string, vector<pair<size_t, size_t>>> index;
   vector<string> docs;
+  size_t countindex = 0;
+  bool flag = true;
 
 };
 
@@ -65,4 +82,5 @@ private:
   Synchronized<InvertedIndex> index;
   vector<future<void>> futures;
   size_t updateCount = 0;
+  vector<future<InvertedIndex>> f_index;
 };

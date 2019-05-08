@@ -21,6 +21,8 @@ void UpdateIndex(istream& document_input, Synchronized<InvertedIndex>& index){
 	  }
 
 	  index.GetAccess().ref_to_value = move(new_index);
+	  index.GetAccess().ref_to_value.SetCount(1);
+
 
 }
 void UpdateQuery(istream& query_input
@@ -88,18 +90,21 @@ SearchServer::SearchServer(istream& document_input) {
 
 void SearchServer::UpdateDocumentBase(istream& document_input) {
 
-  futures.push_back(async(UpdateIndex, ref(document_input), ref(index)));
+  future<void> v =async(UpdateIndex, ref(document_input), ref(index));
 
 
 
 }
 
 void SearchServer::AddQueriesStream(istream& query_input, ostream& search_results_output) {
-	LOG_DURATION("queri");
 
-	while(updateCount == 0) {}
+
+	while(index.GetAccess().ref_to_value.GetCount() == 0) {}
 	futures.push_back(async(UpdateQuery, ref(query_input), ref(search_results_output), ref(index)));
-	updateCount = 0;
+	if(futures.size() == 1000){
+		futures.clear();
+	}
+
 
 }
 
