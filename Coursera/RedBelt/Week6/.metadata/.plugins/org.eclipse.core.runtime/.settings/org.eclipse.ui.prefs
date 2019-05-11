@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 CURRENT_THEME_ID=org.eclipse.ui.ide.systemDefault
 ENABLE_ANIMATIONS=true
 eclipse.preferences.version=1
+=======
+eclipse.preferences.version=1
+showIntro=false
+>>>>>>> 155b179b49e35d2346005a3e0ea1748fcffd79dc

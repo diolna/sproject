@@ -1,0 +1,20 @@
+
+#include <iostream>
+
+using namespace std;
+
+
+class SearchServer {
+public:
+  SearchServer() = default;
+  explicit SearchServer(istream& document_input);
+
+  void UpdateDocumentBase(istream& document_input);
+  void AddQueriesStream(istream& query_input, ostream& search_results_output);
+};
+
+
+int main() {
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}
