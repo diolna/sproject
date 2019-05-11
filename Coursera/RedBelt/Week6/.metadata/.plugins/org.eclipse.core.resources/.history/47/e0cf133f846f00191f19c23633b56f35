@@ -1,0 +1,184 @@
+#include "search_server.h"
+#include "iterator_range.h"
+#include "profile.h"
+
+#include <algorithm>
+#include <iterator>
+#include <sstream>
+#include <iostream>
+#include <vector>
+#include <future>
+
+vector<string> SplitIntoWords(const string& line) {
+  istringstream words_input(line);
+  return {istream_iterator<string>(words_input), istream_iterator<string>()};
+}
+
+
+void UpdateIndex(istream& document_input, InvertedIndex index){
+	InvertedIndex new_index;
+	future<InvertedIndex> res = async([&new_index, &document_input]{
+	  for (string current_document; getline(document_input, current_document); ) {
+	    new_index.Add(move(current_document));
+	  }
+	  return new_index;
+	});
+
+
+	 // index.GetAccess().ref_to_value = move(res.get());
+
+}
+
+
+void UpdateQuery(istream& query_input
+		, ostream& search_results_output, vector<Synchronized<InvertedIndex>>& streams
+		, Synchronized<InvertedIndex>& index){
+			//возьмем 3 потока. тогда вектор будет равен 3 проверим так ли это
+	//если да нужно завершить потоки. если еще вектор не заполнен можно еще добавлять потоки
+			if(streams.size()==3){//нужно удалить потоки
+
+			} else {
+			streams.push_back(index);
+			}
+			size_t count = index.GetAccess().ref_to_value.GetSize();
+		vector<pair<size_t, size_t>> res(count	> 5 ? count : 5);
+
+
+	  for (string current_query; getline(query_input, current_query); ) {
+		  //count = index.GetAccess().ref_to_value.GetSize();
+	 	  res.resize(count  >5 ? count : 5);
+		  for(auto& i : res){
+			  i.first = 0;
+			  i.second =0;
+		  }
+	      for (const auto& word : SplitIntoWords(current_query)) {  //Q
+	    	  //пока я получаю данные из базы обновлений быть не должно. Поэтому здесь я должен
+	    	  // защитить доступ к базе попробую обернуть результат функции в класс Synchronized
+	    	  // при єтом каждій раз будет создаваться новій мьютекс и разрушатся после разрушения
+	    	  //updateQuery
+
+
+	      for (const pair<size_t,size_t>& docid : streams.at(streams.size()).GetAccess().ref_to_value.Lookup(word)
+	    		  ) {
+
+
+	        	res[docid.first].first = docid.first;
+	        	res[docid.first].second += docid.second;
+
+
+	    }
+	      }
+
+	      auto it = remove_if(res.begin(), res.end(), [](const auto& p){return p.second ==0;});
+	      res.resize(it - res.begin());
+	      partial_sort(													// ёюЁЄшЁютър map яю яЁшэЎшяє ╤ъюЁхх тёхую чрэшьрхЄ ьэюую тЁхь.
+	      begin(res),
+		  res.size() <5 ? (res.begin() + res.size()) : res.begin() + 5,
+	      end(res),
+	      [](pair<size_t, size_t> lhs, pair<size_t, size_t> rhs) {
+	        int64_t lhs_docid = lhs.first;
+	        auto lhs_hit_count = lhs.second;
+	        int64_t rhs_docid = rhs.first;
+	        auto rhs_hit_count = rhs.second;
+	        return make_pair(lhs_hit_count, -lhs_docid) > make_pair(rhs_hit_count, -rhs_docid);
+	      }
+	    );
+
+	      if(res.size()>5) {
+	    	  res.resize(5);
+	      }
+
+	    search_results_output << current_query << ':';
+	    for (auto& [docid,hitcount] : Head(res,5)) {
+
+
+	    	search_results_output << " {"
+	        << "docid: " << docid << ", "
+	        << "hitcount: " << hitcount << '}';
+
+	    }
+	    search_results_output << '\n';                                // чрьхэшы endl эр '\n'
+	      }
+
+}
+
+
+
+SearchServer::SearchServer(istream& document_input) {
+  UpdateDocumentBase(document_input);
+}
+
+void SearchServer::UpdateDocumentBase(istream& document_input) {
+
+		flagupdateOk = 0;
+		//запускаем ассинхронную функцию без мьютекса. Она не меняет данных и просто выполняестя
+		//в другом ядре.
+		//
+		updateIndex = async([&]{
+			InvertedIndex new_index;
+		  for (string current_document; getline(document_input, current_document); ) {
+		    new_index.Add(move(current_document));
+		  }
+		  flagupdateOk = 1;
+		  return new_index;
+		});
+
+
+		 // future<void> f =async([&]{index.GetAccess().ref_to_value = move(updateIndex.get());});
+
+}
+
+void SearchServer::AddQueriesStream(istream& query_input, ostream& search_results_output) {
+	LOG_DURATION("queri");
+
+	while(updateCount == 0) {}
+	if(flagupdateOk == 1) {
+		//index.GetAccess().ref_to_value = move(updateIndex.get());
+		flagupdateOk = 0;
+	}
+// в векторе сохраняем фьючеры запросов. Вектор можно разрушить самостоятельно и тогда все паралель
+//ные процессы завершатся или после разрушения класса serverserach но это наступит с завершением
+	//программы. запросов 500"000
+	//??? нужно ли для каждого запроса использовать свой мьютекс. Если да то где его создать.
+	//мы передаем index.
+	//скорее всего его  нужно создать в запросе. но тут в єто методе он разруштся после завершения
+	//поєтому его необходимо создать вне. а разрушать пр очистке futures;
+
+
+	futures.push_back(async(UpdateQuery, ref(query_input)
+			, ref(search_results_output), ref(streams), ref(index)));
+
+	this->AddFuture();
+
+
+}
+
+void SearchServer::AddFuture() {
+
+	if(futures.size()== PAGES){
+		futures.clear();
+	}
+
+}
+
+void InvertedIndex::Add(const string& document) {
+  docs.push_back(move(document));
+
+  const size_t docid = docs.size() - 1;
+  map<string, size_t> temp;
+  for(const auto& word : SplitIntoWords(docs.back())){
+	  temp[word]++;
+  }
+  for (const auto& i : temp) {
+    index[i.first].push_back({docid , i.second});
+  }
+}
+
+vector<pair<size_t, size_t>> InvertedIndex::Lookup(const string& word) const {
+  if (auto it = index.find(word); it != index.end()) {
+	  return it->second;
+
+  } else {
+    return {};
+  }
+}

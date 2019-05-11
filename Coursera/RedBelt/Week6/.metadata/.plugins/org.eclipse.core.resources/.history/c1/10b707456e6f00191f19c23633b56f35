@@ -1,0 +1,33 @@
+//document_input содержит не более 50000 документов
+//каждый документ содержит не более 1000 слов
+//общее число различных слов во всех документах не превосходит 10000
+//максимальная длина одного слова — 100 символов, слова состоят из строчных латинских букв и разделены одним или несколькими пробелами
+//query_input содержит не более 500 000 запросов, каждый запрос содержит от 1 до 10 слов
+
+#include "search_server.h"
+#include "parse.h"
+#include "test_runner.h"
+#include "profile.h"
+
+#include <algorithm>
+#include <iterator>
+#include <map>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <random>
+#include <thread>
+#include <cstdlib>
+#include <iostream>
+#include <tuple>
+#include <chrono>
+
+using namespace std;
+
+
+
+int main() {
+  reutrn 0;
+
+}

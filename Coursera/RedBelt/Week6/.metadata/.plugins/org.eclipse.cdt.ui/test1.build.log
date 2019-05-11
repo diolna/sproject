@@ -1,0 +1,40 @@
+22:01:41 **** Incremental Build of configuration Debug for project test1 ****
+Info: Internal Builder is used for build
+g++ -std=c++1z -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\test1.o" "..\\src\\test1.cpp" 
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_map.h:63,
+                 from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/map:61,
+                 from ..\src\test1.cpp:9:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/tuple: In instantiation of 'std::pair<_T1, _T2>::pair(std::tuple<_Args1 ...>&, std::tuple<_Args2 ...>&, std::_Index_tuple<_Indexes1 ...>, std::_Index_tuple<_Indexes2 ...>) [with _Args1 = {std::__cxx11::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >&&}; long long unsigned int ..._Indexes1 = {0}; _Args2 = {std::__cxx11::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >&&}; long long unsigned int ..._Indexes2 = {0}; _T1 = std::basic_istream<char>; _T2 = std::basic_ostream<char>]':
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/tuple:1657:63:   required from 'std::pair<_T1, _T2>::pair(std::piecewise_construct_t, std::tuple<_Args1 ...>, std::tuple<_Args2 ...>) [with _Args1 = {std::__cxx11::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >&&}; _Args2 = {std::__cxx11::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >&&}; _T1 = std::basic_istream<char>; _T2 = std::basic_ostream<char>]'
+..\src\test1.cpp:89:3:   required from here
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/tuple:1668:70: error: no matching function for call to 'std::basic_istream<char>::basic_istream(std::__cxx11::basic_ostringstream<char>)'
+         second(std::forward<_Args2>(std::get<_Indexes2>(__tuple2))...)
+                                                                      ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/iostream:40,
+                 from ..\src\test1.cpp:3:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream:613:7: note: candidate: 'std::basic_istream<_CharT, _Traits>::basic_istream(std::basic_istream<_CharT, _Traits>&&) [with _CharT = char; _Traits = std::char_traits<char>]'
+       basic_istream(basic_istream&& __rhs)
+       ^~~~~~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream:613:7: note:   no known conversion for argument 1 from 'std::__cxx11::basic_ostringstream<char>' to 'std::basic_istream<char>&&'
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream:606:7: note: candidate: 'std::basic_istream<_CharT, _Traits>::basic_istream() [with _CharT = char; _Traits = std::char_traits<char>]'
+       basic_istream()
+       ^~~~~~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream:606:7: note:   candidate expects 0 arguments, 1 provided
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream:93:7: note: candidate: 'std::basic_istream<_CharT, _Traits>::basic_istream(std::basic_istream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_istream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]'
+       basic_istream(__streambuf_type* __sb)
+       ^~~~~~~~~~~~~
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream:93:7: note:   no known conversion for argument 1 from 'std::__cxx11::basic_ostringstream<char>' to 'std::basic_istream<char>::__streambuf_type*' {aka 'std::basic_streambuf<char>*'}
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_map.h:63,
+                 from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/map:61,
+                 from ..\src\test1.cpp:9:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/tuple:1668:70: error: 'std::basic_ostream<_CharT, _Traits>::basic_ostream(std::basic_ostream<_CharT, _Traits>&&) [with _CharT = char; _Traits = std::char_traits<char>]' is protected within this context
+         second(std::forward<_Args2>(std::get<_Indexes2>(__tuple2))...)
+                                                                      ^
+In file included from D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/iostream:39,
+                 from ..\src\test1.cpp:3:
+D:/Program Files/Eclips/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ostream:393:7: note: declared protected here
+       basic_ostream(basic_ostream&& __rhs)
+       ^~~~~~~~~~~~~
+
+22:01:43 Build Failed. 2 errors, 0 warnings. (took 1s.467ms)
+
