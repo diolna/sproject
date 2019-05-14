@@ -46,18 +46,69 @@ private:
 
 
 Node* Next(Node* me) {
-	if(me->right!= nullptr) {
-		while(me->right!=nullptr) {
-			me->parent= me->right;
+//	cout << "Next : " << endl;
+//	cout << " Node value = " << me->value;
+//
+//	if(me->right != nullptr){
+//	cout << " right = " << me->right->value;
+//	}
+//	if(me->left != nullptr) {
+//	cout << " left = " << me->left->value;
+//	}
+//	if(me->parent != nullptr) {
+//	cout  << " parent = " << me->parent->value;
+//
+//	}
+//	cout << endl;
+	// у текущей вершины есть правое поддерево
+
+	if(me->right != nullptr) {
+	Node* temp = me->right;
+		if(temp->left != nullptr){
+
+			do{
+					temp = temp->left;
+			}while(temp->left!=nullptr);
+			return temp;
+		} else {
+		return me->right;
 		}
-		return me->left;
-//	} else if(me->right == nullptr && me== me->left) {
-//		return me->parent;
-//	} else if ( me->right == nullptr && me == me->right){
-//		return me->parent->parent;
+	//}
+	//if{ // нет правого поддерева а вершина ялвяется левым ребенком у родителя
+
+
+	}else if(me->parent!= nullptr) {
+			if( me->right == nullptr && me == me->parent->left) {
+				return me->parent;
 	}
 
+
+	//нет правого поддерква а вершина правый ребенок у родителя
+
+	else if(me->right == nullptr && me == me->parent->right) {
+		Node* par;
+		par = me->parent;
+		if(par == nullptr) return nullptr;
+
+		do{
+
+			if(par== par->parent->right) {
+
+				par =par->parent;
+
+			}
+			else if(par == par->parent->left) { break;}
+
+
+		}while(par->parent != nullptr);
+
+		return (par->parent == nullptr ? nullptr : par->parent);
+	}
+	}
+	return nullptr;
+
 }
+
 
 
 
@@ -92,6 +143,7 @@ void Test1() {
   while (min) {
     cout << min->value << '\n';
     min = Next(min);
+
   }
 }
 
@@ -108,3 +160,5 @@ int main() {
   RUN_TEST(tr, TestRootOnly);
   return 0;
 }
+
+
