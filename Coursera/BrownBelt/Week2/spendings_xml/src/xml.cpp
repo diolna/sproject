@@ -57,13 +57,18 @@ Node LoadNode(istream& input) {
 
     auto [node_name, attrs] = Split(Lstrip(line), ' ');  // возвращаем две строки до и после пробела
     attrs = Split(attrs, '>').first;
+    // обрезаем лишние данніх до >
     unordered_map<string, string> node_attrs;
     while (!attrs.empty()) {
+    	// парсим следующим образом. отрезаем левую часть строки до первого пробела
+    	// обрезаем левую часть до = тогда слева имя справа значение
       auto [head, tail] = Split(attrs, ' ');
       auto [name, value] = Split(head, '=');
       if (!name.empty() && !value.empty()) {
+    	  // если имя и значения имеются сохраняем их.
         node_attrs[string(Unquote(name))] = string(Unquote(value));
       }
+      // обновляем сторку перезаписіваем правую часть
       attrs = tail;
     }
 
