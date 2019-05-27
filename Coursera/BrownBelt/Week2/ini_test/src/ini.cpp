@@ -1,0 +1,60 @@
+#include "ini.h"
+
+#include <string>
+#include <unordered_map>
+#include <string_view>
+#include <iostream>
+#include <tuple>
+
+using namespace std;
+
+//namespace Ini {
+
+pair<string_view, string_view> Split(string_view line, char by) {
+	  size_t pos = line.find(by);
+	  string_view left = line.substr(0, pos);
+	  if (pos < line.size() && pos + 1 < line.size()) {
+	     return {left, line.substr(pos + 1)};
+	  } else {
+		  return {left, string_view()};
+  }
+}
+
+namespace Ini {
+Section& Document::AddSection(string name) {
+		pair<string, Section> p= make_pair(name, Section());
+		sections.insert(p);
+		return sections.at(name);
+}
+
+const Section& Document::GetSection(const string& name) const{
+	return sections.at(name);
+
+}
+
+size_t Document::SectionCount() const {
+	return sections.size();
+}
+
+Document Load(istream& input){
+	Document doc;
+	string name_section;
+	string name;
+	Section sec;
+	while(getline(input, name_section)) {
+		if(name_section[0] == '['){
+			getline(input, name_section);
+			name = name_section.substr(1, name_section.size()-2);
+			sec = doc.AddSection(name);
+		}
+		getline(input, name_section);
+		pair<string_view, string_view> p =  Split(name_section, '=');
+		doc.AddSection(name).insert({name, p});
+
+
+	}
+	return doc;
+
+}
+
+}
