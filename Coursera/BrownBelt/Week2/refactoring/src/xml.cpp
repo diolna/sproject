@@ -6,6 +6,8 @@ using namespace std;
 
 //namespace Xml {
 
+
+
 pair<string_view, string_view> Split(string_view line, char by) {
   size_t pos = line.find(by);
   string_view left = line.substr(0, pos);
@@ -33,8 +35,8 @@ string_view Unquote(string_view value) {
   }
   return value;
 }
-
-Xml::Node Xml::LoadNode(istream& input) {
+ namespace Xml {
+Node LoadNode(istream& input) {
   string root_name;
   getline(input, root_name);
 
@@ -57,13 +59,15 @@ Xml::Node Xml::LoadNode(istream& input) {
   return root;
 }
 
+ }
+
 Xml::Document Xml::Load(istream& input) {
-  return Xml::Document{Xml::LoadNode(input)};
+  return Xml::Document{LoadNode(input)};
 }
 
 Xml::Node::Node(
   string name, unordered_map<string, string> attrs
-) : name(mdove(name)), attrs(move(attrs)) {
+) : name(move(name)), attrs(move(attrs)) {
 }
 
 const vector<Xml::Node>& Xml::Node::Children() const {

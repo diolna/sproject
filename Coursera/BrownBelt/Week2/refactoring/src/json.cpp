@@ -83,8 +83,8 @@ Json::Node LoadDict(istream& input) {
 
   return Json::Node(move(result));
 }
-
-Json::Node Json::LoadNode(istream& input) {
+namespace Json {
+Node LoadNode(istream& input) {
   char c;
   input >> c;
 
@@ -100,8 +100,8 @@ Json::Node Json::LoadNode(istream& input) {
   }
 }
 
-Json::Document Load(istream& input) {
-  return Json::Document{LoadNode(input)};
+Document Load(istream& input) {
+  return Document{LoadNode(input)};
 }
-
+}
 
