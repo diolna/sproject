@@ -1,0 +1,39 @@
+
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <functional>
+#include <map>
+#include <algorithm>
+#include <utility>
+
+using namespace std;
+
+
+int main() {
+
+string s = "    dfdsfdsf dsfsdf    ";
+
+istringstream is(s);
+getline(is, s);
+cout << s << endl;
+auto it = find_if(s.begin(), s.end(), [](const char& a){
+	return a==' ';
+});
+while(it==s.begin()) {
+	s.erase(it);
+	it = find_if(s.begin(), s.end(), [](const char& a){
+		return a==' ';
+	});
+}
+cout << s << endl;
+
+
+}
+
+
+
+
+
+
+}

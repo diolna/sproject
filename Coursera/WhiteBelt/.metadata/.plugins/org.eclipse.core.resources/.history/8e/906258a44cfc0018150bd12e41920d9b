@@ -1,0 +1,15 @@
+#include <algorithm>
+
+
+
+int Sum(int x, int y){
+	return x+y;
+}
+
+string Reverse(string s){
+
+}
+
+void Sort(vector<int>& nums){
+
+}

@@ -1,0 +1,7 @@
+21:20:32 **** Rebuild of configuration Debug for project racilnal_1 ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\racilnal_1.o" "..\\src\\racilnal_1.cpp" 
+g++ -o racilnal_1.exe "src\\racilnal_1.o" 
+
+21:20:38 Build Finished. 0 errors, 0 warnings. (took 5s.539ms)
+

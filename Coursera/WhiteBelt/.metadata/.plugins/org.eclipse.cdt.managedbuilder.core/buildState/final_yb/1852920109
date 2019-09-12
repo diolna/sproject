@@ -1,0 +1,21 @@
+#
+#Wed Dec 19 23:47:31 EET 2018
+src/database.h=1
+src/token.cpp=1
+src/test_runner.h=1
+Debug/final_yb.exe=1
+src/condition_parser.cpp=1
+src/condition_parser_test.cpp=1
+src/node.cpp=1
+src/node.h=1
+Debug/src/main.o=1
+Debug/src/node.o=1
+Debug/src/database.o=1
+Debug/src/token.o=1
+Debug/src/condition_parser_test.o=1
+Debug/src/condition_parser.o=1
+src/condition_parser.h=1
+src/token.h=1
+src/main.cpp=1
+src/database.cpp=1
+src/date.h=1

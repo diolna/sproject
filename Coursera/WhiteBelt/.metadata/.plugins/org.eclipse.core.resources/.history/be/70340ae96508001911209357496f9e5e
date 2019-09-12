@@ -1,0 +1,112 @@
+
+//#include "stdafx.h"
+#include "database.h"
+#include "date.h"
+
+#include <string>
+#include <vector>
+#include <set>
+#include <iostream>
+#include <iomanip>
+#include <utility>
+
+#include <sstream>
+
+using namespace std;
+
+
+
+void Database::Add(const Date& date, const string& event){
+	//cout <<"event =("<<event<<")"<< endl;
+	if (base.count(date) > 0) {
+		auto it = base.at(date);
+
+		auto it2 = find(it.begin(), it.end(), event);
+
+		if (it2 == it.end()) {
+			if(event!=""){
+			base.at(date).push_back(event);
+			}
+		}
+	}
+	else {
+		if(event!=""){
+		base[date].push_back(event);
+		}
+	}
+}
+
+int Database::RemoveIf(function<bool(const Date& d, const string &ev)> rem) {
+	int count = 0;
+
+		for (auto& i : base) {
+			Date d = i.first;
+		auto it = find_if(i.second.begin(), i.second.end(), [d, rem](const string& rhs) {
+			if (rem(d, rhs)) { return true; }
+			return false;
+		});
+		while (it != i.second.end()) {
+			count++;
+			i.second.erase(it);
+			it = find_if(i.second.begin(), i.second.end(), [d, rem](const string& rhs) {
+				if (rem(d, rhs)) { return true; }
+				return false;
+			});
+		}
+	}
+
+	return count;
+}
+vector<pair<Date, string>> Database::FindIf(function<bool(const Date& d, const string &ev)> f) const{
+
+	vector<pair<Date,string>> v;
+
+	for (auto& i : base) {
+		for (auto& k : i.second) {
+			if (f(i.first, k)) {
+				v.push_back(make_pair(i.first, k));
+
+
+
+			}
+		}
+	}
+
+	return v;
+}
+void Database:: Print(ostream& os) const {
+	for (auto& i : base) {
+		for (auto& i2 : i.second) {
+			os <<i.first << " " << i2 << endl;
+		}
+
+	}
+
+}
+string Database::Last(const Date& date) const {
+	string event;
+	vector<string> temp;
+	if(base.begin()==base.end()){return "No entries";}
+	if(date  < base.begin()->first){
+		return "No entries";
+	}
+
+	auto it = base.upper_bound(date);
+
+	//if (it == base.end()) {
+		--it;
+		temp = it->second;
+		event = temp.at(temp.size() - 1);
+	//}
+	//else {
+	//	temp = it->second;
+	//	event = temp.at(temp.size() - 1);
+	//}
+
+	stringstream os;
+	os << it->first << " ";
+
+	string out = os.str();
+
+	return out + event;
+}

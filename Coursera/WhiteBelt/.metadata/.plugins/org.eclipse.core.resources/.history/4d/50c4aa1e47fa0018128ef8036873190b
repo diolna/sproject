@@ -1,0 +1,160 @@
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+template <class T>
+ostream& operator << (ostream& os, const vector<T>& s) {
+  os << "{";
+  bool first = true;
+  for (const auto& x : s) {
+    if (!first) {
+      os << ", ";
+    }
+    first = false;
+    os << x;
+  }
+  return os << "}";
+}
+
+template <class T>
+ostream& operator << (ostream& os, const set<T>& s) {
+  os << "{";
+  bool first = true;
+  for (const auto& x : s) {
+    if (!first) {
+      os << ", ";
+    }
+    first = false;
+    os << x;
+  }
+  return os << "}";
+}
+
+template <class K, class V>
+ostream& operator << (ostream& os, const map<K, V>& m) {
+  os << "{";
+  bool first = true;
+  for (const auto& kv : m) {
+    if (!first) {
+      os << ", ";
+    }
+    first = false;
+    os << kv.first << ": " << kv.second;
+  }
+  return os << "}";
+}
+
+template<class T, class U>
+void AssertEqual(const T& t, const U& u, const string& hint = {}) {
+  if (t != u) {
+    ostringstream os;
+    os << "Assertion failed: " << t << " != " << u;
+    if (!hint.empty()) {
+       os << " hint: " << hint;
+    }
+    throw runtime_error(os.str());
+  }
+}
+
+void Assert(bool b, const string& hint) {
+  AssertEqual(b, true, hint);
+}
+
+class TestRunner {
+public:
+  template <class TestFunc>
+  void RunTest(TestFunc func, const string& test_name) {
+    try {
+      func();
+      cerr << test_name << " OK" << endl;
+    } catch (exception& e) {
+      ++fail_count;
+      cerr << test_name << " fail: " << e.what() << endl;
+    } catch (...) {
+      ++fail_count;
+      cerr << "Unknown exception caught" << endl;
+    }
+  }
+
+  ~TestRunner() {
+    if (fail_count > 0) {
+      cerr << fail_count << " unit tests failed. Terminate" << endl;
+      exit(1);
+    }
+  }
+
+private:
+  int fail_count = 0;
+};
+
+bool IsPalindrom(const string& str) {
+	if(str.size()==0){return true;}
+	vector<char> a;
+
+	for(auto& i: str){
+		a.push_back(i);
+	}
+	if(a.size()==1 ){return true;}
+	else{
+		for(int i=0; i <= ((static_cast<int>(a.size()-1)))/2; ++i){
+			if(a[i]!=a[static_cast<int>(a.size())-1-i]){return false;}
+
+		}
+	}
+	return true;
+}
+
+void TestOneSymbol(){
+	AssertEqual(IsPalindrom("a"), true, " one symbol");
+	AssertEqual(IsPalindrom(" "), true, " one symbol");
+	AssertEqual(IsPalindrom("?"), true, " one symbol");
+	}
+
+void TestEmptyString(){
+	string a;
+	AssertEqual(IsPalindrom(a), true, "symbol is empty");
+}
+void TestPalindrom(){
+	AssertEqual(IsPalindrom("aabbbaa"), true, "aabbbaa");
+	AssertEqual(IsPalindrom("a bbb a"), true, "a bbb a");
+	AssertEqual(IsPalindrom("aabbaa"), true, "aabbaa");
+	AssertEqual(IsPalindrom("          "), true , "all space");
+	AssertEqual(IsPalindrom("AABBaa"), false, "AABBaa");
+	AssertEqual(IsPalindrom(" AABBAA "), true, " AABBAA ");
+	AssertEqual(IsPalindrom("dfdfdfdff "), false, " dfdfdfdff ");
+	AssertEqual(IsPalindrom("ff"), true, " ff");
+	AssertEqual(IsPalindrom("rerererererererererer"), true, "rerererererererererer");
+	AssertEqual(IsPalindrom("tytrtycc"), false, "tytrtycc");
+	AssertEqual(IsPalindrom(" t y t y t "), true, " t y t y t ");
+	AssertEqual(IsPalindrom(" 1 "), true, " 1 ");
+	AssertEqual(IsPalindrom(" 1 1 1"), false, " 1 1 1");
+	AssertEqual(IsPalindrom("tytrtycc"), false, "tytrtycc");
+	AssertEqual(IsPalindrom("madam"), true, "madam");
+	AssertEqual(IsPalindrom("  pollop  "), true, "  pollop  ");
+	AssertEqual(IsPalindrom("  pollop "), false, "  pollop  ");
+
+
+
+
+
+}
+
+
+
+int main() {
+  TestRunner runner;
+  runner.RunTest(TestOneSymbol, "OneSymbol");
+  runner.RunTest(TestEmptyString, "EmptyString");
+  runner.RunTest(TestPalindrom, "TestPalindrom");
+
+
+
+
+  return 0;
+}

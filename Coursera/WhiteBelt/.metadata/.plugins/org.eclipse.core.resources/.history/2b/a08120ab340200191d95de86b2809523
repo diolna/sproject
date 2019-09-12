@@ -1,0 +1,16 @@
+#pragma once
+
+#include <string>
+
+using namespace std;
+
+
+class Database {
+
+public:
+	void Add(const string& d, const string& e) const ;
+	string Last(const string& data);  // argument parse data  type ?
+	int RemoveIf();
+	void Print(const ostream& os);
+
+};

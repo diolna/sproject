@@ -1,0 +1,34 @@
+
+#include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
+
+using namespace std;
+
+
+class Database {
+
+public:
+	void Add(const string& d, const string& e) {
+		auto search_date = base_.find(d);
+		if(search_date!=base_.end()){
+			vector<string> ev = base_.at(d);
+			auto search_event = ev.find(ev.begin(), ev.end(), e);
+			if(search_event!=ev.end()){
+				return;
+			}
+		}
+		base_[d].push_back(e);
+	}
+	string Last(const string& data);  // argument parse data  type ?
+	int RemoveIf();
+	void Print(const ostream& os){
+
+	}
+
+private:
+	map<string, vector<string>> base_;
+
+
+};

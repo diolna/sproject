@@ -1,0 +1,149 @@
+
+//#include "stdafx.h"
+#include "database.h"
+#include "date.h"
+
+#include <string>
+#include <vector>
+#include <set>
+#include <iostream>
+#include <iomanip>
+#include <utility>
+#include <algorithm>
+#include <sstream>
+
+using namespace std;
+
+
+ostream& operator<<(ostream& os, const Date date){
+	os<< setfill('0') << setw(4) << date.GetYear() << "-" << setw(2) << date.GetMonth() <<
+					"-" << setw(2) << date.GetDay();
+
+	return os;
+}
+
+
+bool operator<(const Date& lhs, const Date& rhs) {
+	if (lhs.GetYear() != rhs.GetYear()) {
+		return lhs.GetYear() < rhs.GetYear();
+	}
+	else if (lhs.GetMonth() != rhs.GetMonth()) {
+		return lhs.GetMonth() < rhs.GetMonth();
+	}
+	else if (lhs.GetDay() != rhs.GetDay()) {
+		return lhs.GetDay() < rhs.GetDay();
+	}
+	//cout << "operator<" << endl;
+	return false;
+}
+
+
+bool operator==(const Date& lhs, const Date& rhs) {
+	//cout << "== date";
+	   return (lhs.GetYear() == rhs.GetYear()) && (lhs.GetMonth() == rhs.GetMonth()) &&
+		(lhs.GetDay() == rhs.GetDay());
+
+	}
+
+
+
+
+void Database::Add(const Date& date, const string& event){
+	if (base.count(date) > 0) {
+		auto it = base.at(date);
+		auto it2 = find(it.begin(), it.end(), event);
+
+		if (it2 == it.end()) {
+			base.at(date).push_back(event);
+		}
+	}
+	else {
+
+		base[date].push_back(event);
+	}
+}
+
+int Database::RemoveIf(function<bool(const Date& d, const string &ev)> rem) {
+	int count = 0;
+
+		for (auto& i : base) {
+			Date d = i.first;
+		auto it = find_if(i.second.begin(), i.second.end(), [d, rem](const string& rhs) {
+			if (rem(d, rhs)) { return true; }
+			return false;
+		});
+		while (it != i.second.end()) {
+			count++;
+			i.second.erase(it);
+			it = find_if(i.second.begin(), i.second.end(), [d, rem](const string& rhs) {
+				if (rem(d, rhs)) { return true; }
+				return false;
+			});
+		}
+	}
+
+	return count;
+}
+vector<pair<Date, string>> Database::FindIf(function<bool(const Date& d, const string &ev)> f) const{
+
+	//ostringstream os;
+	vector<pair<Date,string>> v;
+	//int date_int;
+	for (auto& i : base) {
+		for (auto& k : i.second) {
+			if (f(i.first, k)) {
+				//os<<i.first;
+				//os << setfill('0')<<setw(4) << i.first.GetYear()<< "-"<<setfill('0')<<
+				//setw(2)<< i.first.GetMonth()<< "-" <<setw(2) << i.first.GetDay()
+				//os << " " + k;
+				v.push_back(make_pair(i.first, k));
+				//os.str("");
+
+
+			}
+		}
+	}
+
+	return v;
+}
+void Database:: Print(ostream& os) const {
+	for (auto& i : base) {
+
+		for (auto& i2 : i.second) {
+			os <<i.first;
+			//cout << setfill('0') << setw(4) << i.first.GetYear() << "-" << setw(2) << i.first.GetMonth() <<
+			//	"-" << setw(2) << i.first.GetDay();
+			os << " " << i2 << endl;
+		}
+
+	}
+
+}
+string Database::Last(const Date& date) const {
+	string event;
+	vector<string> temp;
+	if(date  < base.begin()->first){
+		return "No entries";
+	}
+
+	auto it = base.lower_bound(date);
+
+	if (it == base.end()) {
+		--it;
+		temp = it->second;
+		event = temp.at(temp.size() - 1);
+	}
+	else {
+		temp = it->second;
+		event = temp.at(temp.size() - 1);
+	}
+	string d;
+	stringstream os(d);
+	os << it->first << " ";
+	//cout << setfill('0') << setw(4) << it->first.GetYear() << "-" << setw(2) << it->first.GetMonth() << "-" <<
+	//	setw(2) << it->first.GetDay() << " ";
+	getline(os, d);
+
+
+	return d+ event;
+}

@@ -1,0 +1,29 @@
+#include <iostream>
+#include "node.h"
+#include "date.h"
+#include <string>
+#include "condition_parser.h"
+#include <memory>
+
+using namespace std;
+
+
+bool DateComparisonNode::Evaluate(const Date& date, const string& event){
+		return false;
+	}
+
+bool EventComparisonNode::Evaluate(const Date& date, const string& event){
+		return false;
+
+}
+
+bool LogicalOperationNode::Evaluate(const Date& date, const string& event){
+		return false;
+	}
+
+
+	bool EmptyNode::Evaluate(const Date& date, const string& event){
+		return false;
+	}
+
+

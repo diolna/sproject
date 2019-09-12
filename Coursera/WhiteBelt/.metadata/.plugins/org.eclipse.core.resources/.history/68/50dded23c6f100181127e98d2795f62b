@@ -1,0 +1,14 @@
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+int main() {
+	vector<int> x={3,3,5,6,7,4};
+	for(size_t i=0; i+1<x.size(); ++i){
+		cout << x[i]<< endl;
+	}
+	return 0;
+}

@@ -1,0 +1,7 @@
+23:37:21 **** Rebuild of configuration Debug for project y5_check_1 ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\y5_check_1.o" "..\\src\\y5_check_1.cpp" 
+g++ -o y5_check_1.exe "src\\y5_check_1.o" 
+
+23:37:27 Build Finished. 0 errors, 0 warnings. (took 6s.183ms)
+

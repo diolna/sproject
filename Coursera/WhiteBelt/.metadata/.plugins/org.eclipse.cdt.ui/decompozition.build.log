@@ -1,0 +1,11 @@
+08:55:05 **** Incremental Build of configuration Debug for project decompozition ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\decompozition.o" "..\\src\\decompozition.cpp" 
+..\src\decompozition.cpp: In function 'std::istream& operator>>(std::istream&, Query&)':
+..\src\decompozition.cpp:36:18: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::__cxx11::basic_string<char> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+   for (int i=0; i<=q.stops.size()-1; ++i) {
+                 ~^~~~~~~~~~~~~~~~~~
+g++ -o decompozition.exe "src\\decompozition.o" 
+
+08:55:09 Build Finished. 0 errors, 1 warnings. (took 4s.315ms)
+

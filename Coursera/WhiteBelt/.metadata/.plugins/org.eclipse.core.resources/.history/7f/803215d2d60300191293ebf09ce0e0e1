@@ -1,0 +1,40 @@
+
+#include "node.h"
+#include "date.h"
+#include "condition_parser.h"
+#include <map>
+#include <set>
+#include <string>
+#include <vector>
+#include <iostream>
+#include  <functional>
+
+
+//using namespace std;
+
+
+DateComparisonNode::DateComparisonNode( Comparison& c,  Date& d){
+	return;
+}
+
+int DateComparisonNode::Evaluate(const Date& d, const string& ev){
+
+
+		return 0;
+	}
+
+int EventComparisonNode::Evaluate(const Date& date, const string& ev) {
+	return 0;
+}
+
+
+int  EmptyNode::Evaluate(const Date& d, const string& ev) {
+	return 0;
+}
+
+LogicalOperationNode::LogicalOperationNode(const LogicalOperation& op, shared_ptr<Node>& left, shared_ptr<Node>& Right){}
+
+
+int LogicalOperationNode::Evaluate(const Date& d, const string& ev) {
+	return 0;
+}

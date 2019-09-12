@@ -1,0 +1,112 @@
+
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+enum class TaskStatus {
+  NEW,          // нова€
+  IN_PROGRESS,  // в разработке
+  TESTING,      // на тестировании
+  DONE          // завершена
+};
+
+using TasksInfo = map<TaskStatus,int>;
+
+//bool operator==(const TaskStatus& lhs, const TaskStatus& rhs){
+
+//}
+
+TasksInfo operator-(const TasksInfo& lhs, const TasksInfo& rhs){
+			TasksInfo t;
+			for(auto y:rhs){
+				for(auto i:lhs){
+					if(i.first==y.first){
+						t[i.first]= i.second-y.second;
+					}
+				}
+			}
+
+			return t;
+		}
+
+class TeamTasks {
+	public:
+		  // ѕолучить статистику по статусам задач конкретного разработчика
+	const TasksInfo&  GetPersonTasksInfo(const string& person) const{
+			  	  return team.at(person);
+		  }
+
+		  // ƒобавить новую задачу (в статусе NEW) дл€ конкретного разработчитка
+		  void AddNewTask(const string& person){
+			   ++team[person][TaskStatus::NEW];
+			  cout <<" person = " << person << " info status (number of status) = " << team[person][TaskStatus::NEW] << endl;
+
+		  }
+		  // ќбновить статусы по данному количеству задач конкретного разработчика,
+		  // подробности см. ниже
+ tuple<TasksInfo, TasksInfo> PerformPersonTasks(const string& person, int task_count){
+	 	 	 	 	 	 	 	 TasksInfo peform_task;
+
+
+	 	 	 	 	 	 	 	 // по простому.
+	 	 	 	 	 	 	 	 // провер€ю существует ли бло нов≥х задач. ѕровер€ю пустой или нет если пустой провер сущ ли блок в процессе
+	 	 	 	 	 	 	 	 // провер€ю пустой ли провер€ю сущенсвтует ли блок тестинг
+
+	 	 	 	 	 	 	 	 	 	 for(auto& taskinfo: team[person]){
+
+	 	 	 	 	 	 	 	 	 	 }
+
+
+
+
+
+ 	 	 	 	 	 		 }
+
+
+
+	 	 	 	 	 	 	 return ;
+ 	 	 	 	 			}
+	private:
+		   map<string, TasksInfo> team;
+		  };
+
+void PrintTasksInfo(TasksInfo tasks_info) {
+  cout << tasks_info[TaskStatus::NEW] << " new tasks" <<
+      ", " << tasks_info[TaskStatus::IN_PROGRESS] << " tasks in progress" <<
+      ", " << tasks_info[TaskStatus::TESTING] << " tasks are being tested" <<
+      ", " << tasks_info[TaskStatus::DONE] << " tasks are done" << endl;
+}
+
+
+
+int main() {
+
+  TeamTasks tasks;
+  tasks.AddNewTask("Ilia");
+  for (int i = 0; i < 3; ++i) {
+    tasks.AddNewTask("Ivan");
+  }
+  cout << "Ilia's tasks: ";
+  PrintTasksInfo(tasks.GetPersonTasksInfo("Ilia"));
+  cout << "Ivan's tasks: ";
+  PrintTasksInfo(tasks.GetPersonTasksInfo("Ivan"));
+
+  TasksInfo updated_tasks, untouched_tasks;
+
+  tie(updated_tasks, untouched_tasks) =
+      tasks.PerformPersonTasks("Ivan", 2);
+  cout << "Updated Ivan's tasks: ";
+  PrintTasksInfo(updated_tasks);
+  cout << "Untouched Ivan's tasks: ";
+  PrintTasksInfo(untouched_tasks);
+
+  tie(updated_tasks, untouched_tasks) =
+      tasks.PerformPersonTasks("Ivan", 2);
+  cout << "Updated Ivan's tasks: ";
+  PrintTasksInfo(updated_tasks);
+  cout << "Untouched Ivan's tasks: ";
+  PrintTasksInfo(untouched_tasks);
+
+  return 0;
+}

@@ -1,0 +1,21 @@
+00:46:45 **** Incremental Build of configuration Debug for project func ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\func.o" "..\\src\\func.cpp" 
+..\src\func.cpp: In function 'bool IsPalindrom(std::__cxx11::string)':
+..\src\func.cpp:10:5: error: 'else' without a previous 'if'
+    }else
+     ^~~~
+..\src\func.cpp:11:8: error: expected primary-expression before '}' token
+        }
+        ^
+..\src\func.cpp:11:8: warning: no return statement in function returning non-void [-Wreturn-type]
+..\src\func.cpp: At global scope:
+..\src\func.cpp:13:1: error: expected unqualified-id before 'return'
+ return true;
+ ^~~~~~
+..\src\func.cpp:14:1: error: expected declaration before '}' token
+ }
+ ^
+
+00:46:46 Build Failed. 4 errors, 1 warnings. (took 895ms)
+

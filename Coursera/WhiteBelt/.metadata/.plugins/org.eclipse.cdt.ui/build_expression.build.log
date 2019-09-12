@@ -1,0 +1,11 @@
+12:49:35 **** Incremental Build of configuration Debug for project build_expression ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\build_expression.o" "..\\src\\build_expression.cpp" 
+..\src\build_expression.cpp: In function 'int main()':
+..\src\build_expression.cpp:34:17: warning: comparison of integer expressions of different signedness: 'int' and 'std::deque<std::__cxx11::basic_string<char> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+  for(auto i=0; i<=expression.size()-1; ++i){
+                ~^~~~~~~~~~~~~~~~~~~~~
+g++ -o build_expression.exe "src\\build_expression.o" 
+
+12:49:37 Build Finished. 0 errors, 1 warnings. (took 2s.137ms)
+

@@ -1,0 +1,24 @@
+
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <functional>
+#include <map>
+using namespace std;
+
+void Print(const map<int, int> m){
+	for(auto& i: m){
+
+			cout << "key = " << i.first << "value = "<< i.second << endl;
+		}
+
+}
+
+int main() {
+	map<int, int> m= { {1,2}, {2,56}, {45,6656}, {34, 4546}};
+	Print(m);
+	m.erase(2);
+	Print(m);
+
+
+}

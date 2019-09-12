@@ -1,0 +1,22 @@
+
+#include <iostream>
+#include <vector>
+#include <tuple>
+#include <utility>
+
+
+using namespace std;
+
+
+int main() {
+	tuple<int, string, vector<int>> t;
+	t ={3, "aaa", {23,43,34}};
+	cout << get<0>(t)<< " second argument = " << get<1>(t) << endl;
+	auto tt = make_tuple("dfd", 44, "dfdf");
+	//tuple aaa("dsfdf",333,333,"dfd");
+	pair< int, string> p(7, "C++");
+	cout <<p.second << " " << p.first;
+
+
+	return 0;
+}

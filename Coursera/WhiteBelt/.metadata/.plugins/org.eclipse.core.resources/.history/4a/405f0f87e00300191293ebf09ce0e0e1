@@ -1,0 +1,22 @@
+#pragma once
+
+#include "date.h"
+#include "node.h"
+
+#include <string>
+#include <iostream>
+#include <functional>
+#include <vector>
+#include <memory>
+
+using namespace std;
+
+
+class Database {
+public:
+	void Add(const Date& date, const string& event);
+	void Print(ostream& os);
+	int RemoveIf(function<bool(const Date& date, const string& event)> func);
+	vector<string> FindIf(function<bool(const Date& date, const string& event)> func);
+	string Last(Date& date);
+};

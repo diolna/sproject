@@ -1,0 +1,35 @@
+
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <functional>
+#include <map>
+#include <algorithm>
+#include <utility>
+using namespace std;
+
+void Print(const map<int, int> m){
+	for(auto& i: m){
+
+			cout << "key = " << i.first << "value = "<< i.second << endl;
+		}
+
+}
+
+int main() {
+	//int bbb = 2;
+	map<int, int> m= { {1,2}, {2,56}, {45,6656}, {34, 4546}};
+	vector<int> v={2,4,6,664,3};
+	//auto i= m.begin();
+	auto it = find_if(m.begin(), m.end(), [](const pair<int,int>& a){
+		return  a.first < 34;
+	});
+
+	cout << *it << endl;
+
+	Print(m);
+	m.erase(2);
+	Print(m);
+
+
+}

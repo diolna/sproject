@@ -1,0 +1,6 @@
+13:26:14 **** Incremental Build of configuration Debug for project month_bizness ****
+Info: Internal Builder is used for build
+g++ -o month_bizness.exe "src\\month_bizness.o" 
+
+13:26:14 Build Finished. 0 errors, 0 warnings. (took 433ms)
+

@@ -1,0 +1,7 @@
+19:40:17 **** Incremental Build of configuration Debug for project notifiers ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\notifiers.o" "..\\src\\notifiers.cpp" 
+g++ -o notifiers.exe "src\\notifiers.o" 
+
+19:40:18 Build Finished. 0 errors, 0 warnings. (took 1s.394ms)
+

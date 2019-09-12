@@ -1,0 +1,7 @@
+00:38:59 **** Incremental Build of configuration Debug for project y4_refactor_old ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\y4_refactor_old.o" "..\\src\\y4_refactor_old.cpp" 
+g++ -o y4_refactor_old.exe "src\\y4_refactor_old.o" 
+
+00:39:01 Build Finished. 0 errors, 0 warnings. (took 1s.564ms)
+

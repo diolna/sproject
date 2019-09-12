@@ -1,0 +1,28 @@
+
+#include <string>
+#include <vector>
+#include <set>
+#include <algorithm>
+
+using namespace std;
+
+
+class Database {
+
+public:
+	void Add(const string& d, const string& e) {
+
+
+		base_[d] =e;
+	}
+	string Last(const string& data);  // argument parse data  type ?
+	int RemoveIf();
+	void Print(const ostream& os){
+
+	}
+
+private:
+	map<string, set<string>> base_;
+
+
+};

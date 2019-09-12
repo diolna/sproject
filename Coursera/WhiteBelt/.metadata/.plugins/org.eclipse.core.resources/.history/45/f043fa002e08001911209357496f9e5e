@@ -1,0 +1,16 @@
+#pragma once
+#include <vector>
+
+using namespace std;
+
+
+class Date {
+public:
+	//Date(){};
+	Date(int& year, int& month,  int& day): year_(year), month_(month), day_(day){}
+	Date( vector<int>& d) : date(d) {}
+private:
+	 int year_, month_, day_;
+	vector<int> date = { year_, month_, day_ };
+
+};

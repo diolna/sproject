@@ -1,0 +1,12 @@
+22:49:26 **** Incremental Build of configuration Debug for project phone_number ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\phone_number.o" "..\\src\\phone_number.cpp" 
+..\src\phone_number.cpp: In constructor 'PhoneNumber::PhoneNumber(const string&)':
+..\src\phone_number.cpp:27:38: warning: comparison of integer expressions of different signedness: 'std::__cxx11::basic_string<char>::size_type' {aka 'long long unsigned int'} and 'int' [-Wsign-compare]
+    if( plus!='+' || country.find('+')!=-1 || country.empty()|| city.empty() || number.empty()){
+                     ~~~~~~~~~~~~~~~~~^~~~
+g++ -o phone_number.exe "src\\main.o" "src\\phone_number.o" 
+
+22:49:28 Build Finished. 0 errors, 1 warnings. (took 2s.221ms)
+

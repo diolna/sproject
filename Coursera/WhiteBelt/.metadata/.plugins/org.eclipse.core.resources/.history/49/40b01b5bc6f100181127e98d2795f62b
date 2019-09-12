@@ -1,0 +1,14 @@
+
+#include <iostream>
+#include <vector>
+#include <tuple>
+
+using namespace std;
+
+
+int main() {
+	tuple<int, string, vector<int>> t;
+	t ={3, "aaa", {23,43,34}};
+
+	return 0;
+}

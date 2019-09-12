@@ -1,0 +1,11 @@
+20:19:43 **** Incremental Build of configuration Release for project rational ****
+Info: Internal Builder is used for build
+g++ -O3 -Wall -c -fmessage-length=0 -o "src\\rational.o" "..\\src\\rational.cpp" 
+..\src\rational.cpp: In constructor 'Rational::Rational(int, int)':
+..\src\rational.cpp:20:36: warning: suggest parentheses around '&&' within '||' [-Wparentheses]
+   bool is_positive = (numerator>=0 && denominator >= 0 ||
+                       ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+g++ -o rational.exe "src\\rational.o" 
+
+20:19:44 Build Finished. 0 errors, 1 warnings. (took 1s.754ms)
+

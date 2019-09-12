@@ -1,0 +1,31 @@
+
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <functional>
+#include <map>
+#include <algorithm>
+#include <utility>
+
+using namespace std;
+
+void Print(const map<int, int> m){
+	for(auto& i: m){
+
+			cout << "key = " << i.first << "value = "<< i.second << endl;
+		}
+
+}
+
+int main() {
+	map<int, vector<int>> m ={
+			{1,{2,3,5,6,}},
+			{3,{4,6,6,74,3}}
+	};
+
+
+
+
+
+
+}

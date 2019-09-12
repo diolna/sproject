@@ -1,0 +1,31 @@
+#pragma once
+
+
+#include <sstream>
+#include <vector>
+#include <map>
+#include <set>
+#include <algorithm>
+#include <memory>
+#include <functional>
+
+#include "date.h"
+
+using namespace std;
+
+
+
+
+class Database {
+
+public:
+	void Add(const Date& date, const string& event);
+	int RemoveIf(function<bool(const Date& d, const string& event)> f);
+	vector<pair<Date, string>> FindIf(function<bool(const Date& d, const string& event)> f) const;
+	void Print(ostream& os) const;
+	string Last(const Date& date) const;
+
+private:
+	map<Date, vector<string>> base;
+
+};

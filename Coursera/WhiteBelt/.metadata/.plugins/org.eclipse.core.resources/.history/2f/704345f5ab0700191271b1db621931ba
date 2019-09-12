@@ -1,0 +1,29 @@
+
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <functional>
+#include <map>
+#include <algorithm>
+#include <utility>
+
+using namespace std;
+
+void Print(const map<int, int> m){
+	for(auto& i: m){
+
+			cout << "key = " << i.first << "value = "<< i.second << endl;
+		}
+
+}
+
+int main() {
+	string str;
+	getline(cin, str);
+
+	istringstream is(str);
+
+	getline(is, str);
+
+
+}

@@ -1,0 +1,8 @@
+21:00:40 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+g++ -o main.exe "src\\main.o" 
+D:/Program Files/Eclips/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+
+21:00:41 Build Failed. 1 errors, 0 warnings. (took 353ms)
+

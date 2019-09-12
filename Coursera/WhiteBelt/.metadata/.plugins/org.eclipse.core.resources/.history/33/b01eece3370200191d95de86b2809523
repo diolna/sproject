@@ -1,0 +1,22 @@
+
+#include <string>
+
+using namespace std;
+
+
+class Database {
+
+public:
+	void Add(const string& d, const string& e) {
+		date_ = d;
+		event_ = e;
+	}
+	string Last(const string& data);  // argument parse data  type ?
+	int RemoveIf();
+	void Print(const ostream& os);
+
+private:
+	const string date_;
+	const string event_;
+
+};

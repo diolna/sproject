@@ -1,0 +1,6 @@
+12:16:40 **** Incremental Build of configuration Debug for project arifm_exp ****
+Info: Internal Builder is used for build
+g++ -o arifm_exp.exe "src\\arifm_exp.o" 
+
+12:16:41 Build Finished. 0 errors, 0 warnings. (took 414ms)
+

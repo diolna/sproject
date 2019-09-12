@@ -1,0 +1,7 @@
+23:35:11 **** Incremental Build of configuration Debug for project permutations ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\permutations.o" "..\\src\\permutations.cpp" 
+g++ -o permutations.exe "src\\permutations.o" 
+
+23:35:12 Build Finished. 0 errors, 0 warnings. (took 1s.488ms)
+

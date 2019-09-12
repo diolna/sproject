@@ -1,0 +1,33 @@
+#pragma once
+#include <iostream>
+#include "date.h"
+#include "condition_parser.h"
+
+using namespace std;
+
+
+class Node{
+public:
+	virtual int Evaluate(const Date& d, const string& ev);
+};
+
+class DateComparisonNode: public Node {
+public:
+	DateComparisonNode(const Comparison& c, const Date& d);
+	int Evaluate(const Date& d, const string& ev)  ;
+
+};
+
+class EventComparisonNode: public Node{
+	int Evaluate(const Date& d, const string& ev)  ;
+
+};
+
+class LogicalOperationNode: public Node{
+	int Evaluate(const Date& d, const string& ev) ;
+};
+
+class EmptyNode: public Node {
+	int Evaluate(const Date& d, const string& ev);
+
+};

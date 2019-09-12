@@ -1,0 +1,29 @@
+#pragma once
+#include <vector>
+#include <iostream>
+using namespace std;
+
+
+//Date ParseDate(istream& is);
+
+class Date {
+public:
+	//Date();
+	//Date(const vector<int> d);
+
+	Date(int y, int m, int d);
+
+	int GetYear() const ;
+	int GetMonth()const ;
+	int GetDay() const ;
+
+
+private:
+	//vector<int> date = { year, month, day };
+
+	int year, month, day;
+
+};
+
+Date ParseDate(istream& is);
+//ostream& operator<<(ostream& os, const Date date);

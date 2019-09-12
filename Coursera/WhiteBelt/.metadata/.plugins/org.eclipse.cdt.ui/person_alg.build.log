@@ -1,0 +1,7 @@
+19:46:36 **** Incremental Build of configuration Release for project person_alg ****
+Info: Internal Builder is used for build
+g++ -O3 -Wall -c -fmessage-length=0 -o "src\\person_alg.o" "..\\src\\person_alg.cpp" 
+g++ -o person_alg.exe "src\\person_alg.o" 
+
+19:46:38 Build Finished. 0 errors, 0 warnings. (took 1s.919ms)
+

@@ -1,0 +1,31 @@
+#pragma once
+
+
+
+#include <iostream>
+
+#include "node.h"
+
+#include <memory>
+
+using namespace std;
+
+//enum class LogicalOperation{
+//	Or,
+//	And,
+//};
+
+enum class Comparison {
+
+	   Less,
+	   LessOrEqual,
+	   Greater,
+	   GreaterOrEqual,
+	   Equal,
+	   NotEqual,
+};
+
+shared_ptr<Node> ParseCondition(istream& is);
+
+void TestParseCondition();
+Date& ParseDate(istream& is);

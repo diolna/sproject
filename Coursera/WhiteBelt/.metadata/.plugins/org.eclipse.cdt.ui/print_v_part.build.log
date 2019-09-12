@@ -1,0 +1,14 @@
+02:28:42 **** Incremental Build of configuration Debug for project print_v_part ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\print_v_part.o" "..\\src\\print_v_part.cpp" 
+..\src\print_v_part.cpp: In function 'void PrintVectorPart(const std::vector<int>&)':
+..\src\print_v_part.cpp:10:5: warning: variable 'xxx' set but not used [-Wunused-but-set-variable]
+  It xxx = begin(numbers);
+     ^~~
+..\src\print_v_part.cpp:12:6: warning: variable 'ccc' set but not used [-Wunused-but-set-variable]
+  Itt ccc = begin(num);
+      ^~~
+g++ -o print_v_part.exe "src\\print_v_part.o" 
+
+02:28:44 Build Finished. 0 errors, 2 warnings. (took 1s.535ms)
+

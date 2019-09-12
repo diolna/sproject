@@ -1,0 +1,65 @@
+#include <vector>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+//#include "stdafx.h"
+#include "date.h"
+
+
+//Date::Date() {}
+//Date::Date(const vector<int> d) : date(d) {}
+
+Date::Date(int y, int m, int d) :
+	year(y), month(m), day(d) {}
+
+
+
+int Date::GetYear()const  { return year; }
+ int Date::GetMonth() const { return month; }
+int Date::GetDay() const { return day; }
+
+Date ParseDate(istream& input) {
+
+
+	//char d2, d1;
+
+
+	int year,month,day;
+
+	if (input.eof()) {
+		throw invalid_argument("augument not correct");
+	}
+
+	input >> year;
+	if (input.peek() != '-') {
+		throw invalid_argument("Wrong date format:");
+	}
+	input.ignore(1);
+	input >> month;
+	if (month > 12 || month <= 0) {
+		throw invalid_argument("Month value is invalid: ");
+	}
+	if (input.peek() != '-') {
+		throw invalid_argument("Wrong date format:");
+	}
+	input.ignore(1);
+	input >> day;
+	if (day > 31 || day <= 0) {
+		throw invalid_argument("Day value is invalid: ");
+
+	}
+
+	Date date(year,month,day);
+	//cout << "date parse " << date.GetMonth() << endl;
+	return date;
+}
+
+
+ostream& operator<<(ostream& os, const Date date){
+	os<< setfill('0') << setw(4) << date.GetYear() << "-" << setw(2) << date.GetMonth() <<
+					"-" << setw(2) << date.GetDay();
+
+	return os;
+}

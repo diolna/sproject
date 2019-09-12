@@ -1,0 +1,39 @@
+#include <string>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<string> SplitIntoWords(const string& s){
+	vector<string> v;
+	auto it = s.begin();
+	cout << *it << endl;
+	//while(it!=s.end()){
+		//auto temp = it;
+		//it = find(it, s.end(), ' ');
+		cout << "it space "<< *it << endl;
+		//string st = {temp, it};
+		//cout << st;
+		//v.push_back({temp, it});
+	//}
+
+
+	return v;
+}
+
+int main() {
+  string s = "C Cpp Java Python";
+
+  vector<string> words = SplitIntoWords(s);
+  cout << words.size() << " ";
+  for (auto it = begin(words); it != end(words); ++it) {
+    if (it != begin(words)) {
+      cout << "/";
+    }
+    cout << *it;
+  }
+  cout << endl;
+
+  return 0;
+}

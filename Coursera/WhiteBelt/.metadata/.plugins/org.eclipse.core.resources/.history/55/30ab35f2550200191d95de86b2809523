@@ -1,0 +1,57 @@
+#include "node.h"
+#include <iostream>
+#include "date.h"
+#include "condition_parser.h"
+#include <map>
+#include <set>
+#include <string>
+using namespace std;
+
+
+class Node{
+public:
+	virtual map<Date, set<string>> Evaluate(const Date& d, const string& s){}
+};
+
+class DateComparisonNode: public Node {
+public:
+	DateComparisonNode(const Comparison& c, const Date& d)	{
+		op =c ;
+		date = d;
+	}
+	map<Date, set<string>> Evaluate(const Date& d, const string& ev){
+		if(op== Comparison::Equal){
+
+		}else if(op == Comparison::Greater){
+
+		}else if(op == Comparison::GreaterOrEqual){
+
+		}
+		return 0;
+	}
+private:
+	const Comparison op;
+	const Date date;
+};
+
+class EventComparisonNode: public Node{
+	map<Date, set<string>> Evaluate(const Date & d, const string& s){
+		map<Date, set<string>> d;
+		return d;
+	}
+
+};
+
+class LogicalOperationNode: public Node{
+	map<Date, set<string>> Evaluate(const Date & d, const string& s) {
+		map<Date, set<string>> d;
+		return d;
+	}
+};
+
+class EmptyNode: public Node {
+	map<Date, set<string>> Evaluate(const Date & d, const string& s){
+		return 0;
+	}
+
+};

@@ -1,0 +1,135 @@
+#include "stdafx.h"
+#include "condition_parser.h"
+#include "token.h"
+#include <iostream>
+#include "node.h"
+#include <map>
+#include "date.h"
+#include "memory"
+
+using namespace std;
+
+template <class It> shared_ptr<Node> ParseComparison(It& current, It end) {
+  if (current == end) {
+    throw logic_error("Expected column name: date or event");
+  }
+
+  Token& column = *current;
+  if (column.type != TokenType::COLUMN) {						// column это и дата и событие
+    throw logic_error("Expected column name: date or event");
+  }
+  ++current;									// указівает по любому на операцию
+
+  if (current == end) {
+    throw logic_error("Expected comparison operation");
+  }
+
+  Token& op = *current;									// разіменовіваем тип и сохраням операцию в переменной op;
+  if (op.type != TokenType::COMPARE_OP) {
+    throw logic_error("Expected comparison operation");
+  }
+  ++current;				// итератор на условие после операции
+
+  if (current == end) {
+    throw logic_error("Expected right value of comparison");
+  }
+
+  Comparison cmp;
+  if (op.value == "<") {
+    cmp = Comparison::Less;
+  } else if (op.value == "<=") {
+    cmp = Comparison::LessOrEqual;
+  } else if (op.value == ">") {
+    cmp = Comparison::Greater;
+  } else if (op.value == ">=") {
+    cmp = Comparison::GreaterOrEqual;
+  } else if (op.value == "==") {
+    cmp = Comparison::Equal;
+  } else if (op.value == "!=") {
+    cmp = Comparison::NotEqual;
+  } else {
+    throw logic_error("Unknown comparison token: " + op.value);
+  }
+
+  const string& value = current->value;   // в значении value строка условия например дата
+  ++current;
+
+  if (column.value == "date") {
+    istringstream is(value);
+    return make_shared<DateComparisonNode>(cmp, ParseDate(is));  // создается обьект в который в качстве инициализ передается тип сравнеия и дата
+  } else {
+    return make_shared<EventComparisonNode>(cmp, value); // тоже только значение
+  }
+}
+
+template <class It>
+shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) {
+  if (current == end) {												// праверяем
+    return shared_ptr<Node>();
+  }
+
+  shared_ptr<Node> left;												// создаем обвектку в которую будем заварачивать наши обьекты
+
+  if (current->type == TokenType::PAREN_LEFT) {							// проверяем в вырожении наличие скобок. если они есть то
+    ++current; // consume '('											// перепрыгуем через них
+    left = ParseExpression(current, end, 0u);							// и рекурсивно вызываем опять рарсинг вырожения
+    if (current == end || current->type != TokenType::PAREN_RIGHT) {
+      throw logic_error("Missing right paren");
+    }
+    ++current; // consume ')'
+  } else {
+    left = ParseComparison(current, end);                               // вызываем парсер сравнения в первый раз например для data.
+  }
+
+  const map<LogicalOperation, unsigned> precedences = {
+      {LogicalOperation::Or, 1}, {LogicalOperation::And, 2}
+  };
+
+  while (current != end && current->type != TokenType::PAREN_RIGHT) {
+    if (current->type != TokenType::LOGICAL_OP) {
+      throw logic_error("Expected logic operation");
+    }
+
+    const auto logical_operation = current->value == "AND" ? LogicalOperation::And
+                                                           : LogicalOperation::Or;
+    const auto current_precedence = precedences.at(logical_operation);
+    if (current_precedence <= precedence) {
+      break;
+    }
+
+    ++current; // consume op
+
+    left = make_shared<LogicalOperationNode>(
+        logical_operation, left, ParseExpression(current, end, current_precedence)
+    );
+  }
+
+  return left;
+}
+
+shared_ptr<Node> ParseCondition(istream& is) {		// допустим условие data == 2009-12-12;
+	auto tokens = Tokenize(is);						// сохраняем в векторе данные token тип COLUMN value = "data", знак больше дата и т д
+	auto current = tokens.begin();					// сохраняем итератор на начала токена.
+	auto top_node = ParseExpression(current, tokens.end(), 0u);  // пропарсим далее это вырожение  с начала
+
+	if (!top_node) {
+		top_node = make_shared<EmptyNode>();
+	}
+
+	if (current != tokens.end()) {
+		throw logic_error("Unexpected tokens after condition");
+	}
+
+	return top_node;
+}
+
+Date& ParseDate(istream& is) {
+	auto tokens = Tokenize(is);
+	const auto current = tokens.begin();
+
+	Date date;
+
+
+	return date;
+
+}

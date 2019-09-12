@@ -1,0 +1,29 @@
+#pragma once
+#include <iostream>
+
+using namespace std;
+
+
+class Node{
+public:
+	virtual void Evaluate()  =0;
+};
+
+class DateComparisonNode: public Node {
+	DateComparisonNode(const Comparison& c, const Date& d);
+	void Evaluate()  ;
+};
+
+class EventComparisonNode: public Node{
+	void Evaluate()  ;
+
+};
+
+class LogicalOperationNode: public Node{
+	void Evaluate() ;
+};
+
+class EmptyNode: public Node {
+	void Evaluate();
+
+};

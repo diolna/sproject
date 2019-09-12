@@ -1,0 +1,7 @@
+21:00:41 **** Incremental Build of configuration Release for project main1 ****
+Info: Internal Builder is used for build
+g++ -O3 -Wall -c -fmessage-length=0 -o "src\\main1.o" "..\\src\\main1.cpp" 
+g++ -o main1.exe "src\\main1.o" 
+
+21:00:43 Build Finished. 0 errors, 0 warnings. (took 1s.673ms)
+

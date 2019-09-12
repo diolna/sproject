@@ -1,0 +1,12 @@
+#pragma once
+
+#include "date.h"
+#include <string>
+
+using namespace std;
+
+
+class Node{
+	virtual bool Evaluate(Data& date, string& event) =0;
+};
+

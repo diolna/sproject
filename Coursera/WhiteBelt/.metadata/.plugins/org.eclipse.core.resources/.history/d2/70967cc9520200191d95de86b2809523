@@ -1,0 +1,46 @@
+#include "node.h"
+#include <iostream>
+#include "date.h"
+#include "condition_parser.h"
+using namespace std;
+
+
+class Node{
+public:
+	virtual int Evaluate(const Date& d, const string& s);
+};
+
+class DateComparisonNode: public Node {
+public:
+	DateComparisonNode(const Comparison& c, const Date& d)	{
+		op =c ;
+		date = d;
+	}
+	int Evaluate(const Date& d, const string& ev){
+		if(op== Comparison::Equal){
+
+		}else if(op == Comparison::Greater){
+
+		}else if(op == Comparison::GreaterOrEqual){
+
+		}
+		return 0;
+	}
+private:
+	const Comparison op;
+	const Date date;
+};
+
+class EventComparisonNode: public Node{
+	int Evaluate(const Date & d, const string& s)  ;
+
+};
+
+class LogicalOperationNode: public Node{
+	int Evaluate(const Date & d, const string& s) ;
+};
+
+class EmptyNode: public Node {
+	int Evaluate(const Date & d, const string& s);
+
+};

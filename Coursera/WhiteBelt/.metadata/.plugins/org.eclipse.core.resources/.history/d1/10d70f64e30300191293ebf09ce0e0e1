@@ -1,0 +1,11 @@
+#pragma once
+
+
+class Date {
+public:
+	Date(const int& year, const int& month, const int& day): year_(year), month_(month), day_(day){}
+
+private:
+	const int year_, month_, day_;
+
+};

@@ -1,0 +1,9 @@
+15:33:58 **** Incremental Build of configuration Debug for project inheritance_self ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inheritance_self.o" "..\\src\\inheritance_self.cpp" 
+g++ -o inheritance_self.exe "src\\inheritance_self.o" 
+D:/Program Files/Eclips/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/libmingw32.a(lib64_libmingw32_a-crt0_c.o):crt0_c.c:(.text.startup+0x2e): undefined reference to `WinMain'
+collect2.exe: error: ld returned 1 exit status
+
+15:34:03 Build Finished. 0 errors, 0 warnings. (took 5s.195ms)
+

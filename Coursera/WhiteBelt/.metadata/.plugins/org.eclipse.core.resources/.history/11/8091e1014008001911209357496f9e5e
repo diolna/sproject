@@ -1,0 +1,33 @@
+#pragma once
+
+
+#include <string>
+#include <vector>
+#include <functional>
+#include <map>
+#include <set>
+
+using namespace std;
+
+#include "date.h"
+
+//template <class T>
+//T IteratorSearch();
+
+
+bool operator<(const Date& lhs, const Date& rhs);
+bool operator==(const Date& lhs, const Date& rhs);
+
+class Database {
+
+public:
+	void Add(const Date& date, const string& event);
+	int RemoveIf(function<bool(const Date& d, const string& event)> rem);
+	vector<string> FindIf(function<bool(const Date& d, const string& event)> f) const;
+	void Print(ostream& os) const;
+	string Last(const Date& date) const;
+
+private:
+	map<Date, vector<string>> base;
+
+};

@@ -1,0 +1,14 @@
+21:25:18 **** Incremental Build of configuration Debug for project BUS_STOP ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\BUS_STOP.o" "..\\src\\BUS_STOP.cpp" 
+..\src\BUS_STOP.cpp: In function 'int main()':
+..\src\BUS_STOP.cpp:76:27: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::__cxx11::basic_string<char> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+         for (int k = 0; k <= vector_bus.size() - 1; ++k) {  // ÏÅÐÅÁÅÐÀÅÌ ÂÑÅ ÀÂÒÎÁÓÑÍÛÅ ÌÀÐØÐÓÒÛ Â ÒÎÌ ÏÎÐßÄÊÅ ÊÀÊ ÎÍÈ ÂÂÎÄÈËÈÑÜ.
+                         ~~^~~~~~~~~~~~~~~~~~~~~~~~
+..\src\BUS_STOP.cpp:113:25: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<std::__cxx11::basic_string<char> >::size_type' {aka 'long long unsigned int'} [-Wsign-compare]
+       for (int i = 0; i <= vector_bus.size() - 1; ++i) {
+                       ~~^~~~~~~~~~~~~~~~~~~~~~~~
+g++ -o BUS_STOP.exe "src\\BUS_STOP.o" 
+
+21:25:30 Build Finished. 0 errors, 2 warnings. (took 11s.969ms)
+
