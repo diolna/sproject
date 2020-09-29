@@ -16,10 +16,10 @@ char temp[MaxLen];
 int i;
 for(i =0; i < ArSize; i++){
 	std::cout << i + 1 << ": ";
-	std::cin.get(temp, MaxLen);
-	while(std::cin && std::cin.get() !='\n')
-		continue;
-	if(!std::cin || temp[0] == '\0')
+	std::cin.get(temp, MaxLen);                   // read MaxLen-1 symbol from stream. end symbol = '\0'
+	while(std::cin && std::cin.get() !='\n')      // if your enter > MaxLen symbol => this symbols have steram.
+		continue;									// this read all symbols while != '\n' clear stream.
+	if(!std::cin || temp[0] == '\0')                 // check error or empty line
 		break;
 	else
 		sayings[i] = temp;
