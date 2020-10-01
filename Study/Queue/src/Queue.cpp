@@ -32,12 +32,12 @@ int main() {
 	double perhour;
 	std::cin >> perhour;
 	double min_per_cust;
-	min_per_cust = MIN_PER_HR;
+	min_per_cust = MIN_PER_HR/perhour;
 	Customer temp;
 	long turnaways = 0;
 	long customers = 0;
 	long served = 0;
-	int sum_line = 0;
+	long sum_line = 0;
 	int wait_time = 0;
 	long line_wait = 0;
 
@@ -59,8 +59,9 @@ int main() {
 		}
 		if(wait_time > 0){
 			wait_time --;
-		}
 			sum_line +=  line.queuecount();
+		}
+
 
 	}
 if(customers > 0){
