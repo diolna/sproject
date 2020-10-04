@@ -15,10 +15,15 @@ public:
 	friend bool operator > (const String& st1, const String& st2);
 	friend bool operator < (const String& st1, const String& st2);
 	friend bool operator ==(const String& st1, const String& st2);
+	friend String operator+(const String& st1, const String& st2);
 	friend std::istream&  operator>>(std::istream & is, String & st);
 	char& operator[](int i);
 	const char& operator[](int i) const;
 	static int HowMany() {return num_string;}
+	void stringlow();
+	void stringup();
+	int charcound(const char& ch);
+
 
 	private:
 	char * str;

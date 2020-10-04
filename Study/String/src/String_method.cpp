@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "string.h"
+#include <cctype>
 
 int  String::num_string = 0;
 
@@ -9,10 +10,11 @@ String::String(const String& st ){
 	len = st.len;
 	str = new char[len +1];
 	std::strcpy(str, st.str);
-//	std::cout << "created - " << num_string << " object\n";
+//	std::cout << "construcn copy created - " << num_string << " object\n";
 
 }
 String& String::operator=(const String& st ){
+//	std::cout << "operator = " << std::endl;
 	if(this == &st)
 		return *this;
 	delete [] str;
@@ -88,12 +90,44 @@ const char& String::operator[](int i) const {
 }
 
 String& String::operator=(const char* s){
-	delete [] str;
+//	std::cout << "operator =  char" << std::endl;
+ 	delete [] str;
 	len = std::strlen(s);
 	str = new char[len +1];
 	strcpy(str, s);
 	return *this;
 }
 
+String operator+(const String& st1, const String& st2){
+//	std::cout << "operator + " << std::endl;
+ 	int len_plus= st1.len + st2.len;
+	String s;
+	s.str = new char[len_plus + 1];
+	strcpy(s.str, st1.str);
+	strcpy(s.str + st1.len, st2.str);
+	s.len = len_plus;
+	return s;
+}
 
+void String::stringlow(){
+		for(int i = 0; i <= len; i++){
+			str[i] = (char)tolower(str[i] );
+		}
+
+}
+
+void String::stringup(){
+		for(int i = 0; i <= len; i++){
+			str[i] = (char)toupper(str[i] );
+		}
+
+}
+
+int String::charcound(const char& ch){
+	int count = 0;
+	for(int i =0; i <= len; i++){
+		if(ch == str[i]) count++;
+	}
+	return count;
+}
 
