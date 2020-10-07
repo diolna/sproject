@@ -1,6 +1,6 @@
 
 
-#include "point.h"
+#include "point_class.h"
 #include "math.h"
 #include <iostream>
 
