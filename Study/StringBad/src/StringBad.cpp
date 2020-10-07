@@ -17,12 +17,12 @@ int main() {
 	callmy2 (headline2);
 	std::cout << "headline2: " << headline2 << std::endl;
 	std::cout << "Initialize one object to another:\n";
-//	StringBad sailor = sports;
-//	std::cout << "sailor: " << sailor << std::endl;
-//	std::cout << "Assign one object to another:\n";
-//	StringBad knot;
-//	knot = headline1;
-//	std::cout << "knot: " << knot << std::endl;
+	StringBad sailor = sports;
+	std::cout << "sailor: " << sailor << std::endl;
+	std::cout << "Assign one object to another:\n";
+	StringBad knot;
+	knot = headline1;
+	std::cout << "knot: " << knot << std::endl;
 	std::cout << "End of main()\n";
 
 	return 0;

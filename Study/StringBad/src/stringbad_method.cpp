@@ -4,6 +4,24 @@
 
 int StringBad::num_strings = 0;
 
+StringBad::StringBad(const StringBad& st ){
+	num_strings ++;
+	len = st.len;
+	str = new char[len +1];
+	std::strcpy(str, st.str);
+	std::cout << num_strings << ":\" " << str
+			<< "\" object created\n";
+}
+StringBad& StringBad::operator=(const StringBad& st ){
+	if(this == &st)
+		return *this;
+	delete [] str;
+	len = st.len;
+	str = new char[len +1];
+	std::strcpy(str, st.str);
+	return *this;
+}
+
 StringBad::StringBad(const char* s){
 	len = strlen(s);
 	str = new char[len+1];
