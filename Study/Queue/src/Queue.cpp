@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "Queue.h"
 #include "Customer.h"
@@ -12,7 +11,7 @@ bool newcustomer(double x);
 
 int main() {
 
-	srand(time(0)); // случайная инициализация rand
+	srand(time(0)); // Г±Г«ГіГ·Г Г©Г­Г Гї ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї rand
 
 	std::cout << "Case Study: Bank of Heather Automatic Teller\n";
 	std::cout << "Enter maximal size of queue: ";
