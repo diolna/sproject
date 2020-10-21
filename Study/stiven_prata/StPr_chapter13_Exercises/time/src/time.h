@@ -5,7 +5,7 @@
 
 class A1 {
 public:
-	  void Show() { std::cout << "A" << std::endl;}
+	 virtual void Show() { std::cout << "A" << std::endl;}
 		A1(){}
 		virtual ~A1(){}
 	};
@@ -14,6 +14,6 @@ public:
 	public:
 	B1(){}
 	virtual ~B1(){}
-		 void Show(const std::string & c) { std::cout << c << std::endl;}
+		virtual void Show() { std::cout << "Dima" << std::endl;}
 	};
 
