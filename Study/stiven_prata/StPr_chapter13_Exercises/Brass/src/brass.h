@@ -27,7 +27,7 @@ public:
 	Brass(const char* s = "Nullbody", long an = -1, double bal = 0.0) :
 		AcctABC(s, an, bal) {}
 	void Deposit(double amt);
-	virtual void Withdraw(double amt);
+	virtual void WithDraw(double amt);
 	virtual void ViewAcct() const;
 	virtual ~Brass() {}
 };
@@ -38,7 +38,7 @@ public:
 			double r = 0.10);
 	BrassPlus(const Brass& ba, double ml = 500,	double r = 0.10);
 	virtual void ViewAcct() const;
-	virtual void Withdraw(double amt);
+	virtual void WithDraw(double amt);
 	void ResetMax(double m) {maxLoan = m;}
 	void ResetRate(double r) {rate = r;}
 	void ResetOwes() {owesBank = 0; }

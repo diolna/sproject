@@ -15,11 +15,12 @@ void AcctABC::Deposit(double amt ){
 	else
 		balance += amt;
 }
-void AcctABC::WithDraw(double amt){
+ void AcctABC::WithDraw(double amt){
 
 		balance -= amt;
 
 }
+// void AcctABC::ViewAcct() const {}
 
 std::ios_base::fmtflags AcctABC::SetFormat() const {
 	std::ios_base::fmtflags initialState = std::cout.setf(std::ios_base::fixed, std::ios_base::floatfield);
@@ -29,7 +30,7 @@ std::ios_base::fmtflags AcctABC::SetFormat() const {
 
 }
 
-void Brass::Withdraw(double amt){
+ void Brass::WithDraw(double amt){
 	if(amt < 0)
 		std::cout << "number be not (-) operation cancel \n";
 	else if(amt <= Balance())
@@ -52,10 +53,10 @@ void Brass::ViewAcct() const {
 }
 
 BrassPlus::BrassPlus(const char*s , long int an, double bal, double ml, double r) :
-		AcctABC(s, an, bal), maxLoan(ml), owesBank(0), rate(r) {}
+		AcctABC(s, an, bal), maxLoan(ml), rate(r), owesBank(0) {}
 
 BrassPlus::BrassPlus(const Brass& ba, double ml, double r) : AcctABC(ba), maxLoan(ml),
-		owesBank(0), rate(r) {}
+		rate(r), owesBank(0) {}
 void BrassPlus::ViewAcct() const {
 
 	std::ios_base::fmtflags initialState = SetFormat();
@@ -69,7 +70,7 @@ void BrassPlus::ViewAcct() const {
 	std::cout.setf(initialState);
 }
 
-void BrassPlus::Withdraw(double amt){
+void BrassPlus::WithDraw(double amt){
 	std::ios_base::fmtflags initialState = SetFormat();
 
 		double bal = Balance();
