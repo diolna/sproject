@@ -1,7 +1,7 @@
 #include "student.h"
 #include <iostream>
 
-double Student::Avarage() const {
+double Student::Average() const {
 	return scores.Average();
 }
 
@@ -14,13 +14,13 @@ const double& Student::operator [](int i) const {
 	return scores[i];
 }
 
-std::ostream& operator<<(std::ostream& os, const Student& s){
-	os << "Scores for" << s.name << ":\n";
-	os << s.scores;
+std::ostream& operator<<(std::ostream& os, const Student& stu){
+	os << "Scores for" << stu.name << ":\n";
+	os << stu.scores;
 	return os;
 
 }
-std::istream& operator>>(std::istream& is, const Student& s){
-		is >> s.name;
+std::istream& operator>>(std::istream& is,  Student& stu){
+		is >> stu.name;
 		return is;
 }
