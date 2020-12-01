@@ -29,7 +29,7 @@ void set(Student& sa, int n){
 	std::cout << "Please enter " << n << "quiz scores:\n";
 	for(int i = 0;  i < n; i++)
 		std::cin >> sa[i];
-		while(cin.get() != "\n")
+		while(cin.get() != '\n')
 			continue;
 
 }

@@ -20,7 +20,10 @@ void AcctABC::Deposit(double amt ){
 		balance -= amt;
 
 }
-// void AcctABC::ViewAcct() const {}
+//
+
+
+ void AcctABC::ViewAcct() const {}
 
 std::ios_base::fmtflags AcctABC::SetFormat() const {
 	std::ios_base::fmtflags initialState = std::cout.setf(std::ios_base::fixed, std::ios_base::floatfield);
