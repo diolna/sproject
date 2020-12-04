@@ -9,9 +9,11 @@ public:
 	void Show() const;
 	void Set();
 protected:
-private:
 	enum { other, alto, contralto, soprano, bass, baritone, tenor};
 	enum {Vtypes = 7};
+	void Data() const;
+	void Get();
+private:
 	static char *pv[Vtypes];
 	int voice;
 };

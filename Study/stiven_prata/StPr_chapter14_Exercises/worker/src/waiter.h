@@ -10,6 +10,9 @@ public:
 	Waiter(const Worker& wk, int p = 0) : Worker(wk), panache(p) {}
 	void Set();
 	void Show() const;
+protected:
+	void Data() const;
+	void Get();
 
 private:
 	int panache;

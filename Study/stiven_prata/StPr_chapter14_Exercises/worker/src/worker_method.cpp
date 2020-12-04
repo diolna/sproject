@@ -2,17 +2,16 @@
 
 Worker:: ~Worker() {}
 
-void Worker::Set(){
-	std::cout << "Enter worker`s name: ";
-	std::cin>> fullname;
-	std::cout << "Enters Worker ID: ";
-	std::cin >> id;
-	while(std::cin.get() != "\n") continue;
-}
 
-void Worker::Show() const {
+void Worker::Data() const {
 	std::cout << "Name: " << fullname << "\n";
 	std::cout << "Employee ID: " << id << "\n";
+}
 
+void Worker::Get() {
 
+		std::cin>> fullname;
+		std::cout << "Enters Worker ID: ";
+		std::cin >> id;
+		while(std::cin.get() != '\n') continue;
 }
