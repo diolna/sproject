@@ -7,8 +7,8 @@ template <typename T>
 
 class Stack {
 public:
-	Stack();
-	bool isfool();
+	Stack() { top = 0;};
+	bool isfull();
 	bool isempty();
 	bool push(T& item);
 	bool pop(T& item);
@@ -21,7 +21,7 @@ int top;
 };
 
 template <typename T>
-bool Stack<T>::isfool(){
+bool Stack<T>::isfull(){
 	return top == Max;
 }
 
