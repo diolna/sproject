@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <iostream>
 //using namespace std;
 
@@ -10,3 +11,26 @@ int main()  {
 
 	return 0;
 }
+=======
+
+
+#include <iostream>
+using namespace std;
+
+void func(int & a);
+
+int main() {
+
+	int a;
+	func(a);
+
+	cout << "value a = " << a << endl;
+
+	return 0;
+}
+
+void func(int& a){
+	int c = 888;
+	a = c;
+}
+>>>>>>> da6be278485f5df7d5aca59fee0c8ca3c30f903e
