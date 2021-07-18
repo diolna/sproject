@@ -1,20 +1,44 @@
-//============================================================================
-// Name        : tetris.cpp
-// Author      : 
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
-//============================================================================
 #include "Figure.h"
 #include "FigureSquare.h"
+#include "GameTable.h"
+#include "Line.h"
+#include <string>
+#include "Remote.h"
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int main() {
 
-	Figure *f1 =  new FigureSquare;
-	f1->DisplayFigure();
+
+
+GameTable* tab = new GameTable;
+Figure* f = new FigureSquare;
+Figure* f2 = new Line;
+Remote* remote = new Remote(tab);
+
+
+*tab = *tab + *f;
+remote->ShowObject();
+
+cout << "  ";
+*tab = *tab + *f2;
+
+remote -> ShowObject();
+
+cout << endl;
+
+
+
+//while(tabRemote->Start()){}
+
+
+
 	return 0;
 }
+
+
+
+
