@@ -3,19 +3,19 @@
 #include <iostream>
 using namespace std;
 
-void func(int & a);
+
 
 int main() {
+	char temp[10];
+     cin.get(temp, 5);
+     for(int i=0; i <10; i++){
+	cout << "enter symbol " << temp[i] << endl;
+     }
+     int i = 0;
+     while(true && cin.get()!= '\n')
+     cout << ++i << endl;
 
-	int a;
-	func(a);
-
-	cout << "value a = " << a << endl;
 
 	return 0;
 }
 
-void func(int& a){
-	int c = 888;
-	a = c;
-}
