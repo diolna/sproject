@@ -2,17 +2,31 @@
 
 #include "Figure.h"
 #include <iostream>
+#include <string>
+#include <windows.h>
+#include <vector>
+#include <map>
 
 using namespace std;
 
 class FigureSquare: public Figure {
 public:
-	void DisplayFigure();
+	FigureSquare();
+	FigureSquare(string& n) : name(n){};
+
+ 	void DisplayFigure(COORD& position);
+	virtual ~FigureSquare(){};
+	map<pair<int,int>, bool>& GetViewFigure(){ return element;}
+
+
+
 private:
 	int width;
 	int color;
-
+	Figure* new_figure;
+	string name;
+	COORD position;
+	map<pair<int,int>, bool> element;
 
 
 };
-
