@@ -14,9 +14,11 @@ public:
 	GameTable();
 	GameTable& operator+(Figure& f);
 	void Display(COORD& position);
+	void ClearFigure(COORD& position);
 	COORD GetPositionMAX(){return positionMAX;};
 	bool GetCell(COORD& position);
 	COORD& GetPositionFigure();
+	void SetPositionFigure(COORD shiftcoord);
 	Figure* GetFigure() {return newfigure;};
 
 

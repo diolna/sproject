@@ -57,3 +57,29 @@ COORD& GameTable::GetPositionFigure(){
 		return position;
 }
 
+void GameTable::SetPositionFigure(COORD shiftcoord){
+	position.X = position.X + shiftcoord.X;
+	position.Y = position.Y + shiftcoord.Y;
+}
+
+void GameTable::ClearFigure(COORD& pos){
+	DWORD l;
+
+		COORD timeposition = pos;
+
+
+		map<pair<int,int>, bool> figuremap = newfigure->GetViewFigure();
+		for(auto it = figuremap.begin(); it != figuremap.end(); ++it){
+			if(it->second == true){
+				timeposition.X = position.X + it->first.first;
+				timeposition.Y = position.Y + it->first.second;
+	//			cout << "coordinate x,y basic = " << position.X << " , " << position.Y << endl;
+	//			cout << "coordinate x,y = " << timeposition.X << " , " << timeposition.Y << endl;
+				SetConsoleCursorPosition(hStdout, timeposition);
+				FillConsoleOutputAttribute(hStdout, FOREGROUND_RED |
+						FOREGROUND_GREEN | FOREGROUND_INTENSITY, 1, timeposition, &l);
+				FillConsoleOutputCharacterA(hStdout, TEXT(' '), 1, timeposition, &l);
+
+			}
+		}
+}

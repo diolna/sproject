@@ -14,6 +14,8 @@ bool Remote::Start(){
 		cin >> key;
 	if(key == 'a' ){
 
+		table->ClearFigure(table->GetPositionFigure());
+
 		this->Left();
 
 		this->ShowObject();
@@ -48,8 +50,7 @@ bool Remote::Left(){
 		}
 	}
 	// ÍÀÄÎ ÎÁÍÎÂÈÒÜ ÊÎÎÐÄÈÍÀÒÓ
-	position.X -=1;
-
+	table->SetPositionFigure({-1,0});
 	return true;
 
 }
