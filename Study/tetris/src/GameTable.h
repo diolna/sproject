@@ -16,6 +16,7 @@ public:
 	void Display(COORD& position);
 	COORD GetPositionMAX(){return positionMAX;};
 	bool GetCell(COORD& position);
+	COORD& GetPositionFigure();
 	Figure* GetFigure() {return newfigure;};
 
 
@@ -25,4 +26,5 @@ private:
 	COORD positionMAX;
 	COORD position;
 	map<pair<int,int>, bool> cell;
+	HANDLE hStdout;
 };

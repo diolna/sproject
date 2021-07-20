@@ -21,19 +21,20 @@ Remote* remote = new Remote(tab);
 
 
 *tab = *tab + *f;
-remote->ShowObject();
-
-cout << "  ";
-*tab = *tab + *f2;
-
-remote -> ShowObject();
-
-cout << endl;
+remote->Start();
+//
+//cout << "  ";
+//*tab = *tab + *f2;
+//
+//remote -> ShowObject();
+//
+//cout << endl;
 
 
 
 //while(tabRemote->Start()){}
-
+int x;
+cin >> x;
 
 
 	return 0;
