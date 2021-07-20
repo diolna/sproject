@@ -7,12 +7,12 @@
 
 using namespace std;
 
-class Line : public Figure {
+class Meander : public Figure {
 public:
-	Line();
+	Meander();
 //	Line(GameTable* tab) : table(tab){}
 	void DisplayFigure(COORD& pos);
-	virtual ~Line(){};
+	virtual ~Meander(){};
 	map<pair<int,int>, bool>& GetViewFigure(){ return element;}
 private:
 	string name;

@@ -14,6 +14,7 @@ public:
 	Remote(GameTable* tab) : table(tab){};
 	bool Left();
 	bool Right();
+	bool Down();
 	bool Start(); // двигает и рисует фигуры
 	void ShowObject();
 

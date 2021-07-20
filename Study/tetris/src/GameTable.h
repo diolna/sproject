@@ -19,6 +19,7 @@ public:
 	bool GetCell(COORD& position);
 	COORD& GetPositionFigure();
 	void SetPositionFigure(COORD shiftcoord);
+	void ZeroPositionFigure(){ position = {15,15};};
 	Figure* GetFigure() {return newfigure;};
 
 
@@ -29,4 +30,5 @@ private:
 	COORD position;
 	map<pair<int,int>, bool> cell;
 	HANDLE hStdout;
+
 };

@@ -12,7 +12,7 @@ using namespace std;
 class FigureSquare: public Figure {
 public:
 	FigureSquare();
-	FigureSquare(string& n) : name(n){};
+//	FigureSquare(string& n) : name(n){};
 
  	void DisplayFigure(COORD& position);
 	virtual ~FigureSquare(){};

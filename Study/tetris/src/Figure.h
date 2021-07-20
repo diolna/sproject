@@ -10,6 +10,7 @@ class Figure {
 public:
 	virtual void DisplayFigure(COORD& position){};
 	Figure(){};
+	virtual ~Figure(){};
 	virtual map<pair<int,int>, bool>& GetViewFigure(){};
 
 
