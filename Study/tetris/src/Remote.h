@@ -19,6 +19,7 @@ public:
 	void ShowObject();
 
 
+
 private:
 
 	GameTable* table;

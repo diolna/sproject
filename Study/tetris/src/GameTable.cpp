@@ -1,5 +1,6 @@
 #include "GameTable.h"
 #include <windows.h>
+#include <vector>
 
 using namespace std;
 
@@ -78,6 +79,13 @@ bool GameTable::GetCell(COORD& pos){
 		return false;
 }
 
+void GameTable::SetCell(COORD& pos){
+	pair<int, int> position;
+			position.first = pos.X;
+			position.second = pos.Y;
+	cell[position] = 1;
+}
+
 COORD& GameTable::GetPositionFigure(){
 		return position;
 }
@@ -107,4 +115,41 @@ void GameTable::ClearFigure(COORD& pos){
 
 			}
 		}
+}
+
+void GameTable::DeleteLine(){
+	bool bit = 0;
+
+	vector<pair<int, int>> p;
+	p.resize(positionMAX.Y);
+	for(int y = 0; y < positionMAX.Y - 1; ++y){
+		for(int x = 0; x < positionMAX.X - 1; ++x){
+			if(cell[{x,y}] == false) {
+				bit = 0;
+				break;
+			}
+			bit = 1;
+		}
+		if(bit == 1) {
+			for( int x = 0; x < positionMAX.X; ++x){
+				cell[{y,x}] = 0;
+			}
+			ClearLine(y);
+		}
+	}
+
+}
+void GameTable::ClearLine(int y){
+	DWORD l;
+	COORD pos;
+	pos.Y = y;
+	for(int x = 0; x < position.X; ++x){
+		pos.X = x;
+
+	SetConsoleCursorPosition(hStdout, pos);
+	FillConsoleOutputAttribute(hStdout, FOREGROUND_RED |
+							FOREGROUND_GREEN | FOREGROUND_INTENSITY, 1, pos, &l);
+	FillConsoleOutputCharacterA(hStdout, TEXT(' '), 1, pos, &l);
+
+	}
 }

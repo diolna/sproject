@@ -9,6 +9,8 @@ using namespace std;
 
 bool Remote::Start(){
 
+
+
 	char key;
 	for(int i = 0; i <100; i++) {
 		cin >> key;
@@ -26,11 +28,11 @@ bool Remote::Start(){
 
 				this->ShowObject();
 	}else if( key == 's' || key == 'S'){
-		cout << table->GetPositionFigure().Y;
+//		cout << table->GetPositionFigure().Y;
 
 		table->ClearFigure(table->GetPositionFigure());
 			if(this->Down() == false) {
-				cout << "down false" << endl;
+				this->ShowObject();
 				table->ZeroPositionFigure();
 				break;
 			}
@@ -61,7 +63,7 @@ bool Remote::Left(){
 			COORD timeposition;
 	for(auto it= figuremap.begin(); it != figuremap.end(); ++it){
 		if( it->second == 1){
-			timeposition.X = table->GetPositionFigure().X - it->first.first+1;
+			timeposition.X = table->GetPositionFigure().X + it->first.first - 1;
 //			cout << " coordinate X = " << timeposition.X << endl;;
 			timeposition.Y = table->GetPositionFigure().Y;
 			if(table->GetCell(timeposition) == 1) return false;
@@ -109,8 +111,20 @@ bool Remote::Down(){
 			if( it->second == 1){
 				timeposition.Y = table->GetPositionFigure().Y + it->first.second + 1;
 	//			cout << " coordinate X = " << timeposition.X << endl;;
-				timeposition.X = table->GetPositionFigure().X;
-				if(table->GetCell(timeposition) == 1) return false;
+				timeposition.X = table->GetPositionFigure().X + it->first.first + 1;
+				if(table->GetCell(timeposition) == 1) {
+					COORD pos;
+
+					for(auto it = figuremap.begin(); it != figuremap.end(); ++it){
+						if(it->second == 1){
+							pos.X = table->GetPositionFigure().X + it->first.first;
+							pos.Y = table->GetPositionFigure().Y + it->first.second;
+							table->SetCell(pos);
+						}
+					}
+					table->DeleteLine();
+					return false;
+				}
 
 			}
 		}

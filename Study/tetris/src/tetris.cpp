@@ -25,11 +25,15 @@ Remote* remote = new Remote(tab);
 
 
 *tab = *tab + *f;
+//for(int i = 0; i < 10; ++i){
 remote->Start();
+//}
 
-cout << "new figure " << endl;
+//cout << "new figure " << endl;
 *tab = *tab + *f2;
+for(int i = 0; i < 10; ++i){
 remote->Start();
+}
 
 *tab = *tab + *meander;
 remote->Start();
