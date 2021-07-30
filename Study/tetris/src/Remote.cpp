@@ -61,8 +61,8 @@ bool Remote::Left(){
 			COORD timeposition;
 	for(auto it= figuremap.begin(); it != figuremap.end(); ++it){
 		if( it->second == 1){
-			timeposition.X = table->GetPositionFigure().X - it->first.first+1;
-//			cout << " coordinate X = " << timeposition.X << endl;;
+			timeposition.X = table->GetPositionFigure().X -( it->first.first)-1;
+			cout << " coordinate X = " << timeposition.X << endl;;
 			timeposition.Y = table->GetPositionFigure().Y;
 			if(table->GetCell(timeposition) == 1) return false;
 
