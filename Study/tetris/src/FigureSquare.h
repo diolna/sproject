@@ -17,13 +17,14 @@ public:
  	void DisplayFigure(COORD& position);
 	virtual ~FigureSquare(){};
 	map<pair<int,int>, bool>& GetViewFigure(){ return element;}
+	void SelectElement(int increment){};
 
 
 
 private:
-	int width;
-	int color;
-	Figure* new_figure;
+	//int width;
+	//int color;
+	//Figure* new_figure;
 	string name;
 	COORD position;
 	map<pair<int,int>, bool> element;

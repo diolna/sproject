@@ -10,13 +10,15 @@ class Remote   {
 
 public:
 
-	Remote(){};
+	//Remote(){};
 	Remote(GameTable* tab) : table(tab){};
 	bool Left();
 	bool Right();
 	bool Down();
 	bool Start(); // двигает и рисует фигуры
+	bool Rotation();
 	void ShowObject();
+
 
 
 private:

@@ -12,9 +12,11 @@ public:
 	Figure(){};
 	virtual ~Figure(){};
 	virtual map<pair<int,int>, bool>& GetViewFigure(){};
+//	virtual int GetAngle();
+//	virtual void SetAngle(int an);
+	virtual void SelectElement(int increment){};
 
 
-private:
 
 
 };
