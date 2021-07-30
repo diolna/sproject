@@ -17,25 +17,27 @@ int main() {
 
 
 GameTable* tab = new GameTable;
-Figure* f = new FigureSquare;
-Figure* f2 = new Line;
+Figure* square = new FigureSquare;
+Figure* line = new Line;
 Figure* meander = new Meander;
 Figure* curvedline = new CurvedLine;
 Remote* remote = new Remote(tab);
 
 
-*tab = *tab + *f;
-//for(int i = 0; i < 10; ++i){
-remote->Start();
-//}
-
-//cout << "new figure " << endl;
-*tab = *tab + *f2;
+*tab = *tab + *square;
 for(int i = 0; i < 10; ++i){
 remote->Start();
 }
 
+//cout << "new figure " << endl;
+*tab = *tab + *line;
+for(int i = 0; i < 8; ++i){
+remote->Start();
+}
+
 *tab = *tab + *meander;
+remote->Start();
+remote->Start();
 remote->Start();
 
 *tab = *tab + *curvedline;
@@ -43,8 +45,6 @@ remote->Start();
 
 
 //while(tabRemote->Start()){}
-int x;
-cin >> x;
 
 
 	return 0;

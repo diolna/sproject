@@ -1,18 +1,21 @@
 #include "GameTable.h"
 #include <windows.h>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 GameTable::GameTable(){
 	positionMAX.X= 30;
 	positionMAX.Y = 30;
-	position = {15, 15};
+	positionMIN.X = 10;
+	positionMIN.Y = 0;
+		position = {15, 15};
 	newfigure = new Figure;
 	hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-	for(int x = 10; x < positionMAX.X; x++){
-		for(int y = 0; y < positionMAX.Y; y++){
-			if(x == 10 || x == (positionMAX.X)-1 || y == (positionMAX.Y) - 1){
+	for(int x = positionMIN.X; x < positionMAX.X; x++){
+		for(int y = positionMIN.Y; y < positionMAX.Y; y++){
+			if(x == positionMIN.X || x == (positionMAX.X)-1 || y == (positionMAX.Y) - 1){
 				cell[{x,y}] = 1;
 			}else
 			{
@@ -79,11 +82,11 @@ bool GameTable::GetCell(COORD& pos){
 		return false;
 }
 
-void GameTable::SetCell(COORD& pos){
+void GameTable::SetCell(COORD& pos, bool val){
 	pair<int, int> position;
 			position.first = pos.X;
 			position.second = pos.Y;
-	cell[position] = 1;
+	cell[position] = val;
 }
 
 COORD& GameTable::GetPositionFigure(){
@@ -117,33 +120,49 @@ void GameTable::ClearFigure(COORD& pos){
 		}
 }
 
-void GameTable::DeleteLine(){
-	bool bit = 0;
+vector<int> GameTable::FindFullLines(){
+//	cout << "DeleteLine " << endl;
+	int langth;
+	COORD pos;
+	vector<int> arrY;
 
-	vector<pair<int, int>> p;
-	p.resize(positionMAX.Y);
-	for(int y = 0; y < positionMAX.Y - 1; ++y){
-		for(int x = 0; x < positionMAX.X - 1; ++x){
-			if(cell[{x,y}] == false) {
-				bit = 0;
-				break;
+
+	for(int y = positionMIN.Y; y < positionMAX.Y - 1; ++y){
+		pos.Y = y;
+		langth = 0;
+		for(int x = positionMIN.X +1; x < positionMAX.X - 1; ++x){
+
+			pos.X = x;
+
+			if(this->GetCell(pos)) {
+
+				langth++;
+
 			}
-			bit = 1;
+
 		}
-		if(bit == 1) {
-			for( int x = 0; x < positionMAX.X; ++x){
-				cell[{y,x}] = 0;
-			}
-			ClearLine(y);
+
+
+		if(langth == positionMAX.X - positionMIN.X - 2) {
+			//cout << "y = " << y <<  endl;
+//			for( int x = positionMIN.X +1 ; x < positionMAX.X -1 ; ++x){
+//
+//				cell[{x,y }] = 0;
+//			}
+//			ClearLine(y);
+			arrY.push_back(y);
+
 		}
+
 	}
-
+	return arrY;
 }
 void GameTable::ClearLine(int y){
+
 	DWORD l;
 	COORD pos;
 	pos.Y = y;
-	for(int x = 0; x < position.X; ++x){
+	for(int x = positionMIN.X + 1; x < positionMAX.X - 1; ++x){
 		pos.X = x;
 
 	SetConsoleCursorPosition(hStdout, pos);
@@ -152,4 +171,73 @@ void GameTable::ClearLine(int y){
 	FillConsoleOutputCharacterA(hStdout, TEXT(' '), 1, pos, &l);
 
 	}
+}
+
+void GameTable::PullFigure(COORD pos){
+	for(auto it= newfigure->GetViewFigure().begin(); it != newfigure->GetViewFigure().end(); ++it){
+		COORD time;
+		time.X = position.X + it->first.first;
+		time.Y = position.Y + it->first.second;
+		this->SetCell(time, 1);
+	}
+}
+
+bool GameTable::ShiftDown(){
+	vector<int> emptylines;
+	emptylines = this->FindEmptyLines();
+	sort(emptylines.begin(), emptylines.end());
+
+
+	for(auto it = emptylines.begin(); it != emptylines.end(); ++it){
+		for(int x = positionMIN.X + 1; x < positionMAX.X -1; ++x){
+//			cout << "shiftDown check line" << endl;
+			if(cell[{x, *it-1}] == 1 && *it -1 >= 0) {
+				for(int x = positionMIN.X + 1; x < positionMAX.X -1; ++x){
+					cell[{x, *it}] = cell[{x, *it -1}];
+					cell[{x,*it-1}] = 0;
+				}
+//				cout << "clearOnLineUp" << endl;
+				this->ClearLine(*it-1);
+				this->DisplayLine(*it);
+				return true;
+			}
+
+		}
+
+		}
+	return false;
+	}
+
+
+void GameTable::DisplayLine(int y){
+	COORD timeposition;
+	DWORD l;
+
+	for(int x = positionMIN.X +1; x < positionMAX.X -1 ; ++x){
+
+				timeposition.X = x;
+				timeposition.Y = y;
+				if(cell[{x,y}] == 1){
+
+				SetConsoleCursorPosition(hStdout, timeposition);
+				FillConsoleOutputAttribute(hStdout, BACKGROUND_RED, 1, timeposition, &l);
+				FillConsoleOutputAttribute(hStdout, BACKGROUND_INTENSITY, 1, timeposition, &l);
+				FillConsoleOutputCharacterA(hStdout, TEXT(' '), 1, timeposition, &l);
+				}
+
+			}
+}
+vector<int> GameTable::FindEmptyLines(){
+	vector<int> res;
+	int count;
+	for(int y = positionMIN.Y; y < positionMAX.Y -1; ++y){
+		count = 0;
+		for(int x = positionMIN.X +1; x < positionMAX.X; ++x){
+			if(cell[{x,y}] == 0) count++;
+		}
+		//cout << "emptyline count= "<< count << endl;
+		if(count == (positionMAX.X - positionMIN.X - 2)) res.push_back(y);
+	}
+
+	return res;
 }
