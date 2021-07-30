@@ -30,6 +30,12 @@ bool Remote::Start(){
    					this->Right();
    					this->ShowObject();
 	                break;
+	            case 32:
+	            	table->ClearFigure(table->GetPositionFigure());
+	            	this->Rotation();
+	            	this->ShowObject();
+	            	break;
+
 	            case 80:
 	            	table->ClearFigure(table->GetPositionFigure());
 	            	if(this->Down() == false) {
@@ -139,4 +145,53 @@ bool Remote::Down(){
 			table->SetPositionFigure({0,1});
 
 			return true;
+}
+
+bool Remote::Rotation(){
+	// временно удаляем текущее значение фигуры
+	map<pair<int,int>,bool> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигурі
+	COORD timeposition;
+		for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
+				if( it->second == 1){
+					timeposition.X = table->GetPositionFigure().X + it->first.first;
+					timeposition.Y = table->GetPositionFigure().Y;
+					table->SetCell(timeposition, 0);
+
+				}
+		}
+// переворачиваем
+	table->GetFigure()->SelectElement(90);
+	figuremap = table->GetFigure() ->GetViewFigure(); // карта фигурі
+
+	// ставим фигуру
+
+	//COORD timeposition;
+	for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
+			if( it->second == 1){
+				timeposition.X = table->GetPositionFigure().X + it->first.first;
+				timeposition.Y = table->GetPositionFigure().Y;
+	// если есть наложения то надо все вернуть назад.
+				if(table->GetCell(timeposition) == 1) {
+
+					table->GetFigure()->SelectElement(-90);
+					figuremap = table->GetFigure() ->GetViewFigure(); // карта фигурі
+					//COORD timeposition;
+
+					for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
+						if( it->second == 1){
+							timeposition.X = table->GetPositionFigure().X + it->first.first;
+							timeposition.Y = table->GetPositionFigure().Y;
+							table->SetCell(timeposition, 1);
+
+									}
+							}
+
+					return false;
+
+			}
+		}
+	}
+
+
+	return true;
 }

@@ -6,6 +6,7 @@
 #include "Remote.h"
 #include "Meander.h"
 #include "CurvedLine.h"
+#include "Piramida.h"
 
 #include <iostream>
 #include <string>
@@ -18,10 +19,12 @@ int main() {
 
 GameTable* tab = new GameTable;
 Figure* square = new FigureSquare;
-Figure* line = new Line;
-Figure* meander = new Meander;
-Figure* curvedline = new CurvedLine;
+Figure* line = new Line(0);
+Figure* meander = new Meander(0);
+Figure* curvedline = new CurvedLine(0);
+Figure* piramida = new Piramida(0);
 Remote* remote = new Remote(tab);
+
 
 
 *tab = *tab + *square;
@@ -40,8 +43,15 @@ remote->Start();
 remote->Start();
 remote->Start();
 
+for(int i = 0; i < 5; ++i){
 *tab = *tab + *curvedline;
 remote->Start();
+}
+
+for(int i = 0; i < 5; ++i){
+*tab = *tab + *piramida;
+remote->Start();
+}
 
 
 //while(tabRemote->Start()){}

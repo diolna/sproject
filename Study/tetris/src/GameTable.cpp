@@ -10,7 +10,7 @@ GameTable::GameTable(){
 	positionMAX.Y = 30;
 	positionMIN.X = 10;
 	positionMIN.Y = 0;
-		position = {15, 15};
+	position = {15, 15};
 	newfigure = new Figure;
 	hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 	for(int x = positionMIN.X; x < positionMAX.X; x++){
