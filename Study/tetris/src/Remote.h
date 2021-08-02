@@ -18,6 +18,7 @@ public:
 	bool Start(); // двигает и рисует фигуры
 	bool Rotation();
 	void ShowObject();
+	void KeyDown();
 
 
 

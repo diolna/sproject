@@ -6,67 +6,99 @@
 using namespace std;
 
 
+void Remote::KeyDown(){
+
+	char key1=0;
+
+		 while(kbhit()){
+			 key1=getch();
+		 switch (key1)
+		 {
+		 case 75:
+			 table->ClearFigure(table->GetPositionFigure());
+			 this->Left();
+			 this->ShowObject();
+			 break;
+		 case 77:
+			 table->ClearFigure(table->GetPositionFigure());
+			 this->Right();
+			 this->ShowObject();
+			 break;
+		 case 32:
+			 table->ClearFigure(table->GetPositionFigure());
+			 this->Rotation();
+			 this->ShowObject();
+			 break;
+
+		 case 80:
+			 table->ClearFigure(table->GetPositionFigure());
+			 if(this->Down() == false) {
+				 this->ShowObject();
+				 table->PullFigure(position);
+				 table->ZeroPositionFigure();
+				 vector<int > lines;
+
+				 lines = table->FindFullLines();
+				 for(auto it = lines.begin(); it != lines.end(); ++it){
+					 for(int x = table->GetPositionMIN().X + 1; x < table->GetPositionMAX().X -1 ; ++x){
+						 COORD t;
+						 t.X = x;
+						 t.Y = *it;
+						 table->SetCell(t, 0);
+						 table->ClearLine(*it);
+
+					 }
+
+				 }
+
+			 }
+			 this->ShowObject();
+			 break;
+
+		 }
+
+
+		 }
+
+}
 
 
 bool Remote::Start(){
 
 
-	char key1=0;
 	    while(table->GetPositionFigure().Y < table->GetPositionMAX().Y)//for exit
 	    {
-	        if(kbhit())//buffer keyboard not empty?
-	        {
+
 	        while(table->ShiftDown()){};
-	        key1=getch();
-	            switch (key1)
-	            {
-	            case 75:
-	            	table->ClearFigure(table->GetPositionFigure());
-           			this->Left();
-           			this->ShowObject();
-	                break;
-	            case 77:
-	            	table->ClearFigure(table->GetPositionFigure());
-   					this->Right();
-   					this->ShowObject();
-	                break;
-	            case 32:
-	            	table->ClearFigure(table->GetPositionFigure());
-	            	this->Rotation();
-	            	this->ShowObject();
-	            	break;
-
-	            case 80:
-	            	table->ClearFigure(table->GetPositionFigure());
-	            	if(this->Down() == false) {
-	            		this->ShowObject();
-	            		table->PullFigure(position);
-	            		table->ZeroPositionFigure();
-	            		vector<int > lines;
-
-	            		lines = table->FindFullLines();
-	            		for(auto it = lines.begin(); it != lines.end(); ++it){
-	            			for(int x = table->GetPositionMIN().X + 1; x < table->GetPositionMAX().X -1 ; ++x){
-	            				COORD t;
-	            				t.X = x;
-	            				t.Y = *it;
-	            				table->SetCell(t, 0);
-	            				table->ClearLine(*it);
-
-	            			}
-
-	            		}
-	            		return false;
-	            	}
-       				this->ShowObject();
-	                break;
-
-	            }
+	        while(this->Down() != false){
+	        	if(kbhit()) this->KeyDown();
+//	        	while(kbhit())getch();
+	           	this->ShowObject();
+	        	Sleep(350);
+	        	table->ClearFigure(table->GetPositionFigure());
 	        }
+	        this->ShowObject();
+	        table->PullFigure(position);
+	        table->ZeroPositionFigure();
+	        vector<int > lines;
 
+	        lines = table->FindFullLines();
+	        for(auto it = lines.begin(); it != lines.end(); ++it){
+	        	for(int x = table->GetPositionMIN().X + 1; x < table->GetPositionMAX().X -1 ; ++x){
+	        		COORD t;
+	        		t.X = x;
+	        		t.Y = *it;
+	        		table->SetCell(t, 0);
+	        		table->ClearLine(*it);
+	        		table->SetCountLines();
+	        		table->DisplayCount(table->GetCountLines());
+
+	        	}
+
+	        }
+	        return false;
 	    }
-
-	return false;
+	    return false;
 }
 
 void Remote::ShowObject(){
