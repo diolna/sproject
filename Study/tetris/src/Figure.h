@@ -11,7 +11,7 @@ public:
 	virtual void DisplayFigure(COORD& position){};
 	Figure(){};
 	virtual ~Figure(){};
-	virtual map<pair<int,int>, bool>& GetViewFigure(){};
+	virtual map<pair<int,int>, bool>& GetViewFigure() = 0;
 //	virtual int GetAngle();
 //	virtual void SetAngle(int an);
 	virtual void SelectElement(int increment){};

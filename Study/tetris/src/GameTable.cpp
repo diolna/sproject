@@ -5,13 +5,24 @@
 
 using namespace std;
 
+void GameTable::DisplayCount(int c){
+
+
+		COORD timeposition = {35, 15};
+		SetConsoleCursorPosition(hStdout, timeposition);
+		cout << "LINES = " <<  c/18;
+
+
+}
+
 GameTable::GameTable(){
+	countline =0;
 	positionMAX.X= 30;
 	positionMAX.Y = 30;
 	positionMIN.X = 10;
 	positionMIN.Y = 0;
-	position = {15, 15};
-	newfigure = new Figure;
+	position = {15, 0};
+	//newfigure = new Figure;
 	hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 	for(int x = positionMIN.X; x < positionMAX.X; x++){
 		for(int y = positionMIN.Y; y < positionMAX.Y; y++){
@@ -190,15 +201,18 @@ bool GameTable::ShiftDown(){
 
 	for(auto it = emptylines.begin(); it != emptylines.end(); ++it){
 		for(int x = positionMIN.X + 1; x < positionMAX.X -1; ++x){
-//			cout << "shiftDown check line" << endl;
+
 			if(cell[{x, *it-1}] == 1 && *it -1 >= 0) {
 				for(int x = positionMIN.X + 1; x < positionMAX.X -1; ++x){
 					cell[{x, *it}] = cell[{x, *it -1}];
 					cell[{x,*it-1}] = 0;
 				}
-//				cout << "clearOnLineUp" << endl;
+
 				this->ClearLine(*it-1);
 				this->DisplayLine(*it);
+//				countline++;
+//				this->DisplayCount(countline);
+
 				return true;
 			}
 
