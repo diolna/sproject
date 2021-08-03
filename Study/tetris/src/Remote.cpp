@@ -33,24 +33,24 @@ void Remote::KeyDown(){
 		 case 80:
 			 table->ClearFigure(table->GetPositionFigure());
 			 if(this->Down() == false) {
-				 this->ShowObject();
-				 table->PullFigure(position);
-				 table->ZeroPositionFigure();
-				 vector<int > lines;
-
-				 lines = table->FindFullLines();
-				 for(auto it = lines.begin(); it != lines.end(); ++it){
-					 for(int x = table->GetPositionMIN().X + 1; x < table->GetPositionMAX().X -1 ; ++x){
-						 COORD t;
-						 t.X = x;
-						 t.Y = *it;
-						 table->SetCell(t, {0, RED});
-						 table->ClearLine(*it);
-
-					 }
-
-				 }
-
+//				 this->ShowObject();
+//				 table->PullFigure(position);
+//				 table->ZeroPositionFigure();
+//				 vector<int > lines;
+//
+//				 lines = table->FindFullLines();
+//				 for(auto it = lines.begin(); it != lines.end(); ++it){
+//					 for(int x = table->GetPositionMIN().X + 1; x < table->GetPositionMAX().X -1 ; ++x){
+//						 COORD t;
+//						 t.X = x;
+//						 t.Y = *it;
+//						 table->SetCell(t, {0, RED});
+//						 table->ClearLine(*it);
+//
+//					 }
+//
+//				 }
+				 break;
 			 }
 			 this->ShowObject();
 			 break;
@@ -64,7 +64,7 @@ void Remote::KeyDown(){
 
 
 bool Remote::Start(){
-
+// repeat while Y
 
 	    while(table->GetPositionFigure().Y < table->GetPositionMAX().Y)//for exit
 	    {
@@ -79,6 +79,7 @@ bool Remote::Start(){
 	        }
 	        this->ShowObject();
 	        table->PullFigure(position);
+	        table->Zummer();
 	        table->ZeroPositionFigure();
 	        vector<int > lines;
 
@@ -89,6 +90,7 @@ bool Remote::Start(){
 	        		t.X = x;
 	        		t.Y = *it;
 	        		table->SetCell(t, {0,RED});
+
 	        		table->ClearLine(*it);
 	        		table->SetCountLines();
 	        		table->DisplayCount(table->GetCountLines());
@@ -96,6 +98,7 @@ bool Remote::Start(){
 	        	}
 
 	        }
+	        while(table->ShiftDown()){}
 	        return false;
 	    }
 	    return false;
@@ -110,16 +113,14 @@ void Remote::ShowObject(){
 bool Remote::Left(){
 	map<pair<int,int>,pair<bool, COLORFIGURE>> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигурі
 
-	// проверка на достижение конца чаши ПЕРЕДЕЛАТЬ СДЕЛАТЬ ИНИЦИАЛЛИЗАЦИЮ ЧАШИ КАК ЗАПОЛНЕННЫЕ ЯЧЕЙКИ
-//	if(table->GetPositionMAX().X - 1 == position.X){
-//		return false;
-//	}
+// в цикле перебераем карту фигуры и задаем смещение относительно текущей позиции но по оси X смещаем все точки влево
+	// на 1 (-1)
 
 			COORD timeposition;
 	for(auto it= figuremap.begin(); it != figuremap.end(); ++it){
 		if( it->second.first == 1){
 			timeposition.X = table->GetPositionFigure().X + it->first.first - 1;
-			timeposition.Y = table->GetPositionFigure().Y;
+			timeposition.Y = table->GetPositionFigure().Y + it->first.second;
 			if(table->GetCell(timeposition).first == 1) return false;
 
 		}
@@ -146,7 +147,7 @@ bool Remote::Right(){
 	for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
 		if( it->second.first == 1){
 			timeposition.X = table->GetPositionFigure().X + it->first.first + 1;
-			timeposition.Y = table->GetPositionFigure().Y;
+			timeposition.Y = table->GetPositionFigure().Y + it->first.second;
 			if(table->GetCell(timeposition).first == 1) return false;
 
 		}

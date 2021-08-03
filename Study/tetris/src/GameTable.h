@@ -33,7 +33,7 @@ public:
 	bool ShiftDown();
 	int GetCountLines(){return countline;}
 	void SetCountLines(){countline++;}
-
+	void Zummer(){ cout << '\a';}
 
 private:
 	Figure* newfigure;
