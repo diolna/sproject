@@ -14,7 +14,7 @@ public:
 	Piramida(int angle);
 	void DisplayFigure(COORD& pos);
 	virtual ~Piramida(){};
-	map<pair<int,int>, bool>& GetViewFigure(){ return element;}
+	map<pair<int,int>, pair<bool, COLORFIGURE>>& GetViewFigure(){ return element;}
 	void SelectElement(int increment);
 	COLORFIGURE GetColor() {return color;}
 	private:
@@ -23,6 +23,6 @@ public:
 		COLORFIGURE color;
 		//GameTable* table;
 		COORD position;
-		map<pair<int,int>, bool> element;
+		map<pair<int,int>, pair<bool, COLORFIGURE>> element;
 
 };

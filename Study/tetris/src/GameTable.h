@@ -20,8 +20,8 @@ public:
 	void ClearFigure(COORD& position);
 	COORD GetPositionMAX(){return positionMAX;};
 	COORD GetPositionMIN() {return positionMIN;};
-	bool GetCell(COORD& position);
-	void SetCell(COORD& position, bool val);
+	pair<bool, COLORFIGURE> GetCell(COORD& position);
+	void SetCell(COORD& position, pair<bool, COLORFIGURE> val);
 	COORD& GetPositionFigure();
 	void SetPositionFigure(COORD shiftcoord);
 	void ZeroPositionFigure(){ position = {15,0};};
@@ -40,7 +40,7 @@ private:
 	COORD positionMAX;
 	COORD positionMIN;
 	COORD position;
-	map<pair<int,int>, bool> cell;
+	map<pair<int,int>, pair<bool, COLORFIGURE>> cell;
 	HANDLE hStdout;
 	int countline;
 

@@ -44,7 +44,7 @@ void Remote::KeyDown(){
 						 COORD t;
 						 t.X = x;
 						 t.Y = *it;
-						 table->SetCell(t, 0);
+						 table->SetCell(t, {0, RED});
 						 table->ClearLine(*it);
 
 					 }
@@ -88,7 +88,7 @@ bool Remote::Start(){
 	        		COORD t;
 	        		t.X = x;
 	        		t.Y = *it;
-	        		table->SetCell(t, 0);
+	        		table->SetCell(t, {0,RED});
 	        		table->ClearLine(*it);
 	        		table->SetCountLines();
 	        		table->DisplayCount(table->GetCountLines());
@@ -108,7 +108,7 @@ void Remote::ShowObject(){
 }
 
 bool Remote::Left(){
-	map<pair<int,int>,bool> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
+	map<pair<int,int>,pair<bool, COLORFIGURE>> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
 
 	// проверка на достижение конца чаши ѕ≈–≈ƒ≈Ћј“№ —ƒ≈Ћј“№ »Ќ»÷»јЋЋ»«ј÷»ё „јЎ»  ј  «јѕќЋЌ≈ЌЌџ≈ я„≈… »
 //	if(table->GetPositionMAX().X - 1 == position.X){
@@ -117,10 +117,10 @@ bool Remote::Left(){
 
 			COORD timeposition;
 	for(auto it= figuremap.begin(); it != figuremap.end(); ++it){
-		if( it->second == 1){
+		if( it->second.first == 1){
 			timeposition.X = table->GetPositionFigure().X + it->first.first - 1;
 			timeposition.Y = table->GetPositionFigure().Y;
-			if(table->GetCell(timeposition) == 1) return false;
+			if(table->GetCell(timeposition).first == 1) return false;
 
 		}
 	}
@@ -131,7 +131,7 @@ bool Remote::Left(){
 }
 
 bool Remote::Right(){
-	map<pair<int,int>,bool> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
+	map<pair<int,int>,pair<bool, COLORFIGURE>> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
 
 	// так как смещаем в право и фигура имеет справа елементы, то нужно найти элемент со значением 1 максимально справа
 
@@ -144,10 +144,10 @@ bool Remote::Right(){
 
 			COORD timeposition;
 	for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
-		if( it->second == 1){
+		if( it->second.first == 1){
 			timeposition.X = table->GetPositionFigure().X + it->first.first + 1;
 			timeposition.Y = table->GetPositionFigure().Y;
-			if(table->GetCell(timeposition) == 1) return false;
+			if(table->GetCell(timeposition).first == 1) return false;
 
 		}
 	}
@@ -158,13 +158,13 @@ bool Remote::Right(){
 
 }
 bool Remote::Down(){
-	map<pair<int,int>,bool> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
+	map<pair<int,int>,pair<bool, COLORFIGURE>> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
 	COORD timeposition;
 		for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
-			if( it->second == 1){
+			if( it->second.first == 1){
 				timeposition.Y = table->GetPositionFigure().Y + it->first.second + 1;
 				timeposition.X = table->GetPositionFigure().X + it->first.first;
-				if(table->GetCell(timeposition) == 1 ) {
+				if(table->GetCell(timeposition).first == 1 ) {
 					table->SetPositionFigure({0,0});
 					return false;
 				}
@@ -182,13 +182,13 @@ bool Remote::Down(){
 
 bool Remote::Rotation(){
 	// временно удал€ем текущее значение фигуры
-	map<pair<int,int>,bool> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
+	map<pair<int,int>,pair<bool, COLORFIGURE>> figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
 	COORD timeposition;
 		for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
-				if( it->second == 1){
+				if( it->second.first == 1){
 					timeposition.X = table->GetPositionFigure().X + it->first.first;
 					timeposition.Y = table->GetPositionFigure().Y;
-					table->SetCell(timeposition, 0);
+					table->SetCell(timeposition, {0,it->second.second});
 
 				}
 		}
@@ -200,21 +200,21 @@ bool Remote::Rotation(){
 
 	//COORD timeposition;
 	for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
-			if( it->second == 1){
+			if( it->second.first == 1){
 				timeposition.X = table->GetPositionFigure().X + it->first.first;
 				timeposition.Y = table->GetPositionFigure().Y;
 	// если есть наложени€ то надо все вернуть назад.
-				if(table->GetCell(timeposition) == 1) {
+				if(table->GetCell(timeposition).first == 1) {
 
 					table->GetFigure()->SelectElement(-90);
 					figuremap = table->GetFigure() ->GetViewFigure(); // карта фигур≥
-					//COORD timeposition;
+
 
 					for(auto it= figuremap.begin() ; it != figuremap.end(); ++it){
-						if( it->second == 1){
+						if( it->second.first == 1){
 							timeposition.X = table->GetPositionFigure().X + it->first.first;
 							timeposition.Y = table->GetPositionFigure().Y;
-							table->SetCell(timeposition, 1);
+							table->SetCell(timeposition, {1, it->second.second});
 
 									}
 							}
