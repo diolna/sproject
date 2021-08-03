@@ -16,18 +16,19 @@ public:
 
  	void DisplayFigure(COORD& position);
 	virtual ~FigureSquare(){};
-	map<pair<int,int>, bool>& GetViewFigure(){ return element;}
+	map<pair<int,int>, pair<bool, COLORFIGURE>>& GetViewFigure(){ return element;}
 	void SelectElement(int increment){};
+	COLORFIGURE GetColor(){return color;}
 
 
 
 private:
 	//int width;
-	//int color;
+	COLORFIGURE color;
 	//Figure* new_figure;
 	string name;
 	COORD position;
-	map<pair<int,int>, bool> element;
+	map<pair<int,int>, pair<bool, COLORFIGURE>> element;
 
 
 };

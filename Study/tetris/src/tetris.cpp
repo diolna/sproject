@@ -53,35 +53,6 @@ for(int i = 1; i<100; i++){
 
 }
 
-//*tab = *tab + *square;
-//for(int i = 0; i < 10; ++i){
-//remote->Start();
-//}
-//
-////cout << "new figure " << endl;
-//*tab = *tab + *line;
-//for(int i = 0; i < 8; ++i){
-//remote->Start();
-//}
-//
-//*tab = *tab + *meander;
-//remote->Start();
-//remote->Start();
-//remote->Start();
-//
-//for(int i = 0; i < 5; ++i){
-//*tab = *tab + *curvedline;
-//remote->Start();
-//}
-//
-//for(int i = 0; i < 5; ++i){
-//*tab = *tab + *piramida;
-//remote->Start();
-//}
-//
-//
-////while(tabRemote->Start()){}
-
 
 	return 0;
 }

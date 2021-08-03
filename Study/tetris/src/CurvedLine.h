@@ -14,13 +14,15 @@ public:
 //	Line(GameTable* tab) : table(tab){}
 	void DisplayFigure(COORD& pos);
 	virtual ~CurvedLine(){};
-	map<pair<int,int>, bool>& GetViewFigure(){ return element;}
+	map<pair<int,int>, pair<bool, COLORFIGURE>>& GetViewFigure(){ return element;}
 	void SelectElement(int increment);
+	COLORFIGURE GetColor(){return color;}
 
 	private:
 	string name;
+	COLORFIGURE color;
 	//GameTable* table;
 	COORD position;
-	map<pair<int,int>, bool> element;
+	map<pair<int,int>, pair<bool, COLORFIGURE>> element;
 	int angle;
 };

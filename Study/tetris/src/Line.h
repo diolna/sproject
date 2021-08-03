@@ -11,18 +11,16 @@ class Line : public Figure {
 public:
 	Line();
 	Line(int angle);
-//	Line(GameTable* tab) : table(tab){}
 	void DisplayFigure(COORD& pos);
 	virtual ~Line(){};
-	map<pair<int,int>, bool>& GetViewFigure(){ return element;}
-//	int GetAngle() { return angle;}
-//	void SetAngle(int an) { angle = an;}
+	map<pair<int,int>, pair<bool, COLORFIGURE>>& GetViewFigure(){ return element;}
 	void SelectElement(int n );
+	COLORFIGURE GetColor(){return color;}
 private:
 	string name;
-	//GameTable* table;
+	COLORFIGURE color;
 	COORD position;
-	map<pair<int,int>, bool> element;
+	map<pair<int,int>, pair<bool, COLORFIGURE>> element;
 	int angle;
 
 };
