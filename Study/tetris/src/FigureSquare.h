@@ -18,12 +18,13 @@ public:
 	virtual ~FigureSquare(){};
 	map<pair<int,int>, bool>& GetViewFigure(){ return element;}
 	void SelectElement(int increment){};
+	COLORFIGURE GetColor(){return color;}
 
 
 
 private:
 	//int width;
-	//int color;
+	COLORFIGURE color;
 	//Figure* new_figure;
 	string name;
 	COORD position;

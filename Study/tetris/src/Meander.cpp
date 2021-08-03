@@ -13,6 +13,7 @@ void  Meander::DisplayFigure(COORD& position) {
 
 
 	Meander::Meander(){
+		color = RED;
 	angle = 0;
 	name = "Meander";
 	position = {0,0};
@@ -29,6 +30,7 @@ void  Meander::DisplayFigure(COORD& position) {
 }
 
 	Meander::Meander(int an){
+			color = RED;
 			angle = an;
 			name = "line";
 			position = {0,0};

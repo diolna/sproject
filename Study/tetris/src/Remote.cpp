@@ -103,6 +103,7 @@ bool Remote::Start(){
 
 void Remote::ShowObject(){
 
+
 	table->Display(table->GetPositionFigure());
 }
 

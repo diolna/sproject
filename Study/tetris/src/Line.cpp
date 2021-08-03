@@ -12,6 +12,7 @@ void  Line::DisplayFigure(COORD& position) {
 
 
 	Line::Line(){
+		color = RED;
 	name = "line";
 	angle = 0;
 	position = {0,0};
@@ -85,6 +86,7 @@ void  Line::DisplayFigure(COORD& position) {
 
 
 	Line::Line(int an){
+		color = RED;
 		angle = an;
 		name = "line";
 		position = {0,0};

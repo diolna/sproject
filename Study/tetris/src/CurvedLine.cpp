@@ -13,6 +13,7 @@ void  CurvedLine::DisplayFigure(COORD& position) {
 
 
 	CurvedLine::CurvedLine(){
+		color = RED;
 	angle = 0;
 	name = "Meander";
 	position = {0,0};
@@ -29,6 +30,7 @@ void  CurvedLine::DisplayFigure(COORD& position) {
 }
 
 	CurvedLine::CurvedLine(int an){
+		color = GREEN;
 		angle = an;
 		name = "line";
 		position = {0,0};

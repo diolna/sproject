@@ -3,6 +3,15 @@
 #include <windows.h>
 #include <map>
 
+enum COLORFIGURE{
+	RED,
+	GREEN,
+	BLUE,
+	YELLOW
+
+
+};
+
 
 using namespace std;
 
@@ -15,6 +24,7 @@ public:
 //	virtual int GetAngle();
 //	virtual void SetAngle(int an);
 	virtual void SelectElement(int increment){};
+	virtual COLORFIGURE GetColor() = 0;
 
 
 

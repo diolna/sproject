@@ -16,6 +16,7 @@ void GameTable::DisplayCount(int c){
 }
 
 GameTable::GameTable(){
+
 	countline =0;
 	positionMAX.X= 30;
 	positionMAX.Y = 30;
@@ -49,6 +50,8 @@ GameTable::GameTable(){
 
 			}
 	}
+
+	this->DisplayCount(0);
 }
 
 GameTable& GameTable::operator+(Figure& f){
@@ -64,6 +67,7 @@ GameTable& GameTable::operator+(Figure& f){
 void GameTable::Display(COORD& pos){
 	//
 	DWORD l;
+	COLORFIGURE color = this->newfigure->GetColor();
 
 	COORD timeposition = pos;
 
@@ -76,8 +80,10 @@ void GameTable::Display(COORD& pos){
 //			cout << "coordinate x,y basic = " << position.X << " , " << position.Y << endl;
 //			cout << "coordinate x,y = " << timeposition.X << " , " << timeposition.Y << endl;
 			SetConsoleCursorPosition(hStdout, timeposition);
-			FillConsoleOutputAttribute(hStdout, BACKGROUND_RED, 1, timeposition, &l);
-			FillConsoleOutputAttribute(hStdout, BACKGROUND_INTENSITY, 1, timeposition, &l);
+			if(color == RED) FillConsoleOutputAttribute(hStdout, BACKGROUND_RED | BACKGROUND_INTENSITY, 1, timeposition, &l);
+			if(color == GREEN) FillConsoleOutputAttribute(hStdout, BACKGROUND_GREEN |BACKGROUND_INTENSITY, 1, timeposition, &l);
+			if(color == BLUE) FillConsoleOutputAttribute(hStdout, BACKGROUND_BLUE |BACKGROUND_INTENSITY, 1, timeposition, &l);
+			//FillConsoleOutputAttribute(hStdout, BACKGROUND_INTENSITY, 1, timeposition, &l);
 			FillConsoleOutputCharacterA(hStdout, TEXT(' '), 1, timeposition, &l);
 
 		}

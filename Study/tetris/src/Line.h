@@ -18,8 +18,10 @@ public:
 //	int GetAngle() { return angle;}
 //	void SetAngle(int an) { angle = an;}
 	void SelectElement(int n );
+	COLORFIGURE GetColor(){return color;}
 private:
 	string name;
+	COLORFIGURE color;
 	//GameTable* table;
 	COORD position;
 	map<pair<int,int>, bool> element;

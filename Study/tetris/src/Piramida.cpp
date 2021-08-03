@@ -21,6 +21,7 @@ Piramida::Piramida(){
 }
 
 Piramida::Piramida(int an){
+			color = RED;
 			angle = an;
 			name = "piramida";
 			position = {0,0};

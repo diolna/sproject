@@ -7,12 +7,15 @@ using namespace std;
 
 void  FigureSquare::DisplayFigure(COORD& position) {
 
+	color = BLUE;
+
 	cout << name;
 	cout << "number array elements = " << element.size() << endl;
 
 }
 
 FigureSquare::FigureSquare(){
+	color = BLUE;
 	name = "square";
 	position = {0,0};
 	element = {
