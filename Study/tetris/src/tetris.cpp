@@ -58,7 +58,7 @@ for(int i = 1; i<100; i++){
 }
 
 
-int GetRandomNumber(int min, int max){
+int GetRandomNumber(int& min, int& max){
 
 	 static const double fraction = 1/ (static_cast<double>(RAND_MAX) +1);
 	return static_cast<int>(rand()*fraction*(max - min +1)+ min);
